@@ -9,28 +9,34 @@
 <div id="log"></div>
 
 <script src="../../../build/yui/yui.js"></script>
-<script src="../../../build/paginator-base/paginator-base.js"></script>
+<script src="../../../build/paginator-core/paginator-core.js"></script>
 <script src="../../../build/paginator/paginator.js"></script>
-<script src="tests-base.js"></script>
+<script src="tests-core.js"></script>
 <script src="tests-widget.js"></script>
 <script>
-var YUI_config = {
+var Y = YUI({
+        combine : false,
         allowRollup: false,
         filter: (window.location.search.match(/[?&]filter=([^&]+)/) || [])[1] || 'min'
-    };
+    }).use(
+        "event", 
+        "paginator-core-tests", 
+        /*"paginator-widget-tests",*/ 
+        "test-console", 
+    function(Y) {
+        new Y.Test.Console().render("#log");
+        
+        //add all the tests
+        Y.Object.each(Y.Tests, function(value, key) {
+            Y.Test.Runner.add(value);
+        });
 
-var Y = YUI().use("paginator-base-tests", "paginator-widget-tests", "test-console", function(Y) {
-    new Y.Test.Console().render("#log");
-    
-    //add all the tests
-    Y.Object.each(Y.Tests, function(value, key) {
-        Y.Test.Runner.add(value);
+        Y.Test.Runner.on("fail", function(e) { console.error(e.error); });
+        
+        Y.on("domready", function() {
+            Y.Test.Runner.run();
+        });
     });
-
-    Y.Test.Runner.on("fail", function(e) { console.error(e.error); });
-    
-    Y.Test.Runner.run();
-});
 </script>
 </body>
 </html>

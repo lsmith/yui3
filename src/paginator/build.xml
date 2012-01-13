@@ -6,7 +6,7 @@
     <description>Paginator Build File</description>
 
     <target name="all">
-    	<ant antfile="paginator-base.xml" target="all" />
+    	<ant antfile="paginator-core.xml" target="all" />
     	<ant antfile="paginator.xml" target="all" />
     </target>
 
