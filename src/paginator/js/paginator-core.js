@@ -7,7 +7,7 @@ var L = Y.Lang,
     
     //helpers
     parse = function(value) {
-        var v = parseInt(value, 10);
+        var v = (value === Infinity) ? value : parseInt(value, 10);
         
         return !isNaN(v) ? v : null;
     },
@@ -75,11 +75,11 @@ Y.mix(Core.prototype, {
     },
     
     first : function() {
-        //TODO: implement
+        this.set("page", 1);
     },
     
     last : function() {
-        //TODO: implement
+        this.set("page", this._max());
     },
     
     //Private
@@ -89,8 +89,8 @@ Y.mix(Core.prototype, {
             return;
         }
         
-        var o = this.getAttrs([ "per", "total", "offset", "page" ]),
-            max = (o.total === "Infinity") ? "Infinity" : ceil(o.total / o.per),
+        var o = this.getAttrs([ "per", "offset", "page" ]),
+            max = this._max(),
             source = { internal : true },
             offset, first, prev, current, next, last;
         
@@ -131,6 +131,14 @@ Y.mix(Core.prototype, {
         (offset !== o.offset) && this.set("offset", offset, source);
     },
     
+    _max : function() {
+        var o = this.getAttrs([ "per", "total" ]);
+        
+        //don't have to check for Infinity here, because Infinity divided by
+        //anything is still Infinity. Yes, even 0.
+        return ceil(o.total / o.per);
+    },
+    
     //Attribute-related fns
     _setPer : function(value) {
         var per = parse(value);
@@ -139,32 +147,21 @@ Y.mix(Core.prototype, {
     },
     
     _setTotal : function(value) {
-        //shortcut "Infinity" case
-        if(value === "Infinity") {
-            return value;
-        }
-        
         var total = parse(value);
         
         return total >= 0 ? total : INVALID_VALUE;
     },
 
     _setPage : function(value) {
-        var max = ceil(this.get("total") / this.get("per")),
-            page = parse(value);
+        var page = parse(value);
         
-        max = (max === "Infinity") ? true : page <= max;
-        
-        return (page > 0 && max) ? page : INVALID_VALUE;
+        return (page > 0 && (page <= this._max())) ? page : INVALID_VALUE;
     },
 
     _setOffset : function(value) {
-        var total = this.get("total"),
-            offset = parse(value);
+        var offset = parse(value);
         
-        total = (total === "Infinity") ? true : offset <= total;
-        
-        return (offset >= 0 && total) ? offset : INVALID_VALUE;
+        return (offset >= 0 && (offset <= this.get("total"))) ? offset : INVALID_VALUE;
     }
 });
 

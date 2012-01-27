@@ -6,6 +6,7 @@ YUI.add("paginator-core-tests", function(Y) {
     Y.namespace("Tests").Core = new Y.Test.Case({
         name : "Y.Core",
         
+        //*
         "Core should be instantiable" : function() {
             Assert.isInstanceOf(Paginator, new Paginator());
         },
@@ -29,7 +30,7 @@ YUI.add("paginator-core-tests", function(Y) {
         },
         
         "Core should accept page attributes > 1 when total is Infinity" : function() {
-            var pi = new Paginator({ total : "Infinity" });
+            var pi = new Paginator({ total : Infinity });
             
             Assert.areEqual(1, pi.get("page"));
             
@@ -217,6 +218,7 @@ YUI.add("paginator-core-tests", function(Y) {
             Assert.areEqual(1, p.get("page"));
         },
         
+        
         "Core.first should update page & offset correctly" : function() {
             var p = new Paginator({
                     total : 10
@@ -230,9 +232,10 @@ YUI.add("paginator-core-tests", function(Y) {
             
             p2.first();
             
-            Assert.isUndefined(p.get("page"));
-            Assert.areEqual(0, p.get("offset"));
+            Assert.isUndefined(p2.get("page"));
+            Assert.areEqual(0, p2.get("offset"));
         },
+        //*/
         
         "Core.last should update page & offset correctly" : function() {
             var p = new Paginator({
@@ -243,7 +246,7 @@ YUI.add("paginator-core-tests", function(Y) {
                     per : 3
                 }),
                 p3 = new Paginator({
-                    total : "Infinity"
+                    total : Infinity
                 }),
                 p4 = new Paginator();
             
@@ -259,8 +262,8 @@ YUI.add("paginator-core-tests", function(Y) {
             
             p3.last();
             
-            Assert.isUndefined(p3.get("page"));
-            Assert.areEqual("Infinity", p3.get("offset"));
+            Assert.areEqual(Infinity, p3.get("page"));
+            Assert.areEqual(Infinity, p3.get("offset"));
             
             p4.last();
             
