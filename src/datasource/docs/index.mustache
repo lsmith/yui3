@@ -6,11 +6,11 @@
         as schema normalization, caching, and polling of data.
     </p>
 </div>
-				
+
 {{>getting-started}}
-				
+
 <h2 id="using">Using DataSources</h2>
-			
+
 <h3 id="basics">DataSource basics</h3>
 
 <p>
@@ -36,7 +36,7 @@ myDataSource.sendRequest({
 });
 ```
 
-				
+
 <p>
     You must instantiate the appropriate DataSource subclass for your source of
     data.
@@ -157,10 +157,10 @@ var myDataSource = new Y.DataSource.Function({
 
 <p>
     Since your data can return data of any format, you may consider ways to
-    taking advantage of the built-in infrastructure, including using a
+    take advantage of the built-in infrastructure, including using a
     DataSchema plugin to normalize the data that is sent to your callback.
 </p>
-                
+
 ```
 var myDataSource = new Y.DataSource.Function({
     source: function (request) {
@@ -173,6 +173,23 @@ myDataSource.plug({fn: Y.Plugin.DataSourceArraySchema, cfg: {
         resultFields: ["name","id"]
     }
 }});
+```
+
+<p>
+    If you need to return meta data as part of the response, you can do so
+    by returning an object that defines <code>data</code> and
+    <code>meta</code>.
+</p>
+
+```
+var myDataSource = new Y.DataSource.Function({
+    source: function (request) {
+        return {
+            data: ...,
+            meta: {...}
+        };
+    }
+});
 ```
 
 <h3 id="caching">Caching</h3>

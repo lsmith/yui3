@@ -66,9 +66,10 @@ SchemaXML = {
     values extracted from the nodes or attributes found by the field `locator`
     (or `key` fallback).
     
-    To extract additional information from the XML, include an array of
-    XPath locators in _schema.metaFields_.  The collected values will be
-    stored in `response.meta` with the XPath locator as keys.
+    To extract additional information from the XML, include an object
+    mapping response.meta keys to XPath locators in _schema.metaFields_.
+    The collected values will be stored in `response.meta` with the XPath
+    locator as keys.
 
     @example
         var schema = {

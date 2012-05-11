@@ -12,6 +12,19 @@ function testFn() {
     ];
 }
 
+function testFnWithMeta() {
+    return {
+        data: [
+            { type: "a", age:  0, name: "c" },
+            { type: "d", age:  1, name: "f" },
+            { type: "g", age: -1, name: "i" }
+        ],
+        meta:{
+            foo: 'bar'
+        }
+    };
+}
+
 suite.add(new Y.Test.Case({
     name: "DataSource.Function Tests",
 
@@ -36,6 +49,35 @@ suite.add(new Y.Test.Case({
         Assert.isObject(response, "Expected response object.");
         Assert.isNotUndefined(tId);
         Assert.isNotUndefined(data);
+        Assert.areEqual('a', data[0].type);
+        Assert.isNotUndefined(callback);
+    },
+
+    testFunctionWithMeta: function() {
+        var ds = new Y.DataSource.Function({ source: testFnWithMeta }),
+            request = null, response, tId, data, meta, callback;
+
+        ds.sendRequest({
+            request: "foo",
+            callback: {
+                success: function (e) {
+                    request  = e.request;
+                    response = e.response;
+                    tId      = e.tId;
+                    data     = e.data;
+                    meta     = e.meta;
+                    callback = e.callback;
+                }
+            }
+        });
+
+        Assert.areSame("foo", request, "Expected same request.");
+        Assert.isObject(response, "Expected response object.");
+        Assert.isNotUndefined(tId);
+        Assert.isNotUndefined(data);
+        Assert.areEqual('a', data[0].type);
+        Assert.isNotUndefined(meta);
+        Assert.areEqual('bar', meta.foo);
         Assert.isNotUndefined(callback);
     },
 

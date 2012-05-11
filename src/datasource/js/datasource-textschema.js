@@ -78,15 +78,15 @@ Y.extend(DataSourceTextSchema, Y.Plugin.Base, {
      * @protected
      */
     _beforeDefDataFn: function(e) {
-        var schema = this.get('schema'),
-            payload = e.details[0],
-            // TODO: Do I need to sniff for DS.IO + isString(responseText)?
-            data = e.data.responseText || e.data;
+        // Since data is normally a string, no need to sniff for DS.IO
+        var data = e.data.responseText || e.data,
+            payload = e.details[0];
 
-        payload.response = Y.DataSchema.Text.apply.call(this, schema, data) || {
+        payload.response = Y.DataSchema.Text.apply.call(this, this.get('schema'), data) || {
             meta: {},
             results: data
         };
+        Y.mix(payload.response.meta, e.meta);
 
         this.get("host").fire("response", payload);
 

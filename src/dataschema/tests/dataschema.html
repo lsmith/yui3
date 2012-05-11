@@ -178,7 +178,7 @@
             
             testJSONFieldLocators: function() {
                 var schema_1 = {
-                        metaFields: { total: "total" },
+                        metaFields: [ "total" ],
                         resultListLocator: "results",
                         resultFields: [
                             { key: "User ID",    locator: "n" },
@@ -258,7 +258,7 @@
             
             testJSONNestedFieldLocators: function() {
                   var schema = {
-                    metaFields: {total:"total"},
+                    metaFields: ["total"],
                     resultListLocator: "results",
                     resultFields: [
                         { key: "User ID",    locator: "n" },
@@ -433,7 +433,7 @@
                         "name",
                         { key: "primaryDisposition", locator: "dispositions[0]"},
                         { key: "strategy", schema: {
-                            metaFields: { difficulty: 'difficulty', peopleRequired: 'peopleRequired'},
+                            metaFields: [ 'difficulty', 'peopleRequired' ],
                             resultListLocator: 'strategies',
                             resultFields: [
                                 { key: 'step', parser: function (value) { return (value + '').toUpperCase(); }},

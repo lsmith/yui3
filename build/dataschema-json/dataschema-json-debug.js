@@ -143,11 +143,13 @@ SchemaJSON = {
     will be used to extract a value from those objects for the output result.
 
     To extract additional information from the JSON, include an array of
-    path locators in _schema.metaFields_.  The collected values will be
-    stored in `response.meta`.
+    keys or an object mapping response.meta keys to path locators in
+    _schema.metaFields_.  The collected values will be stored in
+    `response.meta`.
 
 
     @example
+
         // Process array of arrays
         var schema = {
                 resultListLocator: 'produce.fruit',
@@ -418,12 +420,26 @@ SchemaJSON = {
      * @protected
      */
     _parseMeta: function(metaFields, json_in, data_out) {
-        if (isObject(metaFields)) {
+        if (!json_in) {
+            return data_out;
+        }
+
+        if (isArray(metaFields)) {
+            var len = metaFields.length, i, key, path;
+            for (i=0; i<len; i++) {
+                key = metaFields[i];
+                path = SchemaJSON.getPath(key);
+                if (path) {
+                    data_out.meta[key] = SchemaJSON.getLocationValue(path, json_in);
+                }
+            }
+        }
+        else if (isObject(metaFields)) {
             var key, path;
-            for(key in metaFields) {
+            for (key in metaFields) {
                 if (metaFields.hasOwnProperty(key)) {
                     path = SchemaJSON.getPath(metaFields[key]);
-                    if (path && json_in) {
+                    if (path) {
                         data_out.meta[key] = SchemaJSON.getLocationValue(path, json_in);
                     }
                 }

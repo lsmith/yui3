@@ -45,10 +45,56 @@ suite.add(new Y.Test.Case({
         Assert.areSame(-1, response.results[2].age, "Expected last age.");
         Assert.areSame("abc", response.results[0].name, "Expected first name.");
         Assert.areSame("ghi", response.results[2].name, "Expected last name.");
+    },
+
+    testTextSchemaMeta: function() {
+        var ds = new Y.DataSource.Function({ source: function() {
+                return {
+                    data: textData,
+                    meta: {
+                        foo: 'bar'
+                    }
+                };
+            }}),
+            request = null, response;
+
+        ds.plug(Y.Plugin.DataSourceTextSchema, {
+            schema: {
+                resultDelimiter: "\n",
+                fieldDelimiter: "\t",
+                resultFields: [
+                    { key: "type" },
+                    { key: "age", parser: "number" },
+                    "name"
+                ]
+            }
+        });
+
+        ds.sendRequest({
+            callback: {
+                success: function (e) {
+                    request  = e.request;
+                    response = e.response;
+                }
+            }
+        });
+
+        Assert.isUndefined(request, "Expected undefined request.");
+        Assert.isObject(response, "Expected normalized response object.");
+        Assert.isArray(response.results, "Expected results array.");
+        Assert.areSame(3, response.results.length, "Expected 3 results.");
+        Assert.areSame("foo", response.results[0].type, "Expected first type.");
+        Assert.areSame("bat", response.results[2].type, "Expected last type.");
+        Assert.areSame(0, response.results[0].age, "Expected first age.");
+        Assert.areSame(-1, response.results[2].age, "Expected last age.");
+        Assert.areSame("abc", response.results[0].name, "Expected first name.");
+        Assert.areSame("ghi", response.results[2].name, "Expected last name.");
+        Assert.isObject(response.meta, "Expected meta object.");
+        Assert.areSame('bar', response.meta.foo);
     }
 }));
 
 Y.Test.Runner.add(suite);
 
 
-}, '@VERSION@' ,{requires:['datasource-textschema', 'test', 'datatype-number-parse']});
+}, '@VERSION@' ,{requires:['datasource-textschema', 'test', 'datatype-number-parse', 'datasource-function']});
