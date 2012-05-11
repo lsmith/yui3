@@ -78,15 +78,15 @@ Y.extend(DataSourceXMLSchema, Y.Plugin.Base, {
      * @protected
      */
     _beforeDefDataFn: function(e) {
-        var schema = this.get('schema'),
-            payload = e.details[0],
-            // TODO: Do I need to sniff for DS.IO + responseXML.nodeType 9?
-            data = e.data.responseXML || e.data;
+        // TODO: Do I need to sniff for DS.IO + responseXML.nodeType 9?
+        var data = e.data.responseXML || e.data,
+            payload = e.details[0];
 
-        payload.response = Y.DataSchema.XML.apply.call(this, schema, data) || {
+        payload.response = Y.DataSchema.XML.apply.call(this, this.get('schema'), data) || {
             meta: {},
             results: data
         };
+        Y.mix(payload.response.meta, e.meta);
 
         this.get("host").fire("response", payload);
 

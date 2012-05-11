@@ -54,10 +54,96 @@ suite.add(new Y.Test.Case({
 
         Assert.isObject(response, "Expected normalized response object.");
         Assert.isObject(error, "Expected response error.");
+    },
+
+    testJSONSchemaMeta: function() {
+        var data = {
+                produce: {
+                    fruit: [
+                        { name: 'Banana', color: 'yellow', price: '1.96' },
+                        { name: 'Orange', color: 'orange', price: '2.04' },
+                        { name: 'Eggplant', color: 'purple', price: '4.31' }
+                    ]
+                },
+                lastInventory: '2011-07-19'
+            },
+            ds = new Y.DataSource.Local({ source: data }),
+            request = null, response;
+
+        ds.plug(Y.Plugin.DataSourceJSONSchema, {
+            schema: {
+                resultListLocator: "produce.fruit",
+                resultFields: [ 'name', 'color' ],
+                metaFields: [ 'lastInventory' ]
+            }
+        });
+
+        ds.sendRequest({
+            callback: {
+                success: function (e) {
+                    request  = e.request;
+                    response = e.response;
+                }
+            }
+        });
+
+        Assert.isUndefined(request, "Expected undefined request.");
+        Assert.isObject(response, "Expected normalized response object.");
+        Assert.isArray(response.results, "Expected results array.");
+        Assert.areSame(3, response.results.length, "Expected 3 results.");
+        Assert.isNotUndefined(response.results[0].name, "Expected name property");
+        Assert.areSame(data.lastInventory, response.meta.lastInventory, "Expected meta property");
+    },
+
+    testJSONSchemaMeta2: function() {
+        var data = {
+                produce: {
+                    fruit: [
+                        { name: 'Banana', color: 'yellow', price: '1.96' },
+                        { name: 'Orange', color: 'orange', price: '2.04' },
+                        { name: 'Eggplant', color: 'purple', price: '4.31' }
+                    ]
+                },
+                lastInventory: '2011-07-19'
+            },
+            ds = new Y.DataSource.Function({ source: function() {
+                return {
+                    data: data,
+                    meta: {
+                        foo: 'bar'
+                    }
+                };
+            }}),
+            request = null, response;
+
+        ds.plug(Y.Plugin.DataSourceJSONSchema, {
+            schema: {
+                resultListLocator: "produce.fruit",
+                resultFields: [ 'name', 'color' ],
+                metaFields: [ 'lastInventory' ]
+            }
+        });
+
+        ds.sendRequest({
+            callback: {
+                success: function (e) {
+                    request  = e.request;
+                    response = e.response;
+                }
+            }
+        });
+
+        Assert.isUndefined(request, "Expected undefined request.");
+        Assert.isObject(response, "Expected normalized response object.");
+        Assert.isArray(response.results, "Expected results array.");
+        Assert.areSame(3, response.results.length, "Expected 3 results.");
+        Assert.isNotUndefined(response.results[0].name, "Expected name property");
+        Assert.areSame(data.lastInventory, response.meta.lastInventory, "Expected meta property lastInventory");
+        Assert.areSame('bar', response.meta.foo, "Expected meta property foo");
     }
 }));
 
 Y.Test.Runner.add(suite);
 
 
-}, '@VERSION@' ,{requires:['datasource-jsonschema', 'test']});
+}, '@VERSION@' ,{requires:['datasource-jsonschema', 'test', 'datasource-function']});

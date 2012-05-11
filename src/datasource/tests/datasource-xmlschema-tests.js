@@ -54,6 +54,80 @@ suite.add(new Y.Test.Case({
 
         Assert.isObject(response, "Expected normalized response object.");
         Assert.isObject(error, "Expected response error.");
+    },
+
+    testXMLSchemaMeta: function() {
+        var ds = new Y.DataSource.Local({ source: xmlData }),
+            request = null, response;
+
+        ds.plug(Y.Plugin.DataSourceXMLSchema, {
+            schema: {
+                resultListLocator: "result",
+                resultFields: [{key:"title", locator:"*[local-name() ='title']"}],
+                metaFields: {
+                    url: '/query/diagnostics/url',
+                    version: '/query/diagnostics/build-version'
+                }
+            }
+        });
+
+        ds.sendRequest({
+            callback: {
+                success: function (e) {
+                    request  = e.request;
+                    response = e.response;
+                }
+            }
+        });
+
+        Assert.isUndefined(request, "Expected undefined request.");
+        Assert.isObject(response, "Expected normalized response object.");
+        Assert.isArray(response.results, "Expected results array.");
+        Assert.areSame(10, response.results.length, "Expected 10 results.");
+        Assert.isNotUndefined(response.results[0].title, "Expected Title property");
+        Assert.areSame('http://boss.yahooapis.com/ysearch/web/v1/madonna?format=xml&start=0&count=10', response.meta.url, "Expected meta url");
+        Assert.areEqual(1432, response.meta.version, "Expected meta version");
+    },
+
+    testXMLSchemaMeta2: function() {
+        var ds = new Y.DataSource.Function({ source: function() {
+                return {
+                    data: xmlData,
+                    meta: {
+                        foo: 'bar'
+                    }
+                };
+            }}),
+            request = null, response;
+
+        ds.plug(Y.Plugin.DataSourceXMLSchema, {
+            schema: {
+                resultListLocator: "result",
+                resultFields: [{key:"title", locator:"*[local-name() ='title']"}],
+                metaFields: {
+                    url: '/query/diagnostics/url',
+                    version: '/query/diagnostics/build-version'
+                }
+            }
+        });
+
+        ds.sendRequest({
+            callback: {
+                success: function (e) {
+                    request  = e.request;
+                    response = e.response;
+                }
+            }
+        });
+
+        Assert.isUndefined(request, "Expected undefined request.");
+        Assert.isObject(response, "Expected normalized response object.");
+        Assert.isArray(response.results, "Expected results array.");
+        Assert.areSame(10, response.results.length, "Expected 10 results.");
+        Assert.isNotUndefined(response.results[0].title, "Expected Title property");
+        Assert.areSame('http://boss.yahooapis.com/ysearch/web/v1/madonna?format=xml&start=0&count=10', response.meta.url, "Expected meta url");
+        Assert.areEqual(1432, response.meta.version, "Expected meta version");
+        Assert.areSame('bar', response.meta.foo, "Expected meta foo");
     }
 }));
 
@@ -69,4 +143,4 @@ xmlData = Y.DataType.XML.parse('<query xmlns:yahoo="http://www.yahooapis.com/v1/
 // top instead.
 
 
-}, '@VERSION@' ,{requires:['datasource-xmlschema', 'test', 'datatype-xml-parse']});
+}, '@VERSION@' ,{requires:['datasource-xmlschema', 'test', 'datatype-xml-parse', 'datasource-function']});

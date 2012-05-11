@@ -81,18 +81,13 @@ Y.extend(DataSourceArraySchema, Y.Plugin.Base, {
      */
     _beforeDefDataFn: function(e) {
         var data = (Y.DataSource.IO && (this.get("host") instanceof Y.DataSource.IO) && Y.Lang.isString(e.data.responseText)) ? e.data.responseText : e.data,
-            response = Y.DataSchema.Array.apply.call(this, this.get("schema"), data),
             payload = e.details[0];
-            
-        // Default
-        if (!response) {
-            response = {
-                meta: {},
-                results: data
-            };
-        }
         
-        payload.response = response;
+        payload.response = Y.DataSchema.Array.apply.call(this, this.get("schema"), data) || {
+            meta: {},
+            results: data
+        };
+        Y.mix(payload.response.meta, e.meta);
 
         this.get("host").fire("response", payload);
 
