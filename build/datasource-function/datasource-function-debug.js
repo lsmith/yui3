@@ -19,7 +19,7 @@ var LANG = Y.Lang,
     DSFn = function() {
         DSFn.superclass.constructor.apply(this, arguments);
     };
-    
+
 
     /////////////////////////////////////////////////////////////////////////////
     //
@@ -58,7 +58,7 @@ Y.mix(DSFn, {
         }
     }
 });
-    
+
 Y.extend(DSFn, Y.DataSource.Local, {
     /**
      * Passes query data to the source function. Fires <code>response</code>
@@ -83,10 +83,16 @@ Y.extend(DSFn, Y.DataSource.Local, {
     _defRequestFn: function(e) {
         var fn = this.get("source"),
             payload = e.details[0];
-            
+
         if (fn) {
             try {
-                payload.data = fn(e.request, this, e);
+                var obj = fn(e.request, this, e);
+                if (obj.data && obj.meta) {
+                    payload.data = obj.data;
+                    payload.meta = obj.meta;
+                } else {
+                    payload.data = obj;
+                }
             } catch (ex) {
                 Y.log("Function execution failure", "error", "datasource-function");
                 payload.error = ex;
@@ -97,11 +103,11 @@ Y.extend(DSFn, Y.DataSource.Local, {
         }
 
         this.fire("data", payload);
-            
+
         return e.tId;
     }
 });
-  
+
 Y.DataSource.Function = DSFn;
 
 
