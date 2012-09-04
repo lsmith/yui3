@@ -114,21 +114,27 @@ Y.mix(Y.Promise.prototype, {
     @return {Promise}
     **/
     wait: function (ms) {
-        var deferred = new Y.Deferred();
+        var deferred = new Y.Deferred(),
+            promise,
+            timeout;
 
-        function relay(method) {
-            return function () {
-                var args = slice.call(arguments);
+        this.then(function () {
+            var args = arguments;
 
-                setTimeout(function () {
-                    deferred[method].apply(deferred, args);
-                }, ms);
+            timeout = setTimeout(function () {
+                deferred.resolve.apply(deferred, args);
+            }, ms);
+        });
+
+        promise = deferred.promise();
+        promise.cancel = function () {
+            if (timeout && deferred.isInProgress()) {
+                clearTimeout(timeout);
+                deferred.reject.apply(deferred, arguments);
             }
-        }
+        };
 
-        this.then(relay('resolve'), relay('reject'));
-
-        return deferred.promise();
+        return promise;
     },
 
     /**
