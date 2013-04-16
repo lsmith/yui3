@@ -1,29 +1,34 @@
 /**
- * Utility class used for drawing area fills.
+ * Provides functionality for drawing fills in a series.
  *
  * @module charts
+ * @submodule series-fill-util
+ */
+var Y_Lang = Y.Lang;
+
+/**
+ * Utility class used for drawing area fills.
+ *
  * @class Fills
  * @constructor
+ * @submodule series-fill-util
  */
-function Fills(cfg)
-{
-    var attrs = {
-        area: {
-            getter: function()
-            {
-                return this._defaults || this._getAreaDefaults();
-            },
+function Fills() {}
 
-            setter: function(val)
-            {
-                var defaults = this._defaults || this._getAreaDefaults();
-                this._defaults = Y.merge(defaults, val);
-            }
+Fills.ATTRS = {
+    area: {
+        getter: function()
+        {
+            return this._defaults || this._getAreaDefaults();
+        },
+
+        setter: function(val)
+        {
+            var defaults = this._defaults || this._getAreaDefaults();
+            this._defaults = Y.merge(defaults, val);
         }
-    };
-    this.addAttrs(attrs, cfg);
-    this.get("styles");
-}
+    }
+};
 
 Fills.prototype = {
     /**
@@ -38,12 +43,12 @@ Fills.prototype = {
         var path = this._path;
         if(!path)
         {
-            path = this.get("graph").get("graphic").addShape({type:"path"});
+            path = this.get("graphic").addShape({type:"path"});
             this._path = path;
         }
         return path;
     },
-    
+
     /**
      * Toggles visibility
      *
@@ -52,7 +57,7 @@ Fills.prototype = {
      * @private
      */
     _toggleVisible: function(visible)
-    {   
+    {
         if(this._path)
         {
             this._path.set("visible", visible);
@@ -69,7 +74,7 @@ Fills.prototype = {
      */
     drawFill: function(xcoords, ycoords)
     {
-        if(xcoords.length < 1) 
+        if(xcoords.length < 1)
         {
             return;
         }
@@ -89,7 +94,7 @@ Fills.prototype = {
             color = styles.color || this._getDefaultColor(this.get("graphOrder"), "slice");
         path.clear();
         path.set("fill", {
-            color: color, 
+            color: color,
             opacity: styles.alpha
         });
         path.set("stroke", {weight: 0});
@@ -97,7 +102,7 @@ Fills.prototype = {
         {
             nextX = xcoords[i];
             nextY = ycoords[i];
-            pointValid = isNumber(nextX) && isNumber(nextY); 
+            pointValid = isNumber(nextX) && isNumber(nextY);
             if(!pointValid)
             {
                 continue;
@@ -120,7 +125,7 @@ Fills.prototype = {
         this._lastValidY = lastValidY;
         path.end();
     },
-	
+
     /**
      * Draws a fill for a spline
      *
@@ -129,7 +134,7 @@ Fills.prototype = {
      */
     drawAreaSpline: function()
     {
-        if(this.get("xcoords").length < 1) 
+        if(this.get("xcoords").length < 1)
         {
             return;
         }
@@ -150,7 +155,7 @@ Fills.prototype = {
             path = this._getPath(),
             color = styles.color || this._getDefaultColor(this.get("graphOrder"), "slice");
         path.set("fill", {
-            color: color, 
+            color: color,
             opacity: styles.alpha
         });
         path.set("stroke", {weight: 0});
@@ -178,7 +183,7 @@ Fills.prototype = {
         path.lineTo(firstX, firstY);
         path.end();
     },
-    
+
     /**
      * Draws a a stacked area spline
      *
@@ -187,7 +192,7 @@ Fills.prototype = {
      */
     drawStackedAreaSpline: function()
     {
-        if(this.get("xcoords").length < 1) 
+        if(this.get("xcoords").length < 1)
         {
             return;
         }
@@ -195,9 +200,7 @@ Fills.prototype = {
             ycoords = this.get("ycoords"),
             curvecoords,
             order = this.get("order"),
-            type = this.get("type"),
-            graph = this.get("graph"),
-            seriesCollection = graph.seriesTypes[type],
+            seriesCollection = this.get("seriesTypeCollection"),
             prevXCoords,
             prevYCoords,
             len,
@@ -218,7 +221,7 @@ Fills.prototype = {
         curvecoords = this.getCurveControlPoints(xcoords, ycoords);
         len = curvecoords.length;
         path.set("fill", {
-            color: color, 
+            color: color,
             opacity: styles.alpha
         });
         path.set("stroke", {weight: 0});
@@ -269,7 +272,7 @@ Fills.prototype = {
         path.lineTo(firstX, firstY);
         path.end();
     },
-    
+
     /**
      * Storage for default area styles.
      *
@@ -328,7 +331,7 @@ Fills.prototype = {
      */
     _getHighestValidOrder: function(seriesCollection, index, order, direction)
     {
-        var coords = direction == "vertical" ? "stackedXCoords" : "stackedYCoords",
+        var coords = direction === "vertical" ? "stackedXCoords" : "stackedYCoords",
             coord;
         while(isNaN(coord) && order > -1)
         {
@@ -340,7 +343,7 @@ Fills.prototype = {
         }
         return order;
     },
-    
+
     /**
      * Returns an array containing the x and y coordinates for a given series and index.
      *
@@ -356,7 +359,7 @@ Fills.prototype = {
     {
         var xcoord,
             ycoord;
-        if(direction == "vertical")
+        if(direction === "vertical")
         {
             xcoord = order < 0 ? this._leftOrigin : seriesCollection[order].get("stackedXCoords")[index];
             ycoord = this.get("stackedYCoords")[index];
@@ -368,7 +371,7 @@ Fills.prototype = {
         }
         return [xcoord, ycoord];
     },
-    
+
     /**
      * Concatenates coordinate array with the correct coordinates for closing an area stack.
      *
@@ -379,10 +382,8 @@ Fills.prototype = {
     _getStackedClosingPoints: function()
     {
         var order = this.get("order"),
-            type = this.get("type"),
-            graph = this.get("graph"),
             direction = this.get("direction"),
-            seriesCollection = graph.seriesTypes[type],
+            seriesCollection = this.get("seriesTypeCollection"),
             firstValidIndex,
             lastValidIndex,
             xcoords = this.get("stackedXCoords"),
@@ -400,14 +401,14 @@ Fills.prototype = {
             highestValidOrder,
             oldOrder;
         if(order < 1)
-        {    
+        {
           return this._getClosingPoints();
         }
-        
+
         previousSeries = seriesCollection[order - 1];
         previousXCoords = previousSeries.get("stackedXCoords").concat();
         previousYCoords = previousSeries.get("stackedYCoords").concat();
-        if(direction == "vertical")
+        if(direction === "vertical")
         {
             firstValidIndex = this._getFirstValidIndex(xcoords);
             lastValidIndex = this._getLastValidIndex(xcoords);
@@ -452,11 +453,14 @@ Fills.prototype = {
             closingYCoords.push(coords[1]);
             currentIndex = currentIndex + 1;
         }
-        if(previousXCoords && previousXCoords.length > 0 && previousSeriesLastValidIndex > firstValidIndex && previousSeriesFirstValidIndex < lastValidIndex)
+        if(previousXCoords &&
+            previousXCoords.length > 0 &&
+            previousSeriesLastValidIndex > firstValidIndex &&
+            previousSeriesFirstValidIndex < lastValidIndex)
         {
             closingXCoords = closingXCoords.concat(previousXCoords);
             closingYCoords = closingYCoords.concat(previousYCoords);
-            highestValidOrder = order -1; 
+            highestValidOrder = order -1;
         }
         currentIndex = Math.max(firstValidIndex, previousSeriesLastValidIndex);
         order = order - 1;

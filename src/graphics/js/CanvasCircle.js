@@ -1,19 +1,19 @@
 /**
- * <a href="http://www.w3.org/TR/html5/the-canvas-element.html">Canvas</a> implementation of the <a href="Circle.html">`Circle`</a> class. 
- * `CanvasCircle` is not intended to be used directly. Instead, use the <a href="Circle.html">`Circle`</a> class. 
- * If the browser lacks <a href="http://www.w3.org/TR/SVG/">SVG</a> capabilities but has 
- * <a href="http://www.w3.org/TR/html5/the-canvas-element.html">Canvas</a> capabilities, the <a href="Circle.html">`Circle`</a> 
+ * <a href="http://www.w3.org/TR/html5/the-canvas-element.html">Canvas</a> implementation of the <a href="Circle.html">`Circle`</a> class.
+ * `CanvasCircle` is not intended to be used directly. Instead, use the <a href="Circle.html">`Circle`</a> class.
+ * If the browser lacks <a href="http://www.w3.org/TR/SVG/">SVG</a> capabilities but has
+ * <a href="http://www.w3.org/TR/html5/the-canvas-element.html">Canvas</a> capabilities, the <a href="Circle.html">`Circle`</a>
  * class will point to the `CanvasCircle` class.
  *
  * @module graphics
  * @class CanvasCircle
  * @constructor
  */
-CanvasCircle = function(cfg)
+CanvasCircle = function()
 {
 	CanvasCircle.superclass.constructor.apply(this, arguments);
 };
-    
+
 CanvasCircle.NAME = "circle";
 
 Y.extend(CanvasCircle, Y.CanvasShape, {

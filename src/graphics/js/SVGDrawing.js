@@ -1,7 +1,7 @@
 var IMPLEMENTATION = "svg",
     SHAPE = "shape",
 	SPLITPATHPATTERN = /[a-z][^a-z]*/ig,
-    SPLITARGSPATTERN = /[-]?[0-9]*[0-9|\.][0-9]*/g,
+    SPLITARGSPATTERN = /[\-]?[0-9]*[0-9|\.][0-9]*/g,
     Y_LANG = Y.Lang,
 	AttributeLite = Y.AttributeLite,
 	SVGGraphic,
@@ -17,9 +17,9 @@ var IMPLEMENTATION = "svg",
 function SVGDrawing(){}
 
 /**
- * <a href="http://www.w3.org/TR/SVG/">SVG</a> implementation of the <a href="Drawing.html">`Drawing`</a> class. 
- * `SVGDrawing` is not intended to be used directly. Instead, use the <a href="Drawing.html">`Drawing`</a> class. 
- * If the browser has <a href="http://www.w3.org/TR/SVG/">SVG</a> capabilities, the <a href="Drawing.html">`Drawing`</a> 
+ * <a href="http://www.w3.org/TR/SVG/">SVG</a> implementation of the <a href="Drawing.html">`Drawing`</a> class.
+ * `SVGDrawing` is not intended to be used directly. Instead, use the <a href="Drawing.html">`Drawing`</a> class.
+ * If the browser has <a href="http://www.w3.org/TR/SVG/">SVG</a> capabilities, the <a href="Drawing.html">`Drawing`</a>
  * class will point to the `SVGDrawing` class.
  *
  * @module graphics
@@ -64,7 +64,7 @@ SVGDrawing.prototype = {
      * @private
      */
     _currentY: 0,
-    
+
     /**
      * Indicates the type of shape
      *
@@ -74,7 +74,7 @@ SVGDrawing.prototype = {
      * @type String
      */
     _type: "path",
-   
+
     /**
      * Draws a bezier curve.
      *
@@ -85,9 +85,11 @@ SVGDrawing.prototype = {
      * @param {Number} cp2y y-coordinate for the second control point.
      * @param {Number} x x-coordinate for the end point.
      * @param {Number} y y-coordinate for the end point.
+     * @chainable
      */
     curveTo: function() {
         this._curveTo.apply(this, [Y.Array(arguments), false]);
+        return this;
     },
 
     /**
@@ -100,9 +102,11 @@ SVGDrawing.prototype = {
      * @param {Number} cp2y y-coordinate for the second control point.
      * @param {Number} x x-coordinate for the end point.
      * @param {Number} y y-coordinate for the end point.
+     * @chainable
      */
     relativeCurveTo: function() {
         this._curveTo.apply(this, [Y.Array(arguments), true]);
+        return this;
     },
 
     /**
@@ -167,7 +171,7 @@ SVGDrawing.prototype = {
             top = Math.min(y, Math.min(cp1y, cp2y));
             w = Math.abs(right - left);
             h = Math.abs(bottom - top);
-            pts = [[this._currentX, this._currentY] , [cp1x, cp1y], [cp2x, cp2y], [x, y]]; 
+            pts = [[this._currentX, this._currentY] , [cp1x, cp1y], [cp2x, cp2y], [x, y]];
             this._setCurveBoundingBox(pts, w, h);
             this._currentX = x;
             this._currentY = y;
@@ -182,9 +186,11 @@ SVGDrawing.prototype = {
      * @param {Number} cpy y-coordinate for the control point.
      * @param {Number} x x-coordinate for the end point.
      * @param {Number} y y-coordinate for the end point.
+     * @chainable
      */
     quadraticCurveTo: function() {
         this._quadraticCurveTo.apply(this, [Y.Array(arguments), false]);
+        return this;
     },
 
     /**
@@ -195,11 +201,13 @@ SVGDrawing.prototype = {
      * @param {Number} cpy y-coordinate for the control point.
      * @param {Number} x x-coordinate for the end point.
      * @param {Number} y y-coordinate for the end point.
+     * @chainable
      */
     relativeQuadraticCurveTo: function() {
         this._quadraticCurveTo.apply(this, [Y.Array(arguments), true]);
+        return this;
     },
-   
+
     /**
      * Implements quadraticCurveTo methods.
      *
@@ -209,9 +217,9 @@ SVGDrawing.prototype = {
      * @private
      */
     _quadraticCurveTo: function(args, relative) {
-        var cpx, 
-            cpy, 
-            x, 
+        var cpx,
+            cpy,
+            x,
             y,
             pathArrayLen,
             currentArray,
@@ -227,6 +235,7 @@ SVGDrawing.prototype = {
             command = relative ? "q" : "Q",
             relativeX = relative ? parseFloat(this._currentX) : 0,
             relativeY = relative ? parseFloat(this._currentY) : 0;
+        this._pathArray = this._pathArray || [];
         if(this._pathType !== command)
         {
             this._pathType = command;
@@ -257,7 +266,7 @@ SVGDrawing.prototype = {
             top = Math.min(y, cpy);
             w = Math.abs(right - left);
             h = Math.abs(bottom - top);
-            pts = [[this._currentX, this._currentY] , [cpx, cpy], [x, y]]; 
+            pts = [[this._currentX, this._currentY] , [cpx, cpy], [x, y]];
             this._setCurveBoundingBox(pts, w, h);
             this._currentX = x;
             this._currentY = y;
@@ -272,6 +281,7 @@ SVGDrawing.prototype = {
      * @param {Number} y y-coordinate
      * @param {Number} w width
      * @param {Number} h height
+     * @chainable
      */
     drawRect: function(x, y, w, h) {
         this.moveTo(x, y);
@@ -279,18 +289,20 @@ SVGDrawing.prototype = {
         this.lineTo(x + w, y + h);
         this.lineTo(x, y + h);
         this.lineTo(x, y);
+        return this;
     },
 
     /**
      * Draws a rectangle with rounded corners.
-     * 
-     * @method drawRect
+     *
+     * @method drawRoundRect
      * @param {Number} x x-coordinate
      * @param {Number} y y-coordinate
      * @param {Number} w width
      * @param {Number} h height
      * @param {Number} ew width of the ellipse used to draw the rounded corners
      * @param {Number} eh height of the ellipse used to draw the rounded corners
+     * @chainable
      */
     drawRoundRect: function(x, y, w, h, ew, eh) {
         this.moveTo(x, y + eh);
@@ -302,15 +314,17 @@ SVGDrawing.prototype = {
         this.quadraticCurveTo(x + w, y, x + w - ew, y);
         this.lineTo(x + ew, y);
         this.quadraticCurveTo(x, y, x, y + eh);
+        return this;
 	},
 
     /**
-     * Draws a circle.     
-     * 
+     * Draws a circle.
+     *
      * @method drawCircle
      * @param {Number} x y-coordinate
      * @param {Number} y x-coordinate
      * @param {Number} r radius
+     * @chainable
      * @protected
      */
 	drawCircle: function(x, y, radius) {
@@ -326,7 +340,7 @@ SVGDrawing.prototype = {
         this._currentY = y;
         return this;
     },
-   
+
     /**
      * Draws an ellipse.
      *
@@ -335,6 +349,7 @@ SVGDrawing.prototype = {
      * @param {Number} y y-coordinate
      * @param {Number} w width
      * @param {Number} h height
+     * @chainable
      * @protected
      */
 	drawEllipse: function(x, y, w, h) {
@@ -353,13 +368,14 @@ SVGDrawing.prototype = {
     },
 
     /**
-     * Draws a diamond.     
-     * 
+     * Draws a diamond.
+     *
      * @method drawDiamond
      * @param {Number} x y-coordinate
      * @param {Number} y x-coordinate
      * @param {Number} width width
      * @param {Number} height height
+     * @chainable
      * @protected
      */
     drawDiamond: function(x, y, width, height)
@@ -384,6 +400,7 @@ SVGDrawing.prototype = {
      * @param {Number} arc sweep of the wedge. Negative values draw clockwise.
      * @param {Number} radius radius of wedge. If [optional] yRadius is defined, then radius is the x radius.
      * @param {Number} yRadius [optional] y radius for wedge.
+     * @chainable
      * @private
      */
     drawWedge: function(x, y, startAngle, arc, radius, yRadius)
@@ -403,8 +420,9 @@ SVGDrawing.prototype = {
             diameter = radius * 2,
             currentArray,
             pathArrayLen;
+        this._pathArray = this._pathArray || [];
         yRadius = yRadius || radius;
-        if(this._pathType != "M")
+        if(this._pathType !== "M")
         {
             this._pathType = "M";
             currentArray = ["M"];
@@ -412,29 +430,29 @@ SVGDrawing.prototype = {
         }
         else
         {
-            currentArray = this._getCurrentArray(); 
+            currentArray = this._getCurrentArray();
         }
         pathArrayLen = this._pathArray.length - 1;
-        this._pathArray[pathArrayLen].push(x); 
-        this._pathArray[pathArrayLen].push(x); 
-        
+        this._pathArray[pathArrayLen].push(x);
+        this._pathArray[pathArrayLen].push(x);
+
         // limit sweep to reasonable numbers
         if(Math.abs(arc) > 360)
         {
             arc = 360;
         }
-        
+
         // First we calculate how many segments are needed
         // for a smooth arc.
         segs = Math.ceil(Math.abs(arc) / 45);
-        
+
         // Now calculate the sweep of each segment.
         segAngle = arc / segs;
-        
+
         // The math requires radians rather than degrees. To convert from degrees
         // use the formula (degrees/180)*Math.PI to get radians.
         theta = -(segAngle / 180) * Math.PI;
-        
+
         // convert angle startAngle to radians
         angle = (startAngle / 180) * Math.PI;
         if(segs > 0)
@@ -447,7 +465,7 @@ SVGDrawing.prototype = {
             this._pathArray[pathArrayLen] = ["L"];
             this._pathArray[pathArrayLen].push(Math.round(ax));
             this._pathArray[pathArrayLen].push(Math.round(ay));
-            pathArrayLen++; 
+            pathArrayLen++;
             this._pathType = "Q";
             this._pathArray[pathArrayLen] = ["Q"];
             for(i = 0; i < segs; ++i)
@@ -466,32 +484,36 @@ SVGDrawing.prototype = {
         }
         this._currentX = x;
         this._currentY = y;
-        this._trackSize(diameter, diameter); 
+        this._trackSize(diameter, diameter);
         return this;
     },
 
     /**
      * Draws a line segment using the current line style from the current drawing position to the specified x and y coordinates.
-     * 
+     *
      * @method lineTo
      * @param {Number} point1 x-coordinate for the end point.
      * @param {Number} point2 y-coordinate for the end point.
+     * @chainable
      */
     lineTo: function()
     {
         this._lineTo.apply(this, [Y.Array(arguments), false]);
+        return this;
     },
 
     /**
      * Draws a line segment using the current line style from the current drawing position to the relative x and y coordinates.
-     * 
+     *
      * @method relativeLineTo
      * @param {Number} point1 x-coordinate for the end point.
      * @param {Number} point2 y-coordinate for the end point.
+     * @chainable
      */
     relativeLineTo: function()
     {
         this._lineTo.apply(this, [Y.Array(arguments), true]);
+        return this;
     },
 
     /**
@@ -562,10 +584,12 @@ SVGDrawing.prototype = {
      * @method moveTo
      * @param {Number} x x-coordinate for the end point.
      * @param {Number} y y-coordinate for the end point.
+     * @chainable
      */
     moveTo: function()
     {
         this._moveTo.apply(this, [Y.Array(arguments), false]);
+        return this;
     },
 
     /**
@@ -574,10 +598,12 @@ SVGDrawing.prototype = {
      * @method relativeMoveTo
      * @param {Number} x x-coordinate for the end point.
      * @param {Number} y y-coordinate for the end point.
+     * @chainable
      */
     relativeMoveTo: function()
     {
         this._moveTo.apply(this, [Y.Array(arguments), true]);
+        return this;
     },
 
     /**
@@ -608,21 +634,24 @@ SVGDrawing.prototype = {
         this._currentY = y;
         this._trackSize(x, y);
     },
- 
+
     /**
-     * Completes a drawing operation. 
+     * Completes a drawing operation.
      *
      * @method end
+     * @chainable
      */
     end: function()
     {
         this._closePath();
+        return this;
     },
 
     /**
      * Clears the path.
      *
      * @method clear
+     * @chainable
      */
     clear: function()
     {
@@ -636,6 +665,8 @@ SVGDrawing.prototype = {
         this._bottom = 0;
         this._pathArray = [];
         this._path = "";
+        this._pathType = "";
+        return this;
     },
 
     /**
@@ -651,7 +682,6 @@ SVGDrawing.prototype = {
             pathType,
             len,
             val,
-            val2,
             i,
             path = "",
             node = this.node,
@@ -670,11 +700,11 @@ SVGDrawing.prototype = {
                 {
                     path += pathType + segmentArray[1] + "," + segmentArray[2];
                 }
-                else if(pathType == "z" || pathType == "Z")
+                else if(pathType === "z" || pathType === "Z")
                 {
                     path += " z ";
                 }
-                else if(pathType == "C" || pathType == "c")
+                else if(pathType === "C" || pathType === "c")
                 {
                     path += pathType + (segmentArray[1] - left)+ "," + (segmentArray[2] - top);
                 }
@@ -687,6 +717,7 @@ SVGDrawing.prototype = {
                     case "L" :
                     case "l" :
                     case "M" :
+                    case "m" :
                     case "Q" :
                     case "q" :
                         for(i = 2; i < len; ++i)
@@ -723,7 +754,7 @@ SVGDrawing.prototype = {
             {
                 node.setAttribute("d", path);
             }
-            
+
             this._path = path;
             this._fillChangeHandler();
             this._strokeChangeHandler();
@@ -735,10 +766,12 @@ SVGDrawing.prototype = {
      * Ends a fill and stroke
      *
      * @method closePath
+     * @chainable
      */
     closePath: function()
     {
         this._pathArray.push(["z"]);
+        return this;
     },
 
     /**
@@ -758,7 +791,7 @@ SVGDrawing.prototype = {
         }
         return currentArray;
     },
-    
+
     /**
      * Returns the points on a curve
      *
@@ -768,7 +801,7 @@ SVGDrawing.prototype = {
      * @return Array
      * @private
      */
-    getBezierData: function(points, t) {  
+    getBezierData: function(points, t) {
         var n = points.length,
             tmp = [],
             i,
@@ -777,16 +810,16 @@ SVGDrawing.prototype = {
         for (i = 0; i < n; ++i){
             tmp[i] = [points[i][0], points[i][1]]; // save input
         }
-        
+
         for (j = 1; j < n; ++j) {
             for (i = 0; i < n - j; ++i) {
                 tmp[i][0] = (1 - t) * tmp[i][0] + t * tmp[parseInt(i + 1, 10)][0];
-                tmp[i][1] = (1 - t) * tmp[i][1] + t * tmp[parseInt(i + 1, 10)][1]; 
+                tmp[i][1] = (1 - t) * tmp[i][1] + t * tmp[parseInt(i + 1, 10)][1];
             }
         }
-        return [ tmp[0][0], tmp[0][1] ]; 
+        return [ tmp[0][0], tmp[0][1] ];
     },
-  
+
     /**
      * Calculates the bounding box for a curve
      *
@@ -821,7 +854,7 @@ SVGDrawing.prototype = {
         this._trackSize(right, bottom);
         this._trackSize(left, top);
     },
-    
+
     /**
      * Updates the size of the graphics object
      *
@@ -836,13 +869,13 @@ SVGDrawing.prototype = {
         }
         if(w < this._left)
         {
-            this._left = w;    
+            this._left = w;
         }
         if (h < this._top)
         {
             this._top = h;
         }
-        if (h > this._bottom) 
+        if (h > this._bottom)
         {
             this._bottom = h;
         }

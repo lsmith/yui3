@@ -1,6 +1,27 @@
 Drag and Drop Change History
 ============================
 
+3.9.1
+-----
+
+* No changes.
+
+3.9.0
+-----
+
+* No changes.
+
+3.8.1
+-----
+
+* No changes.
+
+3.8.0
+-----
+
+* 2532824 - Performance tweaks
+* Pull Req: 309 - Fixed Safari scrolling issue
+
 3.7.3
 -----
 

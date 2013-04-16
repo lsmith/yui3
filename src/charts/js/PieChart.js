@@ -1,11 +1,10 @@
 /**
  * The PieChart class creates a pie chart
  *
- * @module charts
- * @submodule charts-base
  * @class PieChart
  * @extends ChartBase
  * @constructor
+ * @submodule charts-base
  */
 Y.PieChart = Y.Base.create("pieChart", Y.Widget, [Y.ChartBase], {
     /**
@@ -22,7 +21,7 @@ Y.PieChart = Y.Base.create("pieChart", Y.Widget, [Y.ChartBase], {
             return this._seriesCollection;
         }
         var axes = this.get("axes"),
-            sc = [], 
+            sc = [],
             seriesKeys,
             i = 0,
             l,
@@ -64,7 +63,7 @@ Y.PieChart = Y.Base.create("pieChart", Y.Widget, [Y.ChartBase], {
         {
             this._axes = {};
         }
-        var i, pos, axis, dh, config, axisClass,
+        var i, pos, axis, dh, config, AxisClass,
             type = this.get("type"),
             w = this.get("width"),
             h = this.get("height"),
@@ -84,8 +83,8 @@ Y.PieChart = Y.Base.create("pieChart", Y.Widget, [Y.ChartBase], {
             if(hash.hasOwnProperty(i))
             {
                 dh = hash[i];
-                pos = type == "pie" ? "none" : dh.position;
-                axisClass = this._getAxisClass(dh.type);
+                pos = type === "pie" ? "none" : dh.position;
+                AxisClass = this._getAxisClass(dh.type);
                 config = {dataProvider:this.get("dataProvider")};
                 if(dh.hasOwnProperty("roundingUnit"))
                 {
@@ -96,7 +95,7 @@ Y.PieChart = Y.Base.create("pieChart", Y.Widget, [Y.ChartBase], {
                 config.height = h;
                 config.position = pos;
                 config.styles = dh.styles;
-                axis = new axisClass(config);
+                axis = new AxisClass(config);
                 axis.on("axisRendered", Y.bind(this._itemRendered, this));
                 this._axes[i] = axis;
             }
@@ -112,8 +111,8 @@ Y.PieChart = Y.Base.create("pieChart", Y.Widget, [Y.ChartBase], {
     _addAxes: function()
     {
         var axes = this.get("axes"),
-            i, 
-            axis, 
+            i,
+            axis,
             p;
         if(!axes)
         {
@@ -121,7 +120,7 @@ Y.PieChart = Y.Base.create("pieChart", Y.Widget, [Y.ChartBase], {
             axes = this.get("axes");
         }
         if(!this._axesCollection)
-        {   
+        {
             this._axesCollection = [];
         }
         for(i in axes)
@@ -171,8 +170,8 @@ Y.PieChart = Y.Base.create("pieChart", Y.Widget, [Y.ChartBase], {
      */
     _parseSeriesAxes: function(c)
     {
-        var i = 0, 
-            len = c.length, 
+        var i = 0,
+            len = c.length,
             s,
             axes = this.get("axes"),
             axis;
@@ -181,7 +180,7 @@ Y.PieChart = Y.Base.create("pieChart", Y.Widget, [Y.ChartBase], {
             s = c[i];
             if(s)
             {
-                //If series is an actual series instance, 
+                //If series is an actual series instance,
                 //replace axes attribute string ids with axes
                 if(s instanceof Y.PieSeries)
                 {
@@ -217,7 +216,7 @@ Y.PieChart = Y.Base.create("pieChart", Y.Widget, [Y.ChartBase], {
     _getDefaultAxes: function()
     {
         var catKey = this.get("categoryKey"),
-            seriesKeys = this.get("seriesKeys").concat(), 
+            seriesKeys = this.get("seriesKeys").concat(),
             seriesAxis = "numeric";
         return {
             values:{
@@ -230,7 +229,7 @@ Y.PieChart = Y.Base.create("pieChart", Y.Widget, [Y.ChartBase], {
             }
         };
     },
-        
+
     /**
      * Returns an object literal containing a categoryItem and a valueItem for a given series index.
      *
@@ -263,7 +262,7 @@ Y.PieChart = Y.Base.create("pieChart", Y.Widget, [Y.ChartBase], {
      * @param {Object} e Event object.
      * @private
      */
-    _sizeChanged: function(e)
+    _sizeChanged: function()
     {
         this._redraw();
     },
@@ -287,7 +286,7 @@ Y.PieChart = Y.Base.create("pieChart", Y.Widget, [Y.ChartBase], {
             graph.set("height", dimension);
         }
     },
-    
+
     /**
      * Formats tooltip text for a pie chart.
      *
@@ -304,27 +303,26 @@ Y.PieChart = Y.Base.create("pieChart", Y.Widget, [Y.ChartBase], {
      *      <dt>axis</dt><dd>The axis to which the item's series is bound.</dd>
      *      <dt>displayName</dt><dd>The display name of the series. (defaults to key if not provided)</dd>
      *      <dt>key</dt><dd>The key for the series.</dd>
-     *      <dt>value</dt><dd>The value for the series item.</dd> 
+     *      <dt>value</dt><dd>The value for the series item.</dd>
      *  </dl>
      * @param {Number} itemIndex The index of the item within the series.
      * @param {CartesianSeries} series The `PieSeries` instance of the item.
-     * @param {Number} seriesIndex The index of the series in the `seriesCollection`.
      * @return {HTML}
      * @private
      */
-    _tooltipLabelFunction: function(categoryItem, valueItem, itemIndex, series, seriesIndex)
+    _tooltipLabelFunction: function(categoryItem, valueItem, itemIndex, series)
     {
         var msg = DOCUMENT.createElement("div"),
             total = series.getTotalValues(),
             pct = Math.round((valueItem.value / total) * 10000)/100;
         msg.appendChild(DOCUMENT.createTextNode(categoryItem.displayName +
-        ": " + categoryItem.axis.get("labelFunction").apply(this, [categoryItem.value, categoryItem.axis.get("labelFormat")]))); 
+        ": " + categoryItem.axis.get("labelFunction").apply(this, [categoryItem.value, categoryItem.axis.get("labelFormat")])));
         msg.appendChild(DOCUMENT.createElement("br"));
-        msg.appendChild(DOCUMENT.createTextNode(valueItem.displayName + 
+        msg.appendChild(DOCUMENT.createTextNode(valueItem.displayName +
         ": " + valueItem.axis.get("labelFunction").apply(this, [valueItem.value, valueItem.axis.get("labelFormat")])));
         msg.appendChild(DOCUMENT.createElement("br"));
-        msg.appendChild(DOCUMENT.createTextNode(pct + "%")); 
-        return msg; 
+        msg.appendChild(DOCUMENT.createTextNode(pct + "%"));
+        return msg;
     },
 
     /**
@@ -343,7 +341,6 @@ Y.PieChart = Y.Base.create("pieChart", Y.Widget, [Y.ChartBase], {
             valueItem,
             seriesIndex = 0,
             itemIndex = this._itemIndex,
-            seriesCollection = this.get("seriesCollection"),
             len,
             total,
             pct,
@@ -367,9 +364,14 @@ Y.PieChart = Y.Base.create("pieChart", Y.Widget, [Y.ChartBase], {
         pct = Math.round((valueItem.value / total) * 10000)/100;
         if(categoryItem && valueItem)
         {
-            msg += categoryItem.displayName + ": " + categoryItem.axis.formatLabel.apply(this, [categoryItem.value, categoryItem.axis.get("labelFormat")]) + ", ";
-            msg += valueItem.displayName + ": " + valueItem.axis.formatLabel.apply(this, [valueItem.value, valueItem.axis.get("labelFormat")]) + ", "; 
-            msg += "Percent of total " + valueItem.displayName + ": " + pct + "%,"; 
+            msg += categoryItem.displayName +
+                ": " +
+                categoryItem.axis.formatLabel.apply(this, [categoryItem.value, categoryItem.axis.get("labelFormat")]) +
+                ", ";
+            msg += valueItem.displayName +
+                ": " + valueItem.axis.formatLabel.apply(this, [valueItem.value, valueItem.axis.get("labelFormat")]) +
+                ", ";
+            msg += "Percent of total " + valueItem.displayName + ": " + pct + "%,";
         }
         else
         {
@@ -399,9 +401,9 @@ Y.PieChart = Y.Base.create("pieChart", Y.Widget, [Y.ChartBase], {
                 return val;
             }
         },
-        
+
         /**
-         * Axes to appear in the chart. 
+         * Axes to appear in the chart.
          *
          * @attribute axes
          * @type Object
@@ -426,22 +428,24 @@ Y.PieChart = Y.Base.create("pieChart", Y.Widget, [Y.ChartBase], {
          * @type Array
          */
         seriesCollection: {
+            lazyAdd: false,
+
             getter: function()
             {
                 return this._getSeriesCollection();
             },
-            
+
             setter: function(val)
             {
                 return this._setSeriesCollection(val);
             }
         },
-        
+
         /**
          * Type of chart when there is no series collection specified.
          *
          * @attribute type
-         * @type String 
+         * @type String
          */
         type: {
             value: "pie"

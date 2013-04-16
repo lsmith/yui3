@@ -1,4 +1,4 @@
-var PieChartLegend = Y.Base.create("pieChartLegend", Y.PieChart, [], {
+PieChartLegend = Y.Base.create("pieChartLegend", Y.PieChart, [], {
     /**
      * Redraws the chart instance.
      *
@@ -41,8 +41,9 @@ var PieChartLegend = Y.Base.create("pieChartLegend", Y.PieChart, [], {
                 legendWidth = legend.get("width");
                 legendHeight = legend.get("height");
                 gap = legend.get("styles").gap;
-                
-                if((direction == "vertical" && (graphWidth + legendWidth + gap !== w)) || (direction == "horizontal" &&  (graphHeight + legendHeight + gap !== h)))
+
+                if((direction === "vertical" && (graphWidth + legendWidth + gap !== w)) ||
+                    (direction === "horizontal" &&  (graphHeight + legendHeight + gap !== h)))
                 {
                     switch(legend.get("position"))
                     {
@@ -53,7 +54,7 @@ var PieChartLegend = Y.Base.create("pieChartLegend", Y.PieChart, [], {
                             legend.set(HEIGHT, legendHeight);
                         break;
                         case TOP :
-                            dimension = Math.min(h - (legendHeight + gap), w); 
+                            dimension = Math.min(h - (legendHeight + gap), w);
                             legendWidth = w;
                             y = legendHeight + gap;
                             legend.set(WIDTH, legendWidth);
@@ -65,9 +66,9 @@ var PieChartLegend = Y.Base.create("pieChartLegend", Y.PieChart, [], {
                             legend.set(HEIGHT, legendHeight);
                         break;
                         case BOTTOM :
-                            dimension = Math.min(h - (legendHeight + gap), w); 
+                            dimension = Math.min(h - (legendHeight + gap), w);
                             legendWidth = w;
-                            legendY = dimension + gap; 
+                            legendY = dimension + gap;
                             legend.set(WIDTH, legendWidth);
                         break;
                     }
@@ -77,7 +78,7 @@ var PieChartLegend = Y.Base.create("pieChartLegend", Y.PieChart, [], {
                 else
                 {
                     switch(legend.get("position"))
-                    {   
+                    {
                         case LEFT :
                             x = legendWidth + gap;
                         break;
@@ -88,7 +89,7 @@ var PieChartLegend = Y.Base.create("pieChartLegend", Y.PieChart, [], {
                             legendX = graphWidth + gap;
                         break;
                         case BOTTOM :
-                            legendY = graphHeight + gap; 
+                            legendY = graphHeight + gap;
                         break;
                     }
                 }

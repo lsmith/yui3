@@ -1,7 +1,7 @@
 var IMPLEMENTATION = "canvas",
     SHAPE = "shape",
 	SPLITPATHPATTERN = /[a-z][^a-z]*/ig,
-    SPLITARGSPATTERN = /[-]?[0-9]*[0-9|\.][0-9]*/g,
+    SPLITARGSPATTERN = /[\-]?[0-9]*[0-9|\.][0-9]*/g,
     DOCUMENT = Y.config.doc,
     Y_LANG = Y.Lang,
     AttributeLite = Y.AttributeLite,
@@ -22,10 +22,10 @@ var IMPLEMENTATION = "canvas",
     _getClassName = Y.ClassNameManager.getClassName;
 
 /**
- * <a href="http://www.w3.org/TR/html5/the-canvas-element.html">Canvas</a> implementation of the <a href="Drawing.html">`Drawing`</a> class. 
- * `CanvasDrawing` is not intended to be used directly. Instead, use the <a href="Drawing.html">`Drawing`</a> class. 
- * If the browser lacks <a href="http://www.w3.org/TR/SVG/">SVG</a> capabilities but has 
- * <a href="http://www.w3.org/TR/html5/the-canvas-element.html">Canvas</a> capabilities, the <a href="Drawing.html">`Drawing`</a> 
+ * <a href="http://www.w3.org/TR/html5/the-canvas-element.html">Canvas</a> implementation of the <a href="Drawing.html">`Drawing`</a> class.
+ * `CanvasDrawing` is not intended to be used directly. Instead, use the <a href="Drawing.html">`Drawing`</a> class.
+ * If the browser lacks <a href="http://www.w3.org/TR/SVG/">SVG</a> capabilities but has
+ * <a href="http://www.w3.org/TR/html5/the-canvas-element.html">Canvas</a> capabilities, the <a href="Drawing.html">`Drawing`</a>
  * class will point to the `CanvasDrawing` class.
  *
  * @module graphics
@@ -74,7 +74,7 @@ CanvasDrawing.prototype = {
      * @private
      */
     _currentY: 0,
-    
+
     /**
      * Parses hex color string and alpha value to rgba
      *
@@ -104,7 +104,7 @@ CanvasDrawing.prototype = {
      *
      * @method _toRGB
      * @param val Color value to convert.
-     * @private 
+     * @private
      */
     _toRGB: function(val) {
         return TORGB(val);
@@ -112,7 +112,7 @@ CanvasDrawing.prototype = {
 
     /**
      * Sets the size of the graphics object.
-     * 
+     *
      * @method setSize
      * @param w {Number} width to set for the instance.
      * @param h {Number} height to set for the instance.
@@ -133,9 +133,9 @@ CanvasDrawing.prototype = {
             }
         }
     },
-    
+
 	/**
-     * Tracks coordinates. Used to calculate the start point of dashed lines. 
+     * Tracks coordinates. Used to calculate the start point of dashed lines.
      *
      * @method _updateCoords
      * @param {Number} x x-coordinate
@@ -151,8 +151,8 @@ CanvasDrawing.prototype = {
     },
 
 	/**
-     * Clears the coordinate arrays. Called at the end of a drawing operation.  
-	 * 
+     * Clears the coordinate arrays. Called at the end of a drawing operation.
+	 *
      * @method _clearAndUpdateCoords
      * @private
 	 */
@@ -173,18 +173,19 @@ CanvasDrawing.prototype = {
     {
         var node = this.get("node"),
             x = this.get("x"),
-            y = this.get("y"); 
+            y = this.get("y");
         node.style.position = "absolute";
         node.style.left = (x + this._left) + "px";
         node.style.top = (y + this._top) + "px";
     },
-    
+
     /**
      * Queues up a method to be executed when a shape redraws.
      *
      * @method _updateDrawingQueue
-     * @param {Array} val An array containing data that can be parsed into a method and arguments. The value at zero-index of the array is a string reference of
-     * the drawing method that will be called. All subsequent indices are argument for that method. For example, `lineTo(10, 100)` would be structured as:
+     * @param {Array} val An array containing data that can be parsed into a method and arguments. The value at zero-index
+     * of the array is a string reference of the drawing method that will be called. All subsequent indices are argument for
+     * that method. For example, `lineTo(10, 100)` would be structured as:
      * `["lineTo", 10, 100]`.
      * @private
      */
@@ -192,29 +193,33 @@ CanvasDrawing.prototype = {
     {
         this._methods.push(val);
     },
-    
+
     /**
      * Draws a line segment from the current drawing position to the specified x and y coordinates.
-     * 
+     *
      * @method lineTo
      * @param {Number} point1 x-coordinate for the end point.
      * @param {Number} point2 y-coordinate for the end point.
+     * @chainable
      */
     lineTo: function()
     {
         this._lineTo.apply(this, [Y.Array(arguments), false]);
+        return this;
     },
 
     /**
      * Draws a line segment from the current drawing position to the relative x and y coordinates.
-     * 
+     *
      * @method lineTo
      * @param {Number} point1 x-coordinate for the end point.
      * @param {Number} point2 y-coordinate for the end point.
+     * @chainable
      */
     relativeLineTo: function()
     {
         this._lineTo.apply(this, [Y.Array(arguments), true]);
+        return this;
     },
 
     /**
@@ -225,10 +230,10 @@ CanvasDrawing.prototype = {
      * @param {Boolean} relative Indicates whether or not to use relative coordinates.
      * @private
      */
-    _lineTo: function(args, relative) 
+    _lineTo: function(args, relative)
     {
-        var point1 = args[0], 
-            i, 
+        var point1 = args[0],
+            i,
             len,
             x,
             y,
@@ -254,7 +259,7 @@ CanvasDrawing.prototype = {
         }
         else
         {
-            for (i = 0; i < len; i = i + 1) 
+            for (i = 0; i < len; i = i + 1)
             {
                 x = parseFloat(args[i][0]);
                 y = parseFloat(args[i][1]);
@@ -275,10 +280,12 @@ CanvasDrawing.prototype = {
      * @method moveTo
      * @param {Number} x x-coordinate for the end point.
      * @param {Number} y y-coordinate for the end point.
+     * @chainable
      */
     moveTo: function()
     {
         this._moveTo.apply(this, [Y.Array(arguments), false]);
+        return this;
     },
 
     /**
@@ -287,10 +294,12 @@ CanvasDrawing.prototype = {
      * @method relativeMoveTo
      * @param {Number} x x-coordinate for the end point.
      * @param {Number} y y-coordinate for the end point.
+     * @chainable
      */
     relativeMoveTo: function()
     {
         this._moveTo.apply(this, [Y.Array(arguments), true]);
+        return this;
     },
 
     /**
@@ -314,7 +323,7 @@ CanvasDrawing.prototype = {
         this._drawingComplete = false;
         return this;
     },
-    
+
     /**
      * Draws a bezier curve.
      *
@@ -325,9 +334,11 @@ CanvasDrawing.prototype = {
      * @param {Number} cp2y y-coordinate for the second control point.
      * @param {Number} x x-coordinate for the end point.
      * @param {Number} y y-coordinate for the end point.
+     * @chainable
      */
     curveTo: function() {
         this._curveTo.apply(this, [Y.Array(arguments), false]);
+        return this;
     },
 
     /**
@@ -340,11 +351,13 @@ CanvasDrawing.prototype = {
      * @param {Number} cp2y y-coordinate for the second control point.
      * @param {Number} x x-coordinate for the end point.
      * @param {Number} y y-coordinate for the end point.
+     * @chainable
      */
     relativeCurveTo: function() {
         this._curveTo.apply(this, [Y.Array(arguments), true]);
+        return this;
     },
-    
+
     /**
      * Implements curveTo methods.
      *
@@ -388,7 +401,7 @@ CanvasDrawing.prototype = {
             top = Math.min(y, Math.min(cp1y, cp2y));
             w = Math.abs(right - left);
             h = Math.abs(bottom - top);
-            pts = [[this._currentX, this._currentY] , [cp1x, cp1y], [cp2x, cp2y], [x, y]]; 
+            pts = [[this._currentX, this._currentY] , [cp1x, cp1y], [cp2x, cp2y], [x, y]];
             this._setCurveBoundingBox(pts, w, h);
             this._currentX = x;
             this._currentY = y;
@@ -403,9 +416,11 @@ CanvasDrawing.prototype = {
      * @param {Number} cpy y-coordinate for the control point.
      * @param {Number} x x-coordinate for the end point.
      * @param {Number} y y-coordinate for the end point.
+     * @chainable
      */
     quadraticCurveTo: function() {
         this._quadraticCurveTo.apply(this, [Y.Array(arguments), false]);
+        return this;
     },
 
     /**
@@ -416,9 +431,11 @@ CanvasDrawing.prototype = {
      * @param {Number} cpy y-coordinate for the control point.
      * @param {Number} x x-coordinate for the end point.
      * @param {Number} y y-coordinate for the end point.
+     * @chainable
      */
     relativeQuadraticCurveTo: function() {
         this._quadraticCurveTo.apply(this, [Y.Array(arguments), true]);
+        return this;
     },
 
     /**
@@ -430,9 +447,9 @@ CanvasDrawing.prototype = {
      * @private
      */
     _quadraticCurveTo: function(args, relative) {
-        var cpx, 
-            cpy, 
-            x, 
+        var cpx,
+            cpy,
+            x,
             y,
             w,
             h,
@@ -443,7 +460,6 @@ CanvasDrawing.prototype = {
             top,
             i,
             len = args.length - 3,
-            wt = this._stroke && this._strokeWeight ? this._strokeWeight : 0,
             relativeX = relative ? parseFloat(this._currentX) : 0,
             relativeY = relative ? parseFloat(this._currentY) : 0;
         for(i = 0; i < len; i = i + 4)
@@ -459,7 +475,7 @@ CanvasDrawing.prototype = {
             top = Math.min(y, cpy);
             w = Math.abs(right - left);
             h = Math.abs(bottom - top);
-            pts = [[this._currentX, this._currentY] , [cpx, cpy], [x, y]]; 
+            pts = [[this._currentX, this._currentY] , [cpx, cpy], [x, y]];
             this._setCurveBoundingBox(pts, w, h);
             this._updateDrawingQueue(["quadraticCurveTo", cpx, cpy, x, y]);
             this._updateCoords(x, y);
@@ -474,6 +490,7 @@ CanvasDrawing.prototype = {
      * @param {Number} x y-coordinate
      * @param {Number} y x-coordinate
      * @param {Number} r radius
+     * @chainable
      * @protected
      */
 	drawCircle: function(x, y, radius) {
@@ -491,13 +508,14 @@ CanvasDrawing.prototype = {
     },
 
     /**
-     * Draws a diamond.     
-     * 
+     * Draws a diamond.
+     *
      * @method drawDiamond
      * @param {Number} x y-coordinate
      * @param {Number} y x-coordinate
      * @param {Number} width width
      * @param {Number} height height
+     * @chainable
      * @protected
      */
     drawDiamond: function(x, y, width, height)
@@ -520,6 +538,7 @@ CanvasDrawing.prototype = {
      * @param {Number} y y-coordinate
      * @param {Number} w width
      * @param {Number} h height
+     * @chainable
      * @protected
      */
 	drawEllipse: function(x, y, w, h) {
@@ -562,9 +581,9 @@ CanvasDrawing.prototype = {
      * @param {Number} y y-coordinate
      * @param {Number} w width
      * @param {Number} h height
+     * @chainable
      */
     drawRect: function(x, y, w, h) {
-        var wt = this._stroke && this._strokeWeight ? this._strokeWeight : 0;
         this._drawingComplete = false;
         this.moveTo(x, y);
         this.lineTo(x + w, y);
@@ -576,7 +595,7 @@ CanvasDrawing.prototype = {
 
     /**
      * Draws a rectangle with rounded corners.
-     * 
+     *
      * @method drawRect
      * @param {Number} x x-coordinate
      * @param {Number} y y-coordinate
@@ -584,9 +603,9 @@ CanvasDrawing.prototype = {
      * @param {Number} h height
      * @param {Number} ew width of the ellipse used to draw the rounded corners
      * @param {Number} eh height of the ellipse used to draw the rounded corners
+     * @chainable
      */
     drawRoundRect: function(x, y, w, h, ew, eh) {
-        var wt = this._stroke && this._strokeWeight ? this._strokeWeight : 0;
         this._drawingComplete = false;
         this.moveTo( x, y + eh);
         this.lineTo(x, y + h - eh);
@@ -599,7 +618,7 @@ CanvasDrawing.prototype = {
         this.quadraticCurveTo(x, y, x, y + eh);
         return this;
     },
-    
+
     /**
      * Draws a wedge.
      *
@@ -610,6 +629,7 @@ CanvasDrawing.prototype = {
      * @param {Number} arc sweep of the wedge. Negative values draw clockwise.
      * @param {Number} radius radius of wedge. If [optional] yRadius is defined, then radius is the x radius.
      * @param {Number} yRadius [optional] y radius for wedge.
+     * @chainable
      * @private
      */
     drawWedge: function(x, y, startAngle, arc, radius, yRadius)
@@ -632,29 +652,29 @@ CanvasDrawing.prototype = {
         this._drawingComplete = false;
         // move to x,y position
         this._updateDrawingQueue(["moveTo", x, y]);
-        
+
         yRadius = yRadius || radius;
-        
+
         // limit sweep to reasonable numbers
         if(Math.abs(arc) > 360)
         {
             arc = 360;
         }
-        
+
         // First we calculate how many segments are needed
         // for a smooth arc.
         segs = Math.ceil(Math.abs(arc) / 45);
-        
+
         // Now calculate the sweep of each segment.
         segAngle = arc / segs;
-        
+
         // The math requires radians rather than degrees. To convert from degrees
         // use the formula (degrees/180)*Math.PI to get radians.
         theta = -(segAngle / 180) * Math.PI;
-        
+
         // convert angle startAngle to radians
         angle = (startAngle / 180) * Math.PI;
-        
+
         // draw the curve in segments no larger than 45 degrees.
         if(segs > 0)
         {
@@ -680,11 +700,12 @@ CanvasDrawing.prototype = {
         this._trackSize((radius * 2) + wt, (radius * 2) + wt);
         return this;
     },
-    
+
     /**
-     * Completes a drawing operation. 
+     * Completes a drawing operation.
      *
      * @method end
+     * @chainable
      */
     end: function() {
         this._closePath();
@@ -695,19 +716,31 @@ CanvasDrawing.prototype = {
      * Ends a fill and stroke
      *
      * @method closePath
+     * @chainable
      */
     closePath: function()
     {
         this._updateDrawingQueue(["closePath"]);
         this._updateDrawingQueue(["beginPath"]);
+        return this;
     },
 
 	/**
 	 * Clears the graphics object.
 	 *
 	 * @method clear
+     * @chainable
 	 */
-    
+    clear: function() {
+		this._initProps();
+        if(this.node)
+        {
+            this._context.clearRect(0, 0, this.node.width, this.node.height);
+        }
+        return this;
+	},
+
+
     /**
      * Returns a linear gradient fill
      *
@@ -749,7 +782,7 @@ CanvasDrawing.prototype = {
                 y2 = y;
             }
             x1 = cx - ((cy - y1)/tanRadians);
-            x2 = cx - ((cy - y2)/tanRadians); 
+            x2 = cx - ((cy - y2)/tanRadians);
         }
         else
         {
@@ -812,8 +845,8 @@ CanvasDrawing.prototype = {
             y = 0,
             w = this.get("width"),
             h = this.get("height"),
-            x1, x2, y1, y2, r2, 
-            xc, yc, xn, yn, d, 
+            x1, x2, y1, y2, r2,
+            xc, yc, xn, yn, d,
             offset,
             ratio,
             stopMultiplier;
@@ -840,9 +873,9 @@ CanvasDrawing.prototype = {
             x1 = xc + xn;
             y1 = yc + yn;
         }
-        
+
         //If the gradient radius is greater than the circle's, adjusting the radius stretches the gradient properly.
-        //If the gradient radius is less than the circle's, adjusting the radius of the gradient will not work. 
+        //If the gradient radius is less than the circle's, adjusting the radius of the gradient will not work.
         //Instead, adjust the color stops to reflect the smaller radius.
         if(r >= 0.5)
         {
@@ -900,7 +933,7 @@ CanvasDrawing.prototype = {
         this._currentX = 0;
         this._currentY = 0;
     },
-   
+
     /**
      * Indicates a drawing has completed.
      *
@@ -917,11 +950,11 @@ CanvasDrawing.prototype = {
      * @return HTMLCanvasElement
      * @private
      */
-    _createGraphic: function(config) {
+    _createGraphic: function() {
         var graphic = Y.config.doc.createElement('canvas');
         return graphic;
     },
-    
+
     /**
      * Returns the points on a curve
      *
@@ -931,7 +964,7 @@ CanvasDrawing.prototype = {
      * @return Array
      * @private
      */
-    getBezierData: function(points, t) {  
+    getBezierData: function(points, t) {
         var n = points.length,
             tmp = [],
             i,
@@ -940,16 +973,16 @@ CanvasDrawing.prototype = {
         for (i = 0; i < n; ++i){
             tmp[i] = [points[i][0], points[i][1]]; // save input
         }
-        
+
         for (j = 1; j < n; ++j) {
             for (i = 0; i < n - j; ++i) {
                 tmp[i][0] = (1 - t) * tmp[i][0] + t * tmp[parseInt(i + 1, 10)][0];
-                tmp[i][1] = (1 - t) * tmp[i][1] + t * tmp[parseInt(i + 1, 10)][1]; 
+                tmp[i][1] = (1 - t) * tmp[i][1] + t * tmp[parseInt(i + 1, 10)][1];
             }
         }
-        return [ tmp[0][0], tmp[0][1] ]; 
+        return [ tmp[0][0], tmp[0][1] ];
     },
-  
+
     /**
      * Calculates the bounding box for a curve
      *
@@ -1000,13 +1033,13 @@ CanvasDrawing.prototype = {
         }
         if(w < this._left)
         {
-            this._left = w;    
+            this._left = w;
         }
         if (h < this._top)
         {
             this._top = h;
         }
-        if (h > this._bottom) 
+        if (h > this._bottom)
         {
             this._bottom = h;
         }

@@ -1,6 +1,31 @@
 Node Change History
 ===================
 
+@VERSION@
+-----
+
+* Fix node.all() to return an empty NodeList if the node was destroyed - Fixes #580 (hat tip Dallas Wheeler)
+
+3.9.1
+-----
+
+* No changes.
+
+3.9.0
+-----
+
+* No changes.
+
+3.8.1
+-----
+
+* Fix show, hide and toggleView methods in transition module Deals with - http://yuilibrary.com/forum/viewtopic.php?p=36173 [Prajwalit Bhopale]
+
+3.8.0
+-----
+
+  * No changes.
+
 3.7.3
 -----
 

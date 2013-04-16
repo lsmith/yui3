@@ -1,10 +1,24 @@
 /**
- * Algorithmic strategy for rendering a left axis.
+ * Provides base functionality for drawing chart axes.
  *
  * @module charts
- * @submodule charts-base
+ * @submodule axis
+ */
+var CONFIG = Y.config,
+    DOCUMENT = CONFIG.doc,
+    Y_Lang = Y.Lang,
+    IS_STRING = Y_Lang.isString,
+    Y_DOM = Y.DOM,
+    LeftAxisLayout,
+    RightAxisLayout,
+    BottomAxisLayout,
+    TopAxisLayout;
+/**
+ * Algorithmic strategy for rendering a left axis.
+ *
  * @class LeftAxisLayout
  * @constructor
+ * @submodule axis
  */
 LeftAxisLayout = function() {};
 
@@ -16,7 +30,7 @@ LeftAxisLayout.prototype = {
      *  @method _getDefaultMargins
      *  @return Object
      */
-    _getDefaultMargins: function() 
+    _getDefaultMargins: function()
     {
         return {
             top: 0,
@@ -41,19 +55,19 @@ LeftAxisLayout.prototype = {
             display = majorTicks.display;
         host.set("topTickOffset",  0);
         host.set("bottomTickOffset",  0);
-        
+
         switch(display)
         {
             case "inside" :
                 host.set("rightTickOffset",  tickLength);
                 host.set("leftTickOffset", 0);
             break;
-            case "outside" : 
+            case "outside" :
                 host.set("rightTickOffset", 0);
                 host.set("leftTickOffset",  tickLength);
             break;
             case "cross":
-                host.set("rightTickOffset", halfTick); 
+                host.set("rightTickOffset", halfTick);
                 host.set("leftTickOffset",  halfTick);
             break;
             default:
@@ -62,7 +76,7 @@ LeftAxisLayout.prototype = {
             break;
         }
     },
-    
+
     /**
      * Draws a tick
      *
@@ -106,22 +120,22 @@ LeftAxisLayout.prototype = {
         {
             pt.x += tickLength/2;
         }
-        return pt; 
+        return pt;
     },
-    
+
     /**
      * Calculates the point for a label.
      *
      * @method getLabelPoint
      * @param {Object} point Point on the axis in which the tick will intersect.
-     * @return {Object} 
+     * @return {Object}
      * @protected
      */
     getLabelPoint: function(point)
     {
         return {x:point.x - this.get("leftTickOffset"), y:point.y};
     },
-    
+
     /**
      * Updates the value for the `maxLabelSize` for use in calculating total size.
      *
@@ -152,7 +166,7 @@ LeftAxisLayout.prototype = {
         }
         host._maxLabelSize = Math.max(host._maxLabelSize, max);
     },
-    
+
     /**
      * Determines the available label width when the axis width has been explicitly set.
      *
@@ -293,7 +307,7 @@ LeftAxisLayout.prototype = {
     },
 
     /**
-     * Returns the transformOrigin to use for an axis label based on the position of the axis 
+     * Returns the transformOrigin to use for an axis label based on the position of the axis
      * and the rotation of the label.
      *
      * @method _getTransformOrigin
@@ -327,10 +341,10 @@ LeftAxisLayout.prototype = {
      * Adjust the position of the Axis widget's content box for internal axes.
      *
      * @method offsetNodeForTick
-     * @param {Node} cb Content box of the Axis.
+     * @param {Node} cb contentBox of the axis
      * @protected
      */
-    offsetNodeForTick: function(cb)
+    offsetNodeForTick: function()
     {
     },
 

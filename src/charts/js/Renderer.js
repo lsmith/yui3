@@ -1,9 +1,24 @@
 /**
+ * The Charts widget provides an api for displaying data
+ * graphically.
+ *
+ * @module charts
+ * @main charts
+ */
+
+/**
+ * Provides functionality for the handling of axis data in a chart.
+ *
+ * @module charts
+ * @submodule axis-base
+ */
+var Y_Lang = Y.Lang;
+
+/**
  * The Renderer class is a base class for chart components that use the `styles`
  * attribute.
  *
  * @module charts
- * @submodule charts-base
  * @class Renderer
  * @constructor
  */
@@ -12,7 +27,7 @@ function Renderer(){}
 Renderer.ATTRS = {
         /**
          * Style properties for class
-         * 
+         *
          * @attribute styles
          * @type Object
          */
@@ -29,7 +44,7 @@ Renderer.ATTRS = {
                 this._styles = this._setStyles(val);
             }
         },
-        
+
         /**
          * The graphic in which drawings will be rendered.
          *
@@ -49,7 +64,7 @@ Renderer.prototype = {
      * @private
      */
 	_styles: null,
-	
+
     /**
      * Method used by `styles` setter.
      *
@@ -63,9 +78,9 @@ Renderer.prototype = {
 		var styles = this.get("styles");
         return this._mergeStyles(newstyles, styles);
 	},
-    
+
     /**
-     * Merges to object literals so that only specified properties are 
+     * Merges to object literals so that only specified properties are
      * overwritten.
      *
      * @method _mergeStyles
@@ -81,7 +96,7 @@ Renderer.prototype = {
             b = {};
         }
         var newstyles = Y.merge(b, {});
-        Y.Object.each(a, function(value, key, a)
+        Y.Object.each(a, function(value, key)
         {
             if(b.hasOwnProperty(key) && Y_Lang.isObject(value) && !Y_Lang.isFunction(value) && !Y_Lang.isArray(value))
             {
@@ -96,7 +111,7 @@ Renderer.prototype = {
     },
 
     /**
-     * Gets the default value for the `styles` attribute. 
+     * Gets the default value for the `styles` attribute.
      *
      * @method _getDefaultStyles
      * @return Object

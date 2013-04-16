@@ -1,11 +1,10 @@
 var IMPLEMENTATION = "vml",
     SHAPE = "shape",
 	SPLITPATHPATTERN = /[a-z][^a-z]*/ig,
-    SPLITARGSPATTERN = /[-]?[0-9]*[0-9|\.][0-9]*/g,
+    SPLITARGSPATTERN = /[\-]?[0-9]*[0-9|\.][0-9]*/g,
     Y_LANG = Y.Lang,
     IS_NUM = Y_LANG.isNumber,
     IS_ARRAY = Y_LANG.isArray,
-    IS_STRING = Y_LANG.isString,
     Y_DOM = Y.DOM,
     Y_SELECTOR = Y.Selector,
     DOCUMENT = Y.config.doc,
@@ -22,9 +21,9 @@ var IMPLEMENTATION = "vml",
 function VMLDrawing() {}
 
 /**
- * <a href="http://www.w3.org/TR/NOTE-VML">VML</a> implementation of the <a href="Drawing.html">`Drawing`</a> class. 
- * `VMLDrawing` is not intended to be used directly. Instead, use the <a href="Drawing.html">`Drawing`</a> class. 
- * If the browser lacks <a href="http://www.w3.org/TR/SVG/">SVG</a> and <a href="http://www.w3.org/TR/html5/the-canvas-element.html">Canvas</a> 
+ * <a href="http://www.w3.org/TR/NOTE-VML">VML</a> implementation of the <a href="Drawing.html">`Drawing`</a> class.
+ * `VMLDrawing` is not intended to be used directly. Instead, use the <a href="Drawing.html">`Drawing`</a> class.
+ * If the browser lacks <a href="http://www.w3.org/TR/SVG/">SVG</a> and <a href="http://www.w3.org/TR/html5/the-canvas-element.html">Canvas</a>
  * capabilities, the <a href="Drawing.html">`Drawing`</a> class will point to the `VMLDrawing` class.
  *
  * @module graphics
@@ -109,7 +108,7 @@ VMLDrawing.prototype = {
      * @private
      */
     _currentY: 0,
-    
+
     /**
      * Draws a bezier curve.
      *
@@ -120,9 +119,11 @@ VMLDrawing.prototype = {
      * @param {Number} cp2y y-coordinate for the second control point.
      * @param {Number} x x-coordinate for the end point.
      * @param {Number} y y-coordinate for the end point.
+     * @chainable
      */
     curveTo: function() {
         this._curveTo.apply(this, [Y.Array(arguments), false]);
+        return this;
     },
 
     /**
@@ -135,11 +136,13 @@ VMLDrawing.prototype = {
      * @param {Number} cp2y y-coordinate for the second control point.
      * @param {Number} x x-coordinate for the end point.
      * @param {Number} y y-coordinate for the end point.
+     * @chainable
      */
     relativeCurveTo: function() {
         this._curveTo.apply(this, [Y.Array(arguments), true]);
+        return this;
     },
-    
+
     /**
      * Implements curveTo methods.
      *
@@ -169,7 +172,7 @@ VMLDrawing.prototype = {
             relativeX = relative ? parseFloat(this._currentX) : 0,
             relativeY = relative ? parseFloat(this._currentY) : 0;
         len = args.length - 5;
-        path = command; 
+        path = command;
         for(i = 0; i < len; i = i + 6)
         {
             cp1x = parseFloat(args[i]);
@@ -182,7 +185,18 @@ VMLDrawing.prototype = {
             {
                 path = path + ", ";
             }
-            path = path + this._round(cp1x) + ", " + this._round(cp1y) + ", " + this._round(cp2x) + ", " + this._round(cp2y) + ", " + this._round(x) + ", " + this._round(y); 
+            path = path +
+                    this._round(cp1x) +
+                    ", " +
+                    this._round(cp1y) +
+                    ", " +
+                    this._round(cp2x) +
+                    ", " +
+                    this._round(cp2y) +
+                    ", " +
+                    this._round(x) +
+                    ", " +
+                    this._round(y);
             cp1x = cp1x + relativeX;
             cp1y = cp1y + relativeY;
             cp2x = cp2x + relativeX;
@@ -195,7 +209,7 @@ VMLDrawing.prototype = {
             top = Math.min(y, Math.min(cp1y, cp2y));
             w = Math.abs(right - left);
             h = Math.abs(bottom - top);
-            pts = [[this._currentX, this._currentY] , [cp1x, cp1y], [cp2x, cp2y], [x, y]]; 
+            pts = [[this._currentX, this._currentY] , [cp1x, cp1y], [cp2x, cp2y], [x, y]];
             this._setCurveBoundingBox(pts, w, h);
             this._currentX = x;
             this._currentY = y;
@@ -211,9 +225,11 @@ VMLDrawing.prototype = {
      * @param {Number} cpy y-coordinate for the control point.
      * @param {Number} x x-coordinate for the end point.
      * @param {Number} y y-coordinate for the end point.
+     * @chainable
      */
     quadraticCurveTo: function() {
         this._quadraticCurveTo.apply(this, [Y.Array(arguments), false]);
+        return this;
     },
 
     /**
@@ -224,9 +240,11 @@ VMLDrawing.prototype = {
      * @param {Number} cpy y-coordinate for the control point.
      * @param {Number} x x-coordinate for the end point.
      * @param {Number} y y-coordinate for the end point.
+     * @chainable
      */
     relativeQuadraticCurveTo: function() {
         this._quadraticCurveTo.apply(this, [Y.Array(arguments), true]);
+        return this;
     },
 
     /**
@@ -238,13 +256,13 @@ VMLDrawing.prototype = {
      * @private
      */
     _quadraticCurveTo: function(args, relative) {
-        var cpx, 
+        var cpx,
             cpy,
             cp1x,
             cp1y,
             cp2x,
             cp2y,
-            x, 
+            x,
             y,
             currentX = this._currentX,
             currentY = this._currentY,
@@ -281,6 +299,7 @@ VMLDrawing.prototype = {
      * @param {Number} y y-coordinate
      * @param {Number} w width
      * @param {Number} h height
+     * @chainable
      */
     drawRect: function(x, y, w, h) {
         this.moveTo(x, y);
@@ -295,7 +314,7 @@ VMLDrawing.prototype = {
 
     /**
      * Draws a rectangle with rounded corners.
-     * 
+     *
      * @method drawRect
      * @param {Number} x x-coordinate
      * @param {Number} y y-coordinate
@@ -303,6 +322,7 @@ VMLDrawing.prototype = {
      * @param {Number} h height
      * @param {Number} ew width of the ellipse used to draw the rounded corners
      * @param {Number} eh height of the ellipse used to draw the rounded corners
+     * @chainable
      */
     drawRoundRect: function(x, y, w, h, ew, eh) {
         this.moveTo(x, y + eh);
@@ -324,6 +344,7 @@ VMLDrawing.prototype = {
      * @param {Number} x y-coordinate
      * @param {Number} y x-coordinate
      * @param {Number} r radius
+     * @chainable
      * @protected
      */
 	drawCircle: function(x, y, radius) {
@@ -335,10 +356,23 @@ VMLDrawing.prototype = {
         this._drawingComplete = false;
         this._trackSize(x + circum, y + circum);
         this.moveTo((x + circum), (y + radius));
-        this._addToPath(" ae " + this._round(x + radius) + ", " + this._round(y + radius) + ", " + this._round(radius) + ", " + this._round(radius) + ", " + startAngle + ", " + endAngle);
+        this._addToPath(
+            " ae " +
+            this._round(x + radius) +
+            ", " +
+            this._round(y + radius) +
+            ", " +
+            this._round(radius) +
+            ", " +
+            this._round(radius) +
+            ", " +
+            startAngle +
+            ", " +
+            endAngle
+        );
         return this;
     },
-    
+
     /**
      * Draws an ellipse.
      *
@@ -347,6 +381,7 @@ VMLDrawing.prototype = {
      * @param {Number} y y-coordinate
      * @param {Number} w width
      * @param {Number} h height
+     * @chainable
      * @protected
      */
 	drawEllipse: function(x, y, w, h) {
@@ -358,18 +393,34 @@ VMLDrawing.prototype = {
         this._drawingComplete = false;
         this._trackSize(x + w, y + h);
         this.moveTo((x + w), (y + yRadius));
-        this._addToPath(" ae " + this._round(x + radius) + ", " + this._round(x + radius) + ", " + this._round(y + yRadius) + ", " + this._round(radius) + ", " + this._round(yRadius) + ", " + startAngle + ", " + endAngle);
+        this._addToPath(
+            " ae " +
+            this._round(x + radius) +
+            ", " +
+            this._round(x + radius) +
+            ", " +
+            this._round(y + yRadius) +
+            ", " +
+            this._round(radius) +
+            ", " +
+            this._round(yRadius) +
+            ", " +
+            startAngle +
+            ", " +
+            endAngle
+        );
         return this;
     },
-    
+
     /**
-     * Draws a diamond.     
-     * 
+     * Draws a diamond.
+     *
      * @method drawDiamond
      * @param {Number} x y-coordinate
      * @param {Number} y x-coordinate
      * @param {Number} width width
      * @param {Number} height height
+     * @chainable
      * @protected
      */
     drawDiamond: function(x, y, width, height)
@@ -394,6 +445,7 @@ VMLDrawing.prototype = {
      * @param {Number} arc sweep of the wedge. Negative values draw clockwise.
      * @param {Number} radius radius of wedge. If [optional] yRadius is defined, then radius is the x radius.
      * @param {Number} yRadius [optional] y radius for wedge.
+     * @chainable
      * @private
      */
     drawWedge: function(x, y, startAngle, arc, radius)
@@ -410,33 +462,50 @@ VMLDrawing.prototype = {
         startAngle = Math.round(startAngle);
         arc = Math.round(arc);
         this.moveTo(x, y);
-        this._addToPath(" ae " + this._round(x) + ", " + this._round(y) + ", " + this._round(radius) + " " + this._round(radius) + ", " +  startAngle + ", " + arc);
-        this._trackSize(diameter, diameter); 
+        this._addToPath(
+            " ae " +
+            this._round(x) +
+            ", " +
+            this._round(y) +
+            ", " +
+            this._round(radius) +
+            " " +
+            this._round(radius) +
+            ", " +
+            startAngle +
+            ", " +
+            arc
+        );
+        this._trackSize(diameter, diameter);
         return this;
     },
 
     /**
      * Draws a line segment from the current drawing position to the specified x and y coordinates.
-     * 
+     *
      * @method lineTo
      * @param {Number} point1 x-coordinate for the end point.
      * @param {Number} point2 y-coordinate for the end point.
+     * @chainable
      */
     lineTo: function()
     {
         this._lineTo.apply(this, [Y.Array(arguments), false]);
+        return this;
     },
 
     /**
      * Draws a line segment using the current line style from the current drawing position to the relative x and y coordinates.
-     * 
+     *
      * @method relativeLineTo
      * @param {Number} point1 x-coordinate for the end point.
      * @param {Number} point2 y-coordinate for the end point.
+     * @chainable
      */
     relativeLineTo: function()
     {
         this._lineTo.apply(this, [Y.Array(arguments), true]);
+        return this;
     },
 
     /**
@@ -456,7 +525,7 @@ VMLDrawing.prototype = {
             path = relative ? " r " : " l ",
             relativeX = relative ? parseFloat(this._currentX) : 0,
             relativeY = relative ? parseFloat(this._currentY) : 0;
-        if (typeof point1 == "string" || typeof point1 == "number") {
+        if (typeof point1 === "string" || typeof point1 === "number") {
             len = args.length - 1;
             for (i = 0; i < len; i = i + 2) {
                 x = parseFloat(args[i]);
@@ -486,17 +555,19 @@ VMLDrawing.prototype = {
         this._addToPath(path);
         return this;
     },
-    
+
     /**
      * Moves the current drawing position to specified x and y coordinates.
      *
      * @method moveTo
      * @param {Number} x x-coordinate for the end point.
      * @param {Number} y y-coordinate for the end point.
+     * @chainable
      */
     moveTo: function()
     {
         this._moveTo.apply(this, [Y.Array(arguments), false]);
+        return this;
     },
 
     /**
@@ -505,10 +576,12 @@ VMLDrawing.prototype = {
      * @method relativeMoveTo
      * @param {Number} x x-coordinate for the end point.
      * @param {Number} y y-coordinate for the end point.
+     * @chainable
      */
     relativeMoveTo: function()
     {
         this._moveTo.apply(this, [Y.Array(arguments), true]);
+        return this;
     },
 
     /**
@@ -580,29 +653,34 @@ VMLDrawing.prototype = {
     },
 
     /**
-     * Completes a drawing operation. 
+     * Completes a drawing operation.
      *
      * @method end
+     * @chainable
      */
     end: function()
     {
         this._closePath();
+        return this;
     },
 
     /**
      * Ends a fill and stroke
      *
      * @method closePath
+     * @chainable
      */
     closePath: function()
     {
         this._addToPath(" x e");
+        return this;
     },
 
     /**
      * Clears the path.
      *
      * @method clear
+     * @chainable
      */
     clear: function()
     {
@@ -614,8 +692,9 @@ VMLDrawing.prototype = {
         this._top = 0;
         this._path = "";
         this._movePath = null;
+        return this;
     },
-    
+
     /**
      * Returns the points on a curve
      *
@@ -625,7 +704,7 @@ VMLDrawing.prototype = {
      * @return Array
      * @private
      */
-    getBezierData: function(points, t) {  
+    getBezierData: function(points, t) {
         var n = points.length,
             tmp = [],
             i,
@@ -634,16 +713,16 @@ VMLDrawing.prototype = {
         for (i = 0; i < n; ++i){
             tmp[i] = [points[i][0], points[i][1]]; // save input
         }
-        
+
         for (j = 1; j < n; ++j) {
             for (i = 0; i < n - j; ++i) {
                 tmp[i][0] = (1 - t) * tmp[i][0] + t * tmp[parseInt(i + 1, 10)][0];
-                tmp[i][1] = (1 - t) * tmp[i][1] + t * tmp[parseInt(i + 1, 10)][1]; 
+                tmp[i][1] = (1 - t) * tmp[i][1] + t * tmp[parseInt(i + 1, 10)][1];
             }
         }
-        return [ tmp[0][0], tmp[0][1] ]; 
+        return [ tmp[0][0], tmp[0][1] ];
     },
-  
+
     /**
      * Calculates the bounding box for a curve
      *
@@ -693,13 +772,13 @@ VMLDrawing.prototype = {
         }
         if(w < this._left)
         {
-            this._left = w;    
+            this._left = w;
         }
         if (h < this._top)
         {
             this._top = h;
         }
-        if (h > this._bottom) 
+        if (h > this._bottom)
         {
             this._bottom = h;
         }

@@ -1,7 +1,7 @@
 /**
- * <a href="http://www.w3.org/TR/SVG/">SVG</a> implementation of the <a href="Shape.html">`Shape`</a> class. 
- * `SVGShape` is not intended to be used directly. Instead, use the <a href="Shape.html">`Shape`</a> class. 
- * If the browser has <a href="http://www.w3.org/TR/SVG/">SVG</a> capabilities, the <a href="Shape.html">`Shape`</a> 
+ * <a href="http://www.w3.org/TR/SVG/">SVG</a> implementation of the <a href="Shape.html">`Shape`</a> class.
+ * `SVGShape` is not intended to be used directly. Instead, use the <a href="Shape.html">`Shape`</a> class.
+ * If the browser has <a href="http://www.w3.org/TR/SVG/">SVG</a> capabilities, the <a href="Shape.html">`Shape`</a>
  * class will point to the `SVGShape` class.
  *
  * @module graphics
@@ -9,7 +9,7 @@
  * @constructor
  * @param {Object} cfg (optional) Attribute configs
  */
-SVGShape = function(cfg)
+SVGShape = function()
 {
     this._transforms = [];
     this.matrix = new Y.Matrix();
@@ -35,7 +35,7 @@ Y.extend(SVGShape, Y.GraphicBase, Y.mix({
      * @protected
      */
     _y: 0,
-    
+
     /**
      * Init method, invoked during construction.
      * Calls `initializer` method.
@@ -59,7 +59,7 @@ Y.extend(SVGShape, Y.GraphicBase, Y.mix({
 		var host = this,
             graphic = cfg.graphic,
             data = this.get("data");
-		host.createNode(); 
+		host.createNode();
 		if(graphic)
         {
             host._setGraphic(graphic);
@@ -70,13 +70,14 @@ Y.extend(SVGShape, Y.GraphicBase, Y.mix({
         }
         host._updateHandler();
 	},
- 
+
     /**
      * Set the Graphic instance for the shape.
      *
      * @method _setGraphic
-     * @param {Graphic | Node | HTMLElement | String} render This param is used to determine the graphic instance. If it is a `Graphic` instance, it will be assigned
-     * to the `graphic` attribute. Otherwise, a new Graphic instance will be created and rendered into the dom element that the render represents.
+     * @param {Graphic | Node | HTMLElement | String} render This param is used to determine the graphic instance. If it is a
+     * `Graphic` instance, it will be assigned to the `graphic` attribute. Otherwise, a new Graphic instance will be created
+     * and rendered into the dom element that the render represents.
      * @private
      */
     _setGraphic: function(render)
@@ -84,7 +85,7 @@ Y.extend(SVGShape, Y.GraphicBase, Y.mix({
         var graphic;
         if(render instanceof Y.SVGGraphic)
         {
-		    this._graphic = render;
+            this._graphic = render;
         }
         else
         {
@@ -101,11 +102,11 @@ Y.extend(SVGShape, Y.GraphicBase, Y.mix({
 	 * Add a class name to each node.
 	 *
 	 * @method addClass
-	 * @param {String} className the class name to add to the node's class attribute 
+	 * @param {String} className the class name to add to the node's class attribute
 	 */
 	addClass: function(className)
 	{
-		var node = this.node;
+        var node = this.node;
 		node.className.baseVal = Y_LANG.trim([node.className.baseVal, className].join(' '));
 	},
 
@@ -154,7 +155,7 @@ Y.extend(SVGShape, Y.GraphicBase, Y.mix({
 	},
 
 	/**
-	 * Determines whether the node is an ancestor of another HTML element in the DOM hierarchy. 
+	 * Determines whether the node is an ancestor of another HTML element in the DOM hierarchy.
 	 *
 	 * @method contains
 	 * @param {SVGShape | HTMLElement} needle The possible node or descendent
@@ -189,7 +190,7 @@ Y.extend(SVGShape, Y.GraphicBase, Y.mix({
 	{
 		return Y.Selector.test(this.node, selector);
 	},
-	
+
 	/**
 	 * Value function for fill attribute
 	 *
@@ -208,7 +209,7 @@ Y.extend(SVGShape, Y.GraphicBase, Y.mix({
 			r: 0.5
 		};
 	},
-	
+
 	/**
 	 * Value function for stroke attribute
 	 *
@@ -216,7 +217,7 @@ Y.extend(SVGShape, Y.GraphicBase, Y.mix({
 	 * @method _getDefaultStroke
 	 * @return Object
 	 */
-	_getDefaultStroke: function() 
+	_getDefaultStroke: function()
 	{
 		return {
 			weight: 1,
@@ -242,7 +243,15 @@ Y.extend(SVGShape, Y.GraphicBase, Y.mix({
             concat = host._camelCaseConcat,
 			pointerEvents = host.get("pointerEvents");
 		host.node = node;
-		host.addClass(_getClassName(SHAPE) + " " + _getClassName(concat(IMPLEMENTATION, SHAPE)) + " " + _getClassName(name) + " " + _getClassName(concat(IMPLEMENTATION, name))); 
+		host.addClass(
+            _getClassName(SHAPE) +
+            " " +
+            _getClassName(concat(IMPLEMENTATION, SHAPE)) +
+            " " +
+            _getClassName(name) +
+            " " +
+            _getClassName(concat(IMPLEMENTATION, name))
+        );
         if(id)
 		{
 			node.setAttribute("id", id);
@@ -256,10 +265,10 @@ Y.extend(SVGShape, Y.GraphicBase, Y.mix({
             Y.one(node).setStyle("visibility", "hidden");
         }
 	},
-	
+
 
 	/**
-     * Overrides default `on` method. Checks to see if its a dom interaction event. If so, 
+     * Overrides default `on` method. Checks to see if its a dom interaction event. If so,
      * return an event attached to the `node` element. If not, return the normal functionality.
      *
      * @method on
@@ -282,7 +291,7 @@ Y.extend(SVGShape, Y.GraphicBase, Y.mix({
 	 * @method _strokeChangeHandler
 	 * @private
 	 */
-	_strokeChangeHandler: function(e)
+	_strokeChangeHandler: function()
 	{
 		var node = this.node,
 			stroke = this.get("stroke"),
@@ -305,7 +314,7 @@ Y.extend(SVGShape, Y.GraphicBase, Y.mix({
 			node.setAttribute("stroke-linecap", stroke.linecap);
 			node.setAttribute("stroke-width",  stroke.weight);
 			node.setAttribute("stroke-opacity", stroke.opacity);
-			if(linejoin == "round" || linejoin == "bevel")
+			if(linejoin === "round" || linejoin === "bevel")
 			{
 				node.setAttribute("stroke-linejoin", linejoin);
 			}
@@ -324,14 +333,14 @@ Y.extend(SVGShape, Y.GraphicBase, Y.mix({
 			node.setAttribute("stroke", "none");
 		}
 	},
-	
+
 	/**
 	 * Adds a fill to the shape node.
 	 *
 	 * @method _fillChangeHandler
 	 * @private
 	 */
-	_fillChangeHandler: function(e)
+	_fillChangeHandler: function()
 	{
 		var node = this.node,
 			fill = this.get("fill"),
@@ -340,7 +349,7 @@ Y.extend(SVGShape, Y.GraphicBase, Y.mix({
 		if(fill)
 		{
 			type = fill.type;
-			if(type == "linear" || type == "radial")
+			if(type === "linear" || type === "radial")
 			{
 				this._setGradientFill(fill);
 				node.setAttribute("fill", "url(#grad" + this.get("id") + ")");
@@ -378,7 +387,7 @@ Y.extend(SVGShape, Y.GraphicBase, Y.mix({
             newStop,
 			isNumber = Y_LANG.isNumber,
 			graphic = this._graphic,
-			type = fill.type, 
+			type = fill.type,
 			gradientNode = graphic.getGradientNode("grad" + this.get("id"), type),
 			stops = fill.stops,
 			w = this.get("width"),
@@ -390,9 +399,9 @@ Y.extend(SVGShape, Y.GraphicBase, Y.mix({
 			len,
 			def,
 			stop,
-			x1 = "0%", 
-			x2 = "100%", 
-			y1 = "0%", 
+			x1 = "0%",
+			x2 = "100%",
+			y1 = "0%",
 			y2 = "0%",
 			cx = fill.cx,
 			cy = fill.cy,
@@ -400,7 +409,7 @@ Y.extend(SVGShape, Y.GraphicBase, Y.mix({
 			fy = fill.fy,
 			r = fill.r,
             stopNodes = [];
-		if(type == "linear")
+		if(type === "linear")
 		{
             cx = w/2;
             cy = h/2;
@@ -417,7 +426,7 @@ Y.extend(SVGShape, Y.GraphicBase, Y.mix({
                     y2 = 0;
                 }
                 x1 = cx - ((cy - y1)/tanRadians);
-                x2 = cx - ((cy - y2)/tanRadians); 
+                x2 = cx - ((cy - y2)/tanRadians);
             }
             else
             {
@@ -439,13 +448,13 @@ Y.extend(SVGShape, Y.GraphicBase, Y.mix({
             x2 = Math.round(100 * x2/w);
             y1 = Math.round(100 * y1/h);
             y2 = Math.round(100 * y2/h);
-            
-            //Set default value if not valid 
+
+            //Set default value if not valid
             x1 = isNumber(x1) ? x1 : 0;
             x2 = isNumber(x2) ? x2 : 100;
             y1 = isNumber(y1) ? y1 : 0;
             y2 = isNumber(y2) ? y2 : 0;
-            
+
             gradientNode.setAttribute("spreadMethod", "pad");
 			gradientNode.setAttribute("width", w);
 			gradientNode.setAttribute("height", h);
@@ -462,7 +471,7 @@ Y.extend(SVGShape, Y.GraphicBase, Y.mix({
 			gradientNode.setAttribute("fy", (fy * 100) + "%");
 			gradientNode.setAttribute("r", (r * 100) + "%");
 		}
-		
+
 		len = stops.length;
 		def = 0;
         for(i = 0; i < len; ++i)
@@ -474,7 +483,7 @@ Y.extend(SVGShape, Y.GraphicBase, Y.mix({
             }
             else
             {
-			    stopNode = graphic._createGraphicNode("stop");
+                stopNode = graphic._createGraphicNode("stop");
                 newStop = true;
             }
 			stop = stops[i];
@@ -507,12 +516,12 @@ Y.extend(SVGShape, Y.GraphicBase, Y.mix({
      * Sets the value of an attribute.
      *
      * @method set
-     * @param {String|Object} name The name of the attribute. Alternatively, an object of key value pairs can 
+     * @param {String|Object} name The name of the attribute. Alternatively, an object of key value pairs can
      * be passed in to set multiple attributes at once.
-     * @param {Any} value The value to set the attribute to. This value is ignored if an object is received as 
+     * @param {Any} value The value to set the attribute to. This value is ignored if an object is received as
      * the name param.
      */
-	set: function() 
+	set: function()
 	{
 		var host = this;
 		AttributeLite.prototype.set.apply(host, arguments);
@@ -529,7 +538,7 @@ Y.extend(SVGShape, Y.GraphicBase, Y.mix({
 	 * @param {Number} x The value to transate on the x-axis.
 	 * @param {Number} y The value to translate on the y-axis.
 	 */
-	translate: function(x, y)
+	translate: function()
 	{
 		this._addTransform("translate", arguments);
 	},
@@ -541,7 +550,7 @@ Y.extend(SVGShape, Y.GraphicBase, Y.mix({
 	 * @method translateX
 	 * @param {Number} x The value to translate.
 	 */
-	translateX: function(x)
+	translateX: function()
     {
         this._addTransform("translateX", arguments);
     },
@@ -553,7 +562,7 @@ Y.extend(SVGShape, Y.GraphicBase, Y.mix({
 	 * @method translateY
 	 * @param {Number} y The value to translate.
 	 */
-	translateY: function(y)
+	translateY: function()
     {
         this._addTransform("translateY", arguments);
     },
@@ -565,7 +574,7 @@ Y.extend(SVGShape, Y.GraphicBase, Y.mix({
      * @param {Number} x The value to skew on the x-axis.
      * @param {Number} y The value to skew on the y-axis.
      */
-    skew: function(x, y)
+    skew: function()
     {
         this._addTransform("skew", arguments);
     },
@@ -576,10 +585,10 @@ Y.extend(SVGShape, Y.GraphicBase, Y.mix({
 	 * @method skewX
 	 * @param {Number} x x-coordinate
 	 */
-	 skewX: function(x)
-	 {
-		this._addTransform("skewX", arguments);
-	 },
+    skewX: function()
+    {
+        this._addTransform("skewX", arguments);
+    },
 
 	/**
 	 * Skews the shape around the y-axis.
@@ -587,10 +596,10 @@ Y.extend(SVGShape, Y.GraphicBase, Y.mix({
 	 * @method skewY
 	 * @param {Number} y y-coordinate
 	 */
-	 skewY: function(y)
-	 {
-		this._addTransform("skewY", arguments);
-	 },
+    skewY: function()
+    {
+        this._addTransform("skewY", arguments);
+    },
 
 	/**
 	 * Rotates the shape clockwise around it transformOrigin.
@@ -598,10 +607,10 @@ Y.extend(SVGShape, Y.GraphicBase, Y.mix({
 	 * @method rotate
 	 * @param {Number} deg The degree of the rotation.
 	 */
-	 rotate: function(deg)
-	 {
-		this._addTransform("rotate", arguments);
-	 },
+    rotate: function()
+    {
+        this._addTransform("rotate", arguments);
+    },
 
 	/**
 	 * Specifies a 2d scaling operation.
@@ -609,10 +618,10 @@ Y.extend(SVGShape, Y.GraphicBase, Y.mix({
 	 * @method scale
 	 * @param {Number} val
 	 */
-	scale: function(x, y)
-	{
-		this._addTransform("scale", arguments);
-	},
+    scale: function()
+    {
+        this._addTransform("scale", arguments);
+    },
 
     /**
      * Adds a transform to the shape.
@@ -642,8 +651,8 @@ Y.extend(SVGShape, Y.GraphicBase, Y.mix({
 	 */
 	_updateTransform: function()
 	{
-		var isPath = this._type == "path",
-		    node = this.node,
+		var isPath = this._type === "path",
+            node = this.node,
 			key,
 			transform,
 			transformOrigin,
@@ -662,11 +671,11 @@ Y.extend(SVGShape, Y.GraphicBase, Y.mix({
             y = this._y;
             transformOrigin = this.get("transformOrigin");
             tx = x + (transformOrigin[0] * this.get("width"));
-            ty = y + (transformOrigin[1] * this.get("height")); 
+            ty = y + (transformOrigin[1] * this.get("height"));
             //need to use translate for x/y coords
             if(isPath)
             {
-                //adjust origin for custom shapes 
+                //adjust origin for custom shapes
                 if(!(this instanceof Y.SVGPath))
                 {
                     tx = this._left + (transformOrigin[0] * this.get("width"));
@@ -681,7 +690,7 @@ Y.extend(SVGShape, Y.GraphicBase, Y.mix({
                 if(key)
                 {
                     normalizedMatrix[key].apply(normalizedMatrix, this._transforms[i]);
-                    matrix[key].apply(matrix, this._transforms[i]); 
+                    matrix[key].apply(matrix, this._transforms[i]);
                 }
                 if(isPath)
                 {
@@ -689,14 +698,14 @@ Y.extend(SVGShape, Y.GraphicBase, Y.mix({
                 }
 			}
             normalizedMatrix.translate(-tx, -ty);
-            transform = "matrix(" + normalizedMatrix.a + "," + 
-                            normalizedMatrix.b + "," + 
-                            normalizedMatrix.c + "," + 
-                            normalizedMatrix.d + "," + 
+            transform = "matrix(" + normalizedMatrix.a + "," +
+                            normalizedMatrix.b + "," +
+                            normalizedMatrix.c + "," +
+                            normalizedMatrix.d + "," +
                             normalizedMatrix.dx + "," +
                             normalizedMatrix.dy + ")";
 		}
-        this._graphic.addToRedrawQueue(this);    
+        this._graphic.addToRedrawQueue(this);
         if(transform)
 		{
             node.setAttribute("transform", transform);
@@ -733,11 +742,11 @@ Y.extend(SVGShape, Y.GraphicBase, Y.mix({
      * @method _updateHandler
 	 * @private
 	 */
-	_updateHandler: function(e)
+	_updateHandler: function()
 	{
 		this._draw();
 	},
-    
+
     /**
      * Storage for the transform attribute.
      *
@@ -751,7 +760,7 @@ Y.extend(SVGShape, Y.GraphicBase, Y.mix({
 	 * Returns the bounds for a shape.
 	 *
      * Calculates the a new bounding box from the original corner coordinates (base on size and position) and the transform matrix.
-     * The calculated bounding box is used by the graphic instance to calculate its viewBox. 
+     * The calculated bounding box is used by the graphic instance to calculate its viewBox.
      *
 	 * @method getBounds
 	 * @return Object
@@ -762,16 +771,16 @@ Y.extend(SVGShape, Y.GraphicBase, Y.mix({
 			stroke = this.get("stroke"),
             w = this.get("width"),
 			h = this.get("height"),
-			x = type == "path" ? 0 : this._x,
-			y = type == "path" ? 0 : this._y,
+			x = type === "path" ? 0 : this._x,
+			y = type === "path" ? 0 : this._y,
             wt = 0;
-        if(type != "path")
+        if(type !== "path")
         {
             if(stroke && stroke.weight)
             {
                 wt = stroke.weight;
             }
-            w = (x + w + wt) - (x - wt); 
+            w = (x + w + wt) - (x - wt);
             h = (y + h + wt) - (y - wt);
             x -= wt;
             y -= wt;
@@ -821,7 +830,7 @@ Y.extend(SVGShape, Y.GraphicBase, Y.mix({
             args,
             commandArray = Y.Lang.trim(val.match(SPLITPATHPATTERN)),
             i,
-            len, 
+            len,
             str,
             symbolToMethod = this._pathSymbolToMethod;
         if(commandArray)
@@ -887,10 +896,10 @@ Y.extend(SVGShape, Y.GraphicBase, Y.mix({
         }
     }
  }, Y.SVGDrawing.prototype));
-	
+
 SVGShape.ATTRS = {
 	/**
-	 * An array of x, y values which indicates the transformOrigin in which to rotate the shape. Valid values range between 0 and 1 representing a 
+	 * An array of x, y values which indicates the transformOrigin in which to rotate the shape. Valid values range between 0 and 1 representing a
 	 * fraction of the shape's corresponding bounding box dimension. The default value is [0.5, 0.5].
 	 *
 	 * @config transformOrigin
@@ -902,10 +911,10 @@ SVGShape.ATTRS = {
 			return [0.5, 0.5];
 		}
 	},
-	
+
     /**
      * <p>A string containing, in order, transform operations applied to the shape instance. The `transform` string can contain the following values:
-     *     
+     *
      *    <dl>
      *        <dt>rotate</dt><dd>Rotates the shape clockwise around it transformOrigin.</dd>
      *        <dt>translate</dt><dd>Specifies a 2d translation.</dd>
@@ -915,11 +924,12 @@ SVGShape.ATTRS = {
      *        <dt>translateY</dt><dd>Translates the shape along the y-axis.</dd>
      *        <dt>skewX</dt><dd>Skews the shape around the x-axis.</dd>
      *        <dt>skewY</dt><dd>Skews the shape around the y-axis.</dd>
-     *        <dt>matrix</dt><dd>Specifies a 2D transformation matrix comprised of the specified six values.</dd>      
+     *        <dt>matrix</dt><dd>Specifies a 2D transformation matrix comprised of the specified six values.</dd>
      *    </dl>
      * </p>
-     * <p>Applying transforms through the transform attribute will reset the transform matrix and apply a new transform. The shape class also contains corresponding methods for each transform
-     * that will apply the transform to the current matrix. The below code illustrates how you might use the `transform` attribute to instantiate a recangle with a rotation of 45 degrees.</p>
+     * <p>Applying transforms through the transform attribute will reset the transform matrix and apply a new transform. The shape class also contains
+     * corresponding methods for each transform that will apply the transform to the current matrix. The below code illustrates how you might use the
+     * `transform` attribute to instantiate a recangle with a rotation of 45 degrees.</p>
             var myRect = new Y.Rect({
                 type:"rect",
                 width: 50,
@@ -927,17 +937,17 @@ SVGShape.ATTRS = {
                 transform: "rotate(45)"
             };
      * <p>The code below would apply `translate` and `rotate` to an existing shape.</p>
-    
+
         myRect.set("transform", "translate(40, 50) rotate(45)");
 	 * @config transform
-     * @type String  
+     * @type String
 	 */
 	transform: {
 		setter: function(val)
         {
-            this.matrix.init();	
+            this.matrix.init();
             this._normalizedMatrix.init();
-		    this._transforms = this.matrix.getTransformArray(val);
+            this._transforms = this.matrix.getTransformArray(val);
             this._transform = val;
             return val;
 		},
@@ -978,7 +988,7 @@ SVGShape.ATTRS = {
 	 * @type Number
 	 */
 	x: {
-	    getter: function()
+        getter: function()
         {
             return this._x;
         },
@@ -987,7 +997,7 @@ SVGShape.ATTRS = {
         {
             var transform = this.get("transform");
             this._x = val;
-            if(transform) 
+            if(transform)
             {
                 this.set("transform", transform);
             }
@@ -1001,7 +1011,7 @@ SVGShape.ATTRS = {
 	 * @type Number
 	 */
 	y: {
-	    getter: function()
+        getter: function()
         {
             return this._y;
         },
@@ -1010,7 +1020,7 @@ SVGShape.ATTRS = {
         {
             var transform = this.get("transform");
             this._y = val;
-            if(transform) 
+            if(transform)
             {
                 this.set("transform", transform);
             }
@@ -1029,7 +1039,7 @@ SVGShape.ATTRS = {
 
 	/**
 	 * Indicates the height of the shape
-	 * 
+	 *
 	 * @config height
 	 * @type Number
 	 */
@@ -1057,7 +1067,7 @@ SVGShape.ATTRS = {
 	},
 
 	/**
-	 * Contains information about the fill of the shape. 
+	 * Contains information about the fill of the shape.
      *  <dl>
      *      <dt>color</dt><dd>The color of the fill.</dd>
      *      <dt>opacity</dt><dd>Number between 0 and 1 that indicates the opacity of the fill. The default value is 1.</dd>
@@ -1074,32 +1084,36 @@ SVGShape.ATTRS = {
      *      <dt>stops</dt><dd>An array of objects containing the following properties:
      *          <dl>
      *              <dt>color</dt><dd>The color of the stop.</dd>
-     *              <dt>opacity</dt><dd>Number between 0 and 1 that indicates the opacity of the stop. The default value is 1. Note: No effect for IE 6 - 8</dd>
-     *              <dt>offset</dt><dd>Number between 0 and 1 indicating where the color stop is positioned.</dd> 
+     *              <dt>opacity</dt><dd>Number between 0 and 1 that indicates the opacity of the stop. The default value is 1.
+     *              Note: No effect for IE 6 - 8</dd>
+     *              <dt>offset</dt><dd>Number between 0 and 1 indicating where the color stop is positioned.</dd>
      *          </dl>
      *      </dd>
      *      <p>Linear gradients also have the following property:</p>
-     *      <dt>rotation</dt><dd>Linear gradients flow left to right by default. The rotation property allows you to change the flow by rotation. (e.g. A rotation of 180 would make the gradient pain from right to left.)</dd>
+     *      <dt>rotation</dt><dd>Linear gradients flow left to right by default. The rotation property allows you to change the
+     *      flow by rotation. (e.g. A rotation of 180 would make the gradient pain from right to left.)</dd>
      *      <p>Radial gradients have the following additional properties:</p>
      *      <dt>r</dt><dd>Radius of the gradient circle.</dd>
      *      <dt>fx</dt><dd>Focal point x-coordinate of the gradient.</dd>
      *      <dt>fy</dt><dd>Focal point y-coordinate of the gradient.</dd>
      *      <dt>cx</dt><dd>
      *          <p>The x-coordinate of the center of the gradient circle. Determines where the color stop begins. The default value 0.5.</p>
-     *          <p><strong>Note: </strong>Currently, this property is not implemented for corresponding `CanvasShape` and `VMLShape` classes which are used on Android or IE 6 - 8.</p>
+     *          <p><strong>Note: </strong>Currently, this property is not implemented for corresponding `CanvasShape` and
+     *          `VMLShape` classes which are used on Android or IE 6 - 8.</p>
      *      </dd>
      *      <dt>cy</dt><dd>
      *          <p>The y-coordinate of the center of the gradient circle. Determines where the color stop begins. The default value 0.5.</p>
-     *          <p><strong>Note: </strong>Currently, this property is not implemented for corresponding `CanvasShape` and `VMLShape` classes which are used on Android or IE 6 - 8.</p>
+     *          <p><strong>Note: </strong>Currently, this property is not implemented for corresponding `CanvasShape` and `VMLShape`
+     *          classes which are used on Android or IE 6 - 8.</p>
      *      </dd>
      *  </dl>
 	 *
 	 * @config fill
-	 * @type Object 
+	 * @type Object
 	 */
 	fill: {
 		valueFn: "_getDefaultFill",
-		
+
 		setter: function(val)
 		{
 			var fill,
@@ -1107,7 +1121,7 @@ SVGShape.ATTRS = {
 			fill = (val) ? Y.merge(tmpl, val) : null;
 			if(fill && fill.color)
 			{
-				if(fill.color === undefined || fill.color == "none")
+				if(fill.color === undefined || fill.color === "none")
 				{
 					fill.color = null;
 				}
@@ -1122,8 +1136,8 @@ SVGShape.ATTRS = {
      *      <dt>color</dt><dd>The color of the stroke.</dd>
      *      <dt>weight</dt><dd>Number that indicates the width of the stroke.</dd>
      *      <dt>opacity</dt><dd>Number between 0 and 1 that indicates the opacity of the stroke. The default value is 1.</dd>
-     *      <dt>dashstyle</dt>Indicates whether to draw a dashed stroke. When set to "none", a solid stroke is drawn. When set to an array, the first index indicates the
-     *  length of the dash. The second index indicates the length of gap.
+     *      <dt>dashstyle</dt>Indicates whether to draw a dashed stroke. When set to "none", a solid stroke is drawn. When set
+     *      to an array, the first index indicates the length of the dash. The second index indicates the length of gap.
      *      <dt>linecap</dt><dd>Specifies the linecap for the stroke. The following values can be specified:
      *          <dl>
      *              <dt>butt (default)</dt><dd>Specifies a butt linecap.</dd>
@@ -1135,8 +1149,8 @@ SVGShape.ATTRS = {
      *          <dl>
      *              <dt>round (default)</dt><dd>Specifies that the linejoin will be round.</dd>
      *              <dt>bevel</dt><dd>Specifies a bevel for the linejoin.</dd>
-     *              <dt>miter limit</dt><dd>An integer specifying the miter limit of a miter linejoin. If you want to specify a linejoin of miter, you simply specify the limit as opposed to having
-     *  separate miter and miter limit values.</dd>
+     *              <dt>miter limit</dt><dd>An integer specifying the miter limit of a miter linejoin. If you want to specify a linejoin
+     *              of miter, you simply specify the limit as opposed to having separate miter and miter limit values.</dd>
      *          </dl>
      *      </dd>
      *  </dl>
@@ -1162,15 +1176,15 @@ SVGShape.ATTRS = {
             return (val) ? Y.merge(tmpl, val) : null;
 		}
 	},
-	
+
 	// Only implemented in SVG
 	// Determines whether the instance will receive mouse events.
-	// 
+	//
 	// @config pointerEvents
 	// @type string
 	//
 	pointerEvents: {
-		valueFn: function() 
+		valueFn: function()
 		{
 			var val = "visiblePainted",
 				node = this.node;
@@ -1202,16 +1216,17 @@ SVGShape.ATTRS = {
 	node: {
 		readOnly: true,
 
-		getter: function()
-		{
-			return this.node;
-		}
+        getter: function()
+        {
+            return this.node;
+        }
 	},
 
     /**
-     * Represents an SVG Path string. This will be parsed and added to shape's API to represent the SVG data across all implementations. Note that when using VML or SVG 
-     * implementations, part of this content will be added to the DOM using respective VML/SVG attributes. If your content comes from an untrusted source, you will need 
-     * to ensure that no malicious code is included in that content. 
+     * Represents an SVG Path string. This will be parsed and added to shape's API to represent the SVG data across all
+     * implementations. Note that when using VML or SVG implementations, part of this content will be added to the DOM using
+     * respective VML/SVG attributes. If your content comes from an untrusted source, you will need to ensure that no
+     * malicious code is included in that content.
      *
      * @config data
      * @type String
@@ -1237,10 +1252,10 @@ SVGShape.ATTRS = {
 	graphic: {
 		readOnly: true,
 
-		getter: function()
-		{
-			return this._graphic;
-		}
+        getter: function()
+        {
+            return this._graphic;
+        }
 	}
 };
 Y.SVGShape = SVGShape;
