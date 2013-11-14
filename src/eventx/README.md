@@ -160,7 +160,7 @@ and a synthetic event.
 
 ### Addition of a default event and smart events
 
-In the current system, every type (e.g. 'render' or 'fooChange') to must be
+In the current system, every type (e.g. 'render' or 'fooChange') must be
 published separately.  If a class only fires facadeless notification events,
 but 10 of them, that makes 10 objects. There's no support for events that match
 a generic pattern in their type.
@@ -168,9 +168,11 @@ a generic pattern in their type.
 In eventx, each EventTarget gets a default event that handles subscription and
 firing of events that weren't explicitly published.  A class firing 10
 notification events that differ only in name, no new events need to be
-published. That makes 0 objects. Eventx also supports "smart events" to match
-an event to a subscription or firing signature, so you can publish one event to
-handle all events matching the regex `/cli+ck|tap|poke|stab/`.
+published. That makes 0 new objects (since the default event is inherited).
+Eventx also supports "smart events" to match an event to a subscription or
+firing signature, so you can publish one event to handle all events matching
+a regex `/cli+ck|tap|poke|stab/` or passing a different criteria validated in
+a `test` function configured onto the event.
 
 What's Missing
 --------------
@@ -215,3 +217,24 @@ Not exhaustive:
 * `target.subscribe(type, customPhase, callback, ...)` - useful for
   `node.subscribe('click', 'capture', callback)` or events defined with custom
   execution phases.
+
+Working with the default event
+------------------------------
+
+TODO
+
+Working with smart events
+-------------------------
+
+TODO
+
+Adding DOM events
+-----------------
+
+TODO
+
+### Whitelisting native events
+
+### Creating (formerly named) synthetic events
+
+### Overriding native event behavior
