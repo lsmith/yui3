@@ -27,10 +27,13 @@ var DOT = '.',
     TAG_NAME = 'tagName',
     UID = '_yuid',
     EMPTY_OBJ = {},
+    DEFAULT   = '@default',
+    defaultEvent = Y._yuievt.events[DEFAULT],
 
     _slice = Array.prototype.slice,
 
     Y_DOM = Y.DOM,
+    EventTarget = Y.EventTarget,
 
     Y_Node = function(node) {
         if (!this.getDOMNode) { // support optional "new"
@@ -43,6 +46,8 @@ var DOT = '.',
                 return null; // NOTE: return
             }
         }
+
+        EventTarget.call(this);
 
         var uid = (node.nodeType !== 9) ? node.uniqueID : node[UID];
 
@@ -90,7 +95,6 @@ var DOT = '.',
 // end "globals"
 
 Y_Node.ATTRS = {};
-Y_Node.DOM_EVENTS = {};
 
 Y_Node._fromString = function(node) {
     if (node) {
@@ -348,7 +352,7 @@ Y_Node.DEFAULT_GETTER = function(name) {
     return val;
 };
 
-Y.mix(Y_Node.prototype, {
+Y.extend(Y_Node, EventTarget, {
     DATA_PREFIX: 'data-',
 
     /**
@@ -840,8 +844,94 @@ Y.mix(Y_Node.prototype, {
      */
     getDOMNode: function() {
         return this._node;
+    },
+
+    /**
+    Override EventTarget's `detachAll` implementation to also remove DOM event
+    subscriptions from this Node.
+
+    @method detachAll
+    @chainable
+    **/
+    detachAll: function () {
+        Y.Event.purgeElement(this);
+
+        var types = Y.Object.keys(this._yuievt.subs);
+
+        for (i = types.length - 1; i >= 0; --i) {
+            this.detach(types[i]);
+        }
+
+        return this;
+    },
+
+    /**
+    Remove all DOM event subscriptions from the DOM element bound to this Node.
+    Optionally, pass a truthy value to _recurse_ to purge all elements in this
+    Node's subtree.
+
+    If _type_ is specified, only that event will be detached.
+
+    @method purge
+    @param {Boolean} [recurse] Purge all elements in this Node's subtree?
+    @param {String} [type] Only detach this event
+    @chainable
+    **/
+    purge: function (recurse, type) {
+        Y.Event.purgeElement(this, recurse, type);
+
+        return this;
     }
-}, true);
+
+});
 
 Y.Node = Y_Node;
 Y.one = Y_Node.one;
+
+// Manually replace the class events collection with a proto wrap of the
+// Y.Event.DOM_EVENTS collection so added DOM events will be available, but
+// events published on Y.Node won't pollute the shared DOM event collection.
+EventTarget.configure(Y_Node);
+Y_Node.events = Y.Object(Y.Event.DOM_EVENTS);
+Y_Node.events[DEFAULT] = defaultEvent;
+
+function getNode(name) {
+    // Allow setters to populate e.data[name] with a DOM element.
+    // Allowing set(...) to store DOM elements helps delegation performance.
+    var node = this.data[name] || this._event[name];
+
+    return node && Y.one(node);
+}
+
+function setElement(name, val) {
+    if (val) {
+        if (val._node) {
+            val = val._node;
+        }
+
+        while (val && val.nodeType === 3) {
+            val = val.parentNode;
+        }
+    }
+
+    this.data[name] = val;
+}
+
+Y.mix(Y.Event.EventFacade.prototype._getter, {
+    target       : getNode,
+    currentTarget: getNode,
+    relatedTarget: getNode,
+    container    : function () {
+        var details   = this.subscription && this.subscription.details,
+            container = this.data.container || (details && details.container);
+
+        return container && Y.one(container);
+    }
+}, true);
+
+Y.mix(Y.Event.EventFacade.prototype._setter, {
+    target       : setElement,
+    currentTarget: setElement,
+    relatedTarget: setElement,
+    container    : setElement
+}, true);

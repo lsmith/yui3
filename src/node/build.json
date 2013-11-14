@@ -51,7 +51,6 @@
                 "node-class.js",
                 "node-create.js",
                 "node-attrs.js",
-                "node-event.js",
                 "node-size.js",
                 "node-ie.js",
                 "node-data.js"

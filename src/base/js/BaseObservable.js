@@ -44,7 +44,7 @@
             AttributeObservable.call(this);
 
             this._eventPrefix = this.constructor.EVENT_PREFIX || this.constructor.NAME;
-            this._yuievt.config.prefix = this._eventPrefix;
+            //this._yuievt.config.prefix = this._eventPrefix;
         },
 
         /**
@@ -77,32 +77,9 @@
              * refers to the configuration object passed to the constructor.
              */
 
-            // PERF: Using lower level _publish() for
-            // critical path performance
-
-            var type = this._getFullType(INIT),
-                e = this._publish(type);
-
-            e.emitFacade = true;
-            e.fireOnce = true;
-            e.defaultTargetOnly = true;
-            e.defaultFn = this._defInitFn;
-
             this._preInitEventCfg(config);
 
-            if (e._hasPotentialSubscribers()) {
-                this.fire(type, {cfg: config});
-            } else {
-
-                this._baseInit(config);
-
-                // HACK. Major hack actually. But really fast for no-listeners.
-                // Since it's fireOnce, subscribers may come along later, so since we're
-                // bypassing the event stack the first time, we need to tell the published
-                // event that it's been "fired". Could extract it into a CE method?
-                e.fired = true;
-                e.firedWith = [{cfg:config}];
-            }
+            this.fire(INIT, { cfg: config });
 
             return this;
         },
@@ -176,11 +153,6 @@
              * @preventable _defDestroyFn
              * @param {EventFacade} e Event object
              */
-            this.publish(DESTROY, {
-                fireOnce:true,
-                defaultTargetOnly:true,
-                defaultFn: this._defDestroyFn
-            });
             this.fire(DESTROY);
 
             this.detachAll();
@@ -212,5 +184,18 @@
     };
 
     Y.mix(BaseObservable, AttributeObservable, false, null, 1);
+
+    Y.EventTarget.configure(BaseObservable, AttributeObservable.events);
+
+    BaseObservable.publish({
+        init: {
+            fireOnce  : true,
+            defaultFn : '_defInitFn'
+        },
+        destroy: {
+            fireOnce : true,
+            defaultFn: '_defDestroyFn'
+        }
+    });
 
     Y.BaseObservable = BaseObservable;

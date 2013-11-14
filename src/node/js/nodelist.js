@@ -14,8 +14,14 @@
  * @param nodes {String|element|Node|Array} A selector, DOM element, Node, list of DOM elements, or list of Nodes with which to populate this NodeList.
  */
 
-var NodeList = function(nodes) {
+var EventTarget  = Y.EventTarget,
+    DEFAULT      = '@default',
+    defaultEvent = Y._yuievt.events[DEFAULT],
+    
+    NodeList = function(nodes) {
     var tmp = [];
+
+    EventTarget.call(this);
 
     if (nodes) {
         if (typeof nodes === 'string') { // selector query
@@ -391,7 +397,16 @@ NodeList.importMethod(Y.Node.prototype, [
       * @chainable
       * @see Node.set
       */
-    'set'
+    'set',
+
+     /**
+     Override EventTarget's `detachAll` implementation to also remove DOM event
+     subscriptions from the elements in this Node.
+
+     @method detachAll
+     @chainable
+     **/
+     'detachAll'
 ]);
 
 // one-off implementation to convert array of Nodes to NodeList
@@ -442,3 +457,7 @@ Y.all = function(nodes) {
 };
 
 Y.Node.all = Y.all;
+
+EventTarget.configure(NodeList);
+NodeList.events = Y.Object(Y.Event.DOM_EVENTS);
+NodeList.events[DEFAULT] = defaultEvent;

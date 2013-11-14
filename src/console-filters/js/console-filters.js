@@ -159,12 +159,14 @@ Y.namespace('Plugin').ConsoleFilters = Y.extend(ConsoleFilters, Y.Plugin.Base,
      * @protected
      */
     bindUI : function () {
-        this._categories.on('click', Y.bind(this._onCategoryCheckboxClick, this));
+        this._categories.on('click', '_onCategoryCheckboxClick', this);
 
-        this._sources.on('click', Y.bind(this._onSourceCheckboxClick, this));
+        this._sources.on('click', '_onSourceCheckboxClick', this);
 
-        this.after('categoryChange',this._afterCategoryChange);
-        this.after('sourceChange',  this._afterSourceChange);
+        this.after({
+            categoryChange: '_afterCategoryChange',
+            sourceChange  : '_afterSourceChange'
+        });
     },
 
     /**

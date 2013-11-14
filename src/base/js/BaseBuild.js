@@ -43,6 +43,25 @@
         BaseCore.modifyAttrs(r, s.ATTRS);
     }
 
+    // TODO: This needs more thought
+    function eventsAggregator(prop, r, s) {
+        var sEvents, rEvents, type;
+
+        if (s.events) {
+            rEvents = r._buildEvents || (r._buildEvents = {});
+
+            sEvents = s.events;
+
+            for (type in sEvents) {
+                // Not in a hasOwnProperty check on purpose
+                rEvents[type] = rEvents[type] || {};
+                // TODO: do we want custom event overrides merging between
+                // superclass and extensions?
+                Y.mix(rEvents[type], sEvents[type], true);
+            }
+        }
+    }
+
     Base._build = function(name, main, extensions, px, sx, cfg) {
 
         var build = Base._build,
@@ -103,7 +122,13 @@
 
             // Carry along the reference to `modifyAttrs()` from `main`.
             builtClass.modifyAttrs = main.modifyAttrs;
+
+            Y.EventTarget.configure(builtClass, builtClass._buildEvents);
+        } else if (builtClass._buildEvents) {
+            builtClass.publish(builtClass._buildEvents);
         }
+
+        delete builtClass._buildEvents;
 
         return builtClass;
     };
@@ -315,7 +340,7 @@
      * @method build
      * @deprecated Use the more convenient Base.create and Base.mix methods instead
      * @static
-     * @param {Function} name The name of the new class. Used to define the NAME property for the new class.
+     * @param {String} name The name of the new class. Used to define the NAME property for the new class.
      * @param {Function} main The main class on which to base the built class
      * @param {Function[]} extensions The set of extension classes which will be
      * augmented/aggregated to the built class.
@@ -432,7 +457,8 @@
         custom: {
             ATTRS         : attrsAggregator,
             _ATTR_CFG     : attrCfgAggregator,
-            _NON_ATTRS_CFG: arrayAggregator
+            _NON_ATTRS_CFG: arrayAggregator,
+            events        : eventsAggregator
         }
     };
 
@@ -443,6 +469,7 @@
         custom: {
             ATTRS         : attrsAggregator,
             _ATTR_CFG     : attrCfgAggregator,
-            _NON_ATTRS_CFG: arrayAggregator
+            _NON_ATTRS_CFG: arrayAggregator,
+            events        : eventsAggregator
         }
     };

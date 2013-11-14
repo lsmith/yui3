@@ -1,18 +1,20 @@
 {
     "event-custom": {
         "use": [
-            "event-custom-base",
-            "event-custom-complex"
+            "eventx",
+            "eventx-compat"
         ],
         "submodules": {
             "event-custom-base": {
-                "requires": [
-                    "oop"
+                "use": [
+                    "eventx",
+                    "eventx-compat"
                 ]
             },
             "event-custom-complex": {
-                "requires": [
-                    "event-custom-base"
+                "use": [
+                    "eventx",
+                    "eventx-compat"
                 ]
             }
         }

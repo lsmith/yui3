@@ -3,7 +3,7 @@
     "builds": {
         "widget-uievents": {
             "jsfiles": [
-                "WidgetUIEvents.js"
+                "event-dom-widget.js"
             ]
         },
         "widget-skin": {

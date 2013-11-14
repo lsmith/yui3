@@ -130,6 +130,8 @@ YUI.add("event-custom-complex-sequence-tests", function(Y) {
     // (and enabled) based on that feedback, to reflect current 'as designed' behavior and 
     // implementation.
 
+    /*
+     * commented out because broadcast isn't implemented (yet?) in eventx
     suite.add(new Y.Test.Case({
         name : "Broadcast With Facade",
             
@@ -531,6 +533,7 @@ YUI.add("event-custom-complex-sequence-tests", function(Y) {
         }
 
     }));
+    */
 
     suite.add(new Y.Test.Case({
         name : "Bubble Single Target",

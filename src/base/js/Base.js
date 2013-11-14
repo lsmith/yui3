@@ -176,4 +176,6 @@
     // Fix constructor
     Base.prototype.constructor = Base;
 
+    Y.EventTarget.configure(Base, BaseObservable.events);
+
     Y.Base = Base;

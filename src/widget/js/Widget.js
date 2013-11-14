@@ -385,7 +385,7 @@ Y.extend(Widget, Y.Base, {
      * @protected
      * @param  config {Object} Configuration object literal for the widget
      */
-    initializer: function(config) {
+    initializer: function() {
         Y.log('initializer called', 'life', 'widget');
 
         var bb = this.get(BOUNDING_BOX);
@@ -801,7 +801,7 @@ Y.extend(Widget, Y.Base, {
      * @method _defaultCB
      * @protected
      */
-    _defaultCB : function(node) {
+    _defaultCB : function() {
         return this.get(SRC_NODE) || null;
     },
 

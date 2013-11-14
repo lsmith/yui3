@@ -1,39 +1,22 @@
 {
     "event": {
         "use": [
-            "event-base",
-            "event-delegate",
-            "event-synthetic",
-            "event-mousewheel",
-            "event-mouseenter",
-            "event-key",
-            "event-focus",
-            "event-resize",
-            "event-hover",
-            "event-outside",
-            "event-touch",
-            "event-move",
-            "event-flick",
-            "event-valuechange",
-            "event-tap"
+            "eventx-dom"
         ],
-        "after": ["node-base"],
         "submodules": {
             "event-base": {
-                "after": ["node-base"],
-                "requires": [
-                    "event-custom-base"
+                "use": [
+                    "eventx-dom"
                 ]
             },
             "event-synthetic": {
-                "requires": [
-                    "node-base",
-                    "event-custom-complex"
+                "use": [
+                    "eventx-synthetic"
                 ]
             },
             "event-delegate": {
-                "requires": [
-                    "node-base"
+                "use": [
+                    "eventx-dom"
                 ]
             },
             "event-focus": {

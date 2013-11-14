@@ -36,7 +36,7 @@
         // Perf tweak - avoid creating event literals if not required.
         this._ATTR_E_FACADE = {};
 
-        EventTarget.call(this, {emitFacade:true});
+        EventTarget.call(this);
     }
 
     AttributeObservable._ATTR_CFG = [BROADCAST];
@@ -132,32 +132,21 @@
          */
         _fireAttrChange : function(attrName, subAttrName, currVal, newVal, opts, cfg) {
             var host = this,
-                eventName = this._getFullType(attrName + CHANGE),
+                eventName = attrName + CHANGE,
                 state = host._state,
-                facade,
-                broadcast,
-                e;
+                published = this.getEvent(eventName, true),
+                facade;
 
             if (!cfg) {
                 cfg = state.data[attrName] || {};
             }
 
-            if (!cfg.published) {
-
-                // PERF: Using lower level _publish() for
-                // critical path performance
-                e = host._publish(eventName);
-
-                e.emitFacade = true;
-                e.defaultTargetOnly = true;
-                e.defaultFn = host._defAttrChangeFn;
-
-                broadcast = cfg.broadcast;
-                if (broadcast !== undefined) {
-                    e.broadcast = broadcast;
+            if (!published) {
+                if (this.constructor.publish) {
+                    this.constructor.publish(eventName, '_defAttrChangeFn');
+                } else {
+                    this.publish(eventName, '_defAttrChangeFn');
                 }
-
-                cfg.published = true;
             }
 
             if (opts) {
@@ -175,11 +164,7 @@
             facade.prevVal = currVal;
             facade.newVal = newVal;
 
-            if (host._hasPotentialSubscribers(eventName)) {
-                host.fire(eventName, facade);
-            } else {
-                this._setAttrVal(attrName, subAttrName, currVal, newVal, opts, cfg);
-            }
+            host.fire(eventName, facade);
         },
 
         /**
@@ -188,34 +173,33 @@
          * @private
          * @method _defAttrChangeFn
          * @param {EventFacade} e The event object for attribute change events.
-         * @param {boolean} eventFastPath Whether or not we're using this as a fast path in the case of no listeners or not
          */
-        _defAttrChangeFn : function(e, eventFastPath) {
+        _defAttrChangeFn: function (e) {
 
-            var opts = e._attrOpts;
+            var opts  = e._attrOpts,
+                setOk = this._setAttrVal(
+                            e.attrName, e.subAttrName,
+                            e.prevVal, e.newVal, opts);
+
             if (opts) {
                 delete e._attrOpts;
             }
 
-            if (!this._setAttrVal(e.attrName, e.subAttrName, e.prevVal, e.newVal, opts)) {
-
-                Y.log('State not updated and stopImmediatePropagation called for attribute: ' + e.attrName + ' , value:' + e.newVal, 'warn', 'attribute');
-
-                if (!eventFastPath) {
-                    // Prevent "after" listeners from being invoked since nothing changed.
-                    e.stopImmediatePropagation();
-                }
-
+            if (setOk) {
+                e.newVal = this.get(e.attrName);
             } else {
-                if (!eventFastPath) {
-                    e.newVal = this.get(e.attrName);
-                }
+                Y.log('State not updated and stopImmediatePropagation called for attribute: ' + e.attrName + ' , value:' + e.newVal, 'warn', 'attribute');
+                // Prevent "after" listeners from being invoked since nothing changed.
+                e.stopImmediatePropagation();
             }
         }
     };
 
     // Basic prototype augment - no lazy constructor invocation.
     Y.mix(AttributeObservable, EventTarget, false, null, 1);
+
+    // AttributeObservable class default event is a FacadeEvent
+    Y.EventTarget.configure(AttributeObservable, null, { emitFacade: true });
 
     Y.AttributeObservable = AttributeObservable;
 

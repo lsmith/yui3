@@ -100,15 +100,6 @@ Y.Console = Y.extend(Console, Y.Widget,
 
 // Y.Console prototype
 {
-    /**
-     * Category to prefix all event subscriptions to allow for ease of detach
-     * during destroy.
-     *
-     * @property _evtCat
-     * @type string
-     * @protected
-     */
-    _evtCat : null,
 
     /**
      * Reference to the Node instance containing the header contents.
@@ -296,12 +287,9 @@ Y.Console = Y.extend(Console, Y.Widget,
      * @protected
      */
     initializer : function () {
-        this._evtCat = Y.stamp(this) + '|';
-
         this.buffer = [];
 
-        this.get('logSource').on(this._evtCat +
-            this.get('logEvent'),Y.bind("_onLogEvent",this));
+        this.get('logSource').on(this.get('logEvent'), '_onLogEvent' , this);
 
         /**
          * Transfers a received message to the print loop buffer.  Default
@@ -315,7 +303,6 @@ Y.Console = Y.extend(Console, Y.Widget,
          *  </dl>
          * @preventable _defEntryFn
          */
-        this.publish(ENTRY, { defaultFn: this._defEntryFn });
 
         /**
          * Triggers the reset behavior via the default logic in _defResetFn.
@@ -324,9 +311,8 @@ Y.Console = Y.extend(Console, Y.Widget,
          * @param event {Event.Facade} Event Facade object
          * @preventable _defResetFn
          */
-        this.publish(RESET, { defaultFn: this._defResetFn });
 
-        this.after('rendered', this._schedulePrint);
+        this.after('render', '_schedulePrint');
     },
 
     /**
@@ -340,9 +326,11 @@ Y.Console = Y.extend(Console, Y.Widget,
 
         this._cancelPrintLoop();
 
-        this.get('logSource').detach(this._evtCat + '*');
+        this.get('logSource').detach(this.get('logEvent'), this._onLogEvent);
 
-        bb.purge(true);
+        if (bb) {
+            bb.purge(true);
+        }
     },
 
     /**
@@ -381,24 +369,16 @@ Y.Console = Y.extend(Console, Y.Widget,
      * @protected
      */
     bindUI : function () {
-        this.get(CONTENT_BOX).one('button.'+C_COLLAPSE).
-            on(CLICK,this._onCollapseClick,this);
-
-        this.get(CONTENT_BOX).one('input[type=checkbox].'+C_PAUSE).
-            on(CLICK,this._onPauseClick,this);
-
-        this.get(CONTENT_BOX).one('button.'+C_CLEAR).
-            on(CLICK,this._onClearClick,this);
+        this.delegate(CLICK, '_onCollapseClick', 'button.' + C_COLLAPSE);
+        this.delegate(CLICK, '_onPauseClick', 'input.' + C_PAUSE);
+        this.delegate(CLICK, '_onClearClick', 'button.' + C_CLEAR);
 
         // Attribute changes
-        this.after(this._evtCat + 'stringsChange',
-            this._afterStringsChange);
-        this.after(this._evtCat + 'pausedChange',
-            this._afterPausedChange);
-        this.after(this._evtCat + 'consoleLimitChange',
-            this._afterConsoleLimitChange);
-        this.after(this._evtCat + 'collapsedChange',
-            this._afterCollapsedChange);
+        this.after({
+            stringsChange     : '_afterStringsChange',
+            pausedChange      : '_afterPausedChange',
+            consoleLimitChange: '_afterConsoleLimitChange'
+        });
     },
 
 
@@ -705,7 +685,7 @@ Y.Console = Y.extend(Console, Y.Widget,
      * @param e {Event} DOM event facade for the click event
      * @protected
      */
-    _onClearClick : function (e) {
+    _onClearClick : function () {
         this.clearConsole();
     },
 
@@ -717,7 +697,7 @@ Y.Console = Y.extend(Console, Y.Widget,
      * @param e {Event} DOM event facade for the click event
      * @protected
      */
-    _onCollapseClick : function (e) {
+    _onCollapseClick : function () {
         this.set(COLLAPSED, !this.get(COLLAPSED));
     },
 
@@ -800,7 +780,7 @@ Y.Console = Y.extend(Console, Y.Widget,
      * @param v {String|Number} the new height
      * @protected
      */
-    _uiSetHeight : function (v) {
+    _uiSetHeight : function () {
         Console.superclass._uiSetHeight.apply(this,arguments);
 
         if (this._head && this._foot) {
@@ -1509,4 +1489,9 @@ Y.Console = Y.extend(Console, Y.Widget,
          }
     }
 
+});
+
+Console.publish({
+    entry: '_defEntryFn',
+    reset: '_defResetFn'
 });

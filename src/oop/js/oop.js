@@ -216,6 +216,11 @@ Y.extend = function(r, s, px, sx) {
         Y.mix(r, sx, true);
     }
 
+    // HACK to make transition to eventx easier
+    if (Y.EventTarget && rp.fire) {
+        Y.EventTarget.configure(r);
+    }
+
     return r;
 };
 
