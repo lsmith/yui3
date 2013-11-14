@@ -1196,7 +1196,7 @@ Y.Console = Y.extend(Console, Y.Widget,
      * the Widget.
      *
      * @property ATTRS
-     * @Type Object
+     * @type Object
      * @static
      */
     ATTRS : {
@@ -1487,11 +1487,17 @@ Y.Console = Y.extend(Console, Y.Widget,
                 return this._validateStyle(v);
             }
          }
+    },
+
+    /**
+    Collection of events for instances of Console.
+
+    @property events
+    @type {Object}
+    @static
+    **/
+    events: {
+        entry: '_defEntryFn',
+        reset: '_defResetFn'
     }
-
-});
-
-Console.publish({
-    entry: '_defEntryFn',
-    reset: '_defResetFn'
 });
