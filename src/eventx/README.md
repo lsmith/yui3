@@ -30,12 +30,20 @@ git checkout -b eventx lsmith/eventx --no-track
    * widget
    * yui
 
-3. Play with it!
+3. Play with it! See what broke, what can't easily be fixed with minor changes
+    to your code, and start moving events to your class definitions.
+4. [File Tickets](https://github.com/lsmith/yui3/issues?direction=asc&sort=created&state=open "File tickets")
+    for what's broken or missing, or if you have a feature wishlist.
 
 ### What probably broke
 
 Lack of some features or alternate implementation of some features may cause
 your code to stop working. Here are some likely culprits:
+
+* If you're *augmenting* a class with `Y.EventTarget` (rather than *extending*
+    it  or using `Base.create()`), you'll need to add this line after
+    the augment:
+    `Y.EventTarget.configure(MyClass);`
 
 * `parent.on('*:someEvent', callback);`
 
@@ -74,9 +82,9 @@ your code to stop working. Here are some likely culprits:
     'available' for selectors that don't match any existing nodes is not
     supported.
 
-* `e.someProperty` isn't there? Try `e.get('someProperty')` or make sure the
-    eventx-compat module is loaded. With the compat module, properties should
-    be added to the event facade directly.
+* `e.someProperty` isn't on your event facade? Try `e.get('someProperty')` or
+    make sure the eventx-compat module is loaded. With the compat module,
+    properties should be added to the event facade directly.
 
 * You tell me! I need to know what falls over so I can fix it.
 
@@ -119,6 +127,37 @@ me about them!
     target.after('fooChange', '_afterFooChange', this);
     ```
 
+* If you're augmenting a class with EventTarget, and using the fifth argument
+    to pass arguments to the EventTarget constructor, remove that last argument.
+    To configure an augmented class to use `emitFacade: true` by default, for
+    example, do this:
+
+    ```
+    Y.augment(MyClass, Y.EventTarget);
+    Y.EventTarget.configure(MyClass, { ... (events) }, { emitFacade: true });
+
+    // OR
+    Y.EventTarget.configure(MyClass, { ... }, Y.CustomEvent.FacadeEvent);
+    ```
+
+    Or better yet, _don't `augment()`_. Use `Y.extend()` if you can. Otherwise,
+    mix EventTarget onto your class prototype and chain the constructors.
+
+    ```
+    function MyClass() {
+        // Note, don't call EventTarget with constructor args
+        Y.EventTarget.call(this);
+        ...
+    }
+
+    // Use Y.mix in mode 4 to copy EventTarget prototype methods to the object
+    // that will become MyClass's prototype.
+    MyClass.prototype = Y.mix({
+        // prototype methods
+    }, Y.EventTarget, true, null, 4);
+
+    Y.EventTarget.configure(MyClass, { ... }, { emitFacade: true });
+    ```
 
 Architectural Changes From Current System
 -----------------------------------------
@@ -221,7 +260,35 @@ Not exhaustive:
 Working with the default event
 ------------------------------
 
-TODO
+In most cases you won't need to configure your class's default event because it will be inherited from its superclass. But if you want to, there are a couple
+ways you can do it.
+
+```
+// 1. If you need to explicitly configure your class because you augmented
+//    or have mixed in EventTarget, configure the default event as the third
+//    argument.
+// Example makes the default for unpublished events emit facades
+Y.EventTarget.configure(MyClass, { ... (events) }, { emitFacade: true });
+
+// 2. Republish the '@default' event.
+MyClass.publish('@default', { preventable: false });
+
+// Override the default event for a specific instance.
+instance.publish('@default', { preventable: true, bubbles: false });
+```
+
+Publishing events
+-----------------
+
+You can publish events statically for a class, or on a per-instance basis (as
+it works in the current system). Publishing from an instance works the same as
+from the class. As a general rule, *always publish at the class level* unless
+there's a very good reason to publish an event on an instance.
+
+`Y.EventTarget.configure(MyClass)` adds the static `publish` method to
+`MyClass`. You normally shouldn't need to call `Y.EventTarget.configure()`
+explicitly. It is called by `Y.extend()` and `Y.Base.create()` automatically.
+
 
 Working with smart events
 -------------------------
