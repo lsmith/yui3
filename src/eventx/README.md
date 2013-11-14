@@ -82,6 +82,11 @@ your code to stop working. Here are some likely culprits:
 
 ### Changes you should make
 
+Unless you run into bugs, or unsupported cases (see above), you shouldn't have
+to change your code. But you should, because these things will make it better.
+In fact, you should do benchmarks and memory consumption comparisons and tell
+me about them!
+
 * Publish your class events statically
 
     ```
