@@ -123,6 +123,8 @@ me about them!
 Architectural Changes From Current System
 -----------------------------------------
 
+### Fewer CustomEvent instances
+
 In the current event system, EventTargets start their life without any events.
 Each instance must `publish()` an event in order for it to be `fire()`d. To
 make things easier, instances `on()` method (and kin) will publish the
@@ -133,8 +135,10 @@ stick with 100).
 
 In eventx, EventTargets start their life with all events published on their
 host class and its inheritance hierarchy. The same CustomEvents are reused
-across all instances. 10 instances of a class with 10 events means 20 objects
-(again, more, but details later).
+across all instances without any publishing. 10 instances of a class with 10
+events means 20 objects (again, more, but details later).
+
+### CustomEvents are stateless
 
 In the current event system, CustomEvents are bound to a type (e.g. 'render')
 and maintain their state (subscribers, fired, etc).
@@ -144,6 +148,8 @@ subscribing and firing. State is maintained on the EventTarget. The type is one
 input to these behavioral methods, allowing the same CustomEvent to be used for
 many published event types. 
 
+### Synthetic events are no longer special
+
 In the current system, synthetic events are a cumbersome bolt-on that suffer
 less than optimal performance. This was sadly, necessarily so, due to the
 current architecture.
@@ -151,6 +157,8 @@ current architecture.
 In eventx, synthetic events are no more than CustomEvents with specific
 configurations, which breaks the distinction between a "regular" CustomEvent
 and a synthetic event.
+
+### Addition of a default event and smart events
 
 In the current system, every type (e.g. 'render' or 'fooChange') to must be
 published separately.  If a class only fires facadeless notification events,
