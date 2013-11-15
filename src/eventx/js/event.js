@@ -867,7 +867,7 @@ CustomEvent.prototype = {
         // is the configuration option for the CustomEvent to do something
         // special during the detach phase of the subscription.
         if (this.detach) {
-            abort = this.detach(sub);
+            abort = this.detach(target, sub);
         }
 
         if (!abort) {
