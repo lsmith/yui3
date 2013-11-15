@@ -273,17 +273,17 @@ Y.EventTarget.configure(MyClass, { ... (events) }, { emitFacade: true });
 // 2. Republish the '@default' event.
 MyClass.publish('@default', { preventable: false });
 
-// Override the default event for a specific instance.
+// 3. Override the default event for a specific instance.
 instance.publish('@default', { preventable: true, bubbles: false });
 ```
 
 Publishing events
 -----------------
 
-You can publish events statically for a class, or on a per-instance basis (as
-in the current system). Publishing from an instance works the same as
-from the class. As a general rule, *always publish at the class level* unless
-there's a good reason to publish an event on an instance.
+Publish events statically for a class, or on a per-instance basis (as in the
+current system). Publishing from an instance works the same as from the class.
+As a general rule, *always publish at the class level* unless there's a good
+reason to publish an event on an instance.
 
 `Y.EventTarget.configure(MyClass)` adds the `MyClass.publish()` method. You
 shouldn't need to call `Y.EventTarget.configure()` explicitly unless you
