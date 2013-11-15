@@ -281,27 +281,153 @@ Publishing events
 -----------------
 
 You can publish events statically for a class, or on a per-instance basis (as
-it works in the current system). Publishing from an instance works the same as
+in the current system). Publishing from an instance works the same as
 from the class. As a general rule, *always publish at the class level* unless
-there's a very good reason to publish an event on an instance.
+there's a good reason to publish an event on an instance.
 
-`Y.EventTarget.configure(MyClass)` adds the static `publish` method to
-`MyClass`. You normally shouldn't need to call `Y.EventTarget.configure()`
-explicitly. It is called by `Y.extend()` and `Y.Base.create()` automatically.
+`Y.EventTarget.configure(MyClass)` adds the `MyClass.publish()` method. You
+shouldn't need to call `Y.EventTarget.configure()` explicitly unless you
+manually mix or augment EventTarget onto your class. Both `Y.extend()` and
+`Y.Base.create()` call `Y.EventTarget.configure()` for you.
 
+```
+// publish a single event with configuration overrides from the default event
+instanceOrClass.publish('foo', { fireOnce: true });
+
+// shorthand for { emitFacade: true, defaultFn: '_defFooFn' }
+instanceOrClass.publish('foo', '_defFooFn');
+
+// publish multiple events
+instanceOrClass.publish({
+    foo: { fireOnce: true },
+    bar: '_defBarFn'
+});
+
+// directly map a type or multiple types to a CustomEvent
+var myEvent = new Y.CustomEvent({
+    fireOnce: true,
+    emitFacade: true,
+    preventable: false
+});
+instanceOrClass.publish({
+    foo: myEvent, // will emit a facade with e.type === 'foo'
+    bar: myEvent  // will emit a facade with e.type === 'bar'
+});
+
+// publish a custom event based on another CustomEvent
+instanceOrClass.publish('foo', '_defFooFn', myEvent);
+```
 
 Working with smart events
 -------------------------
 
-TODO
+Smart events are CustomEvents that can be applied to a programatic range of
+event types when you don't want to, or simply can't, publish the event for all
+of those types.
+
+```
+Widget.publish({
+    click: uiEvent,
+    mouseover: uiEvent,
+    ... // 150 DOM events later...
+    touchend: uiEvent
+});
+```
+
+Normally, if an event is subscribed or fired, but hasn't been published, the
+default event is used to define the behavior.
+
+Smart events allow you to catch groups of unknown event types before falling
+back to the default event. Rather than being related to a specific type, smart
+events can use either a regex pattern or a test function to determine whether
+to use that CustomEvent to handle the subscribe/fire.
+
+Publish smart events by passing an array of the applicable actions that the
+event should intercept before falling back to the default event.
+
+```
+// name non-standard events with a leading '@'.
+Widget.publish('@domevent', {
+    test: function (target, args, details) {
+        // args[0] is the target.on(TYPE, ...), and DOM_EVENTS is the
+        // whitelist of subscribable DOM events
+        return Y.Event.DOM_EVENTS[args[0]];
+    },
+
+    subscribe: function (target, args, details) {
+        // subscribe to the DOM event from the Widget's boundingBox
+    },
+
+    unsubscribe: function (target, args) {
+        // unsubscribe from the DOM event
+    },
+    ...
+}, null, ['subscribe', 'unsubscribe']);
+```
+
+Smart events can be defined to handle
+* subscribe
+* unsubscribe
+* fire
+
+In the example above, the `@domevent` smart event will handle
+`widget.on('click', callback);` and `widget.detach('click', callback)`, but not
+`widget.fire('click');`.
+
 
 Adding DOM events
 -----------------
 
-TODO
+Publishing events via `Y.Event.publish()` adds support for the new event for any subscriptions from a Node, Nodelist, or `Y.on()`.
 
 ### Whitelisting native events
 
+```
+// allow node.on('paste', callback)
+Y.Event.publish('paste');
+```
+
 ### Creating (formerly named) synthetic events
 
+```
+Y.Event.publish('mouseenter', {
+    on: function (target, subscription) {
+        // do syth setup stuff to eventually call subscription.notify(argArray)
+        // store state on the subscription object.
+    },
+
+    detach: function (target, subscription) {
+        // teardown and detach any internally created subscriptions
+    }
+});
+```
+
+The `on()` method handles both individual and delegate subscriptions. Likewise
+for `detach()`. Use these properties of the Subscription object to fork
+delegate behavior:
+
+* `subscription.details.delegate` (bool)
+* `subscription.details.filter` (function)
+* `subscription.details.container` (node)
+
 ### Overriding native event behavior
+
+Possible, but can be tricky. Look at `src/eventx-dom/js/event-onload.js` for
+one example. The needs of overriding existing events vary widely.
+
+### Using the SyntheticEvent compat shim
+
+The `eventx-synthetic` module recreates `Y.Event.define()` and supports the
+signature of the current system.
+
+```
+Y.Event.define('mouseenter', {
+    on: function (node, sub, notifier) { ... },
+
+    delegate: function (node, sub, notifier, filter) { ... },
+
+    detach: function (node, sub, notifier) { ... },
+
+    detachDelegate: function (node, sub, notifier) { ... }
+});
+```
