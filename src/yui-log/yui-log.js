@@ -42,7 +42,7 @@ INSTANCE.log = function(msg, cat, src, silent) {
     var bail, excl, incl, m, f, minlevel,
         Y = INSTANCE,
         c = Y.config,
-        publisher = (Y.fire) ? Y : YUI.Env.globalEvents;
+        publisher = (Y.fire) ? Y : Y.Env.globalEvents;
     // suppress log message if the config is off or the event stack
     // or the event call stack contains a consumer of the yui:log event
     if (c.debug) {

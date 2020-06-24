@@ -791,7 +791,7 @@ Y.Router = Y.extend(Router, Y.Base, {
         // If window.onload hasn't yet fired, wait until it has before
         // dequeueing. This will ensure that we don't call pushState() before an
         // initial popstate event has fired.
-        if (!YUI.Env.windowLoaded) {
+        if (!Y.Env.windowLoaded) {
             Y.once('load', function () {
                 self._dequeue();
             });

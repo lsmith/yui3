@@ -34,11 +34,7 @@ Y.publish('domready', {
     async: true
 });
 
-if (YUI.Env.DOMReady) {
-    Y.fire('domready');
-} else {
-    Y.Do.before(function() { Y.fire('domready'); }, YUI.Env, '_ready');
-}
+Y.fire('domready');
 
 /**
  * Custom event engine, DOM event listener abstraction layer, synthetic DOM
@@ -393,11 +389,11 @@ Y.Env.evt.dom_map = {};
 var _eventenv = Y.Env.evt,
     config = Y.config,
     win = config.win,
-    add = YUI.Env.add,
-    remove = YUI.Env.remove,
+    add = Y.Env.add,
+    remove = Y.Env.remove,
 
     onLoad = function() {
-        YUI.Env.windowLoaded = true;
+        Y.Env.windowLoaded = true;
         Y.Event._load();
         remove(win, "load", onLoad);
     },
@@ -834,7 +830,7 @@ Event._interval = setInterval(Event._poll, Event.POLL_INTERVAL);
                 // if the load is complete, fire immediately.
                 // all subscribers, including the current one
                 // will be notified.
-                if (YUI.Env.windowLoaded) {
+                if (Y.Env.windowLoaded) {
                     fireNow = true;
                 }
             }
@@ -1019,14 +1015,6 @@ Event._interval = setInterval(Event._poll, Event.POLL_INTERVAL);
          */
         _poll: function() {
             if (Event.locked) {
-                return;
-            }
-
-            if (Y.UA.ie && !YUI.Env.DOMReady) {
-                // Hold off if DOMReady has not fired and check current
-                // readyState to protect against the IE operation aborted
-                // issue.
-                Event.startInterval();
                 return;
             }
 
@@ -1277,7 +1265,7 @@ Event._interval = setInterval(Event._poll, Event.POLL_INTERVAL);
 
 Y.Event = Event;
 
-if (config.injected || YUI.Env.windowLoaded) {
+if (config.injected || Y.Env.windowLoaded) {
     onLoad();
 } else {
     add(win, "load", onLoad);

@@ -44,7 +44,7 @@ import 'event-custom-complex';
 
 var Lang      = Y.Lang,
     Obj       = Y.Object,
-    GlobalEnv = YUI.namespace('Env.History'),
+    GlobalEnv = Y.namespace('Env.History'),
     YArray    = Y.Array,
 
     doc       = Y.config.doc,

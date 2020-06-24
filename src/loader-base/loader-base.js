@@ -103,15 +103,15 @@ import 'features';
     galleryUpdate();
     yui2Update();
 
-    if (YUI.Env[VERSION]) {
-        Y.mix(META, YUI.Env[VERSION], false, [
+    if (Y.Env[VERSION]) {
+        Y.mix(META, Y.Env[VERSION], false, [
             'modules',
             'groups',
             'skin'
         ], 0, true);
     }
 
-    YUI.Env[VERSION] = META;
+    Y.Env[VERSION] = META;
 }());
 /*jslint forin: true, maxlen: 350 */
 
@@ -131,7 +131,7 @@ import 'features';
 var NOT_FOUND = {},
     NO_REQUIREMENTS = [],
     MAX_URL_LENGTH = 1024,
-    GLOBAL_ENV = YUI.Env,
+    GLOBAL_ENV = Y.Env,
     GLOBAL_LOADED = GLOBAL_ENV._loaded,
     CSS = 'css',
     JS = 'js',
@@ -159,8 +159,8 @@ var NOT_FOUND = {},
     };
 
 
-    if (!YUI.Env._cssLoaded) {
-        YUI.Env._cssLoaded = {};
+    if (!Y.Env._cssLoaded) {
+        Y.Env._cssLoaded = {};
     }
 
 
@@ -695,7 +695,7 @@ Y.Loader.prototype = {
     */
     _expandAliases: function(list) {
         var expanded = [],
-            aliases = YUI.Env.aliases,
+            aliases = Y.Env.aliases,
             i, name;
         list = Y.Array(list);
         for (i = 0; i < list.length; i += 1) {
@@ -753,7 +753,7 @@ Y.Loader.prototype = {
             if (self.moduleInfo.hasOwnProperty(i) && self.moduleInfo[i]) {
                 mod = self.moduleInfo[i];
                 name = mod.name;
-                details  = (YUI.Env.mods[name] ? YUI.Env.mods[name].details : null);
+                details  = (Y.Env.mods[name] ? Y.Env.mods[name].details : null);
 
                 if (details) {
                     self.moduleInfo[name]._reset = true;
@@ -1087,7 +1087,7 @@ Y.Loader.prototype = {
     *       //out.js will contain Node and YQL modules
     */
     addAlias: function(use, name) {
-        YUI.Env.aliases[name] = use;
+        Y.Env.aliases[name] = use;
         this.addModule({
             name: name,
             use: use
@@ -1763,9 +1763,9 @@ Y.Loader.prototype = {
         // Create skin modules
         if (mod.skinnable) {
             skindef = this.skin.overrides;
-            for (i in YUI.Env.aliases) {
-                if (YUI.Env.aliases.hasOwnProperty(i)) {
-                    if (Y.Array.indexOf(YUI.Env.aliases[i], name) > -1) {
+            for (i in Y.Env.aliases) {
+                if (Y.Env.aliases.hasOwnProperty(i)) {
+                    if (Y.Array.indexOf(Y.Env.aliases[i], name) > -1) {
                         skinpar = i;
                     }
                 }
@@ -1818,12 +1818,12 @@ Y.Loader.prototype = {
     */
     isCSSLoaded: function(name, skip) {
         //TODO - Make this call a batching call with name being an array
-        if (!name || !YUI.Env.cssStampEl || (!skip && this.ignoreRegistered)) {
+        if (!name || !Y.Env.cssStampEl || (!skip && this.ignoreRegistered)) {
             return false;
         }
-        var el = YUI.Env.cssStampEl,
+        var el = Y.Env.cssStampEl,
             ret = false,
-            mod = YUI.Env._cssLoaded[name],
+            mod = Y.Env._cssLoaded[name],
             style = el.currentStyle; //IE
 
 
@@ -1845,7 +1845,7 @@ Y.Loader.prototype = {
 
         el.className = ''; //Reset the classname to ''
 
-        YUI.Env._cssLoaded[name] = ret;
+        Y.Env._cssLoaded[name] = ret;
 
         return ret;
     },
@@ -2237,7 +2237,7 @@ Y.Loader.prototype = {
         for (i in self.inserted) {
             if (self.inserted.hasOwnProperty(i)) {
                 mod = self.getModule(i);
-                if (mod && rreg && mod.type === JS && !(i in YUI.Env.mods)) {
+                if (mod && rreg && mod.type === JS && !(i in Y.Env.mods)) {
                     failed.push(i);
                 } else {
                     Y.mix(self.loaded, self.getProvides(i));
@@ -2480,7 +2480,7 @@ Y.Loader.prototype = {
                         if (resMods.cssMods.length) {
                             for (i=0; i <  resMods.cssMods.length; i++) {
                                 modName = resMods.cssMods[i].name;
-                                delete YUI.Env._cssLoaded[modName];
+                                delete Y.Env._cssLoaded[modName];
                                 if (self.isCSSLoaded(modName)) {
                                     self.inserted[modName] = true;
                                     delete self.required[modName];

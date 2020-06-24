@@ -1730,7 +1730,7 @@ ET.prototype = {
 
         type = parts[1];
 
-        if (Y.instanceOf(this, YUI)) {
+        if (Y === this) {
 
             adapt = Y.Env.evt.plugins[type];
             args  = nativeSlice.call(arguments, 0);
@@ -1881,7 +1881,7 @@ ET.prototype = {
         adapt = Y.Env.evt.plugins[shorttype];
 
         // The YUI instance handles DOM events and adaptors
-        if (Y.instanceOf(this, YUI)) {
+        if (Y === this) {
             args = nativeSlice.call(arguments, 0);
             // use the adaptor specific detach code if
             if (adapt && adapt.detach) {
@@ -2309,7 +2309,7 @@ Y.EventTarget = ET;
 Y.mix(Y, ET.prototype);
 ET.call(Y, { bubbles: false });
 
-YUI.Env.globalEvents = YUI.Env.globalEvents || new ET();
+Y.Env.globalEvents = Y.Env.globalEvents || new ET();
 
 /**
  * Hosts YUI page level events.  This is where events bubble to
@@ -2319,7 +2319,7 @@ YUI.Env.globalEvents = YUI.Env.globalEvents || new ET();
  * @type EventTarget
  * @for YUI
  */
-Y.Global = YUI.Env.globalEvents;
+Y.Global = Y.Env.globalEvents;
 
 // @TODO implement a global namespace function on Y.Global?
 

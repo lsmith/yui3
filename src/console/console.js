@@ -759,43 +759,6 @@ Y.Console = Y.extend(Console, Y.Widget,
     },
 
     /**
-     * Getter method for useBrowserConsole attribute.  Just a pass through to
-     * the YUI instance configuration setting.
-     *
-     * @method _getUseBrowserConsole
-     * @return {Boolean} or null if logSource is not a YUI instance
-     * @protected
-     */
-    _getUseBrowserConsole: function () {
-        var logSource = this.get('logSource');
-        return logSource instanceof YUI ?
-            logSource.config.useBrowserConsole : null;
-    },
-
-    /**
-     * Setter method for useBrowserConsole attributes.  Only functional if the
-     * logSource attribute points to a YUI instance.  Passes the value down to
-     * the YUI instance.  NOTE: multiple Console instances cannot maintain
-     * independent useBrowserConsole values, since it is just a pass through to
-     * the YUI instance configuration.
-     *
-     * @method _setUseBrowserConsole
-     * @param v {Boolean} false to disable browser console printing (default)
-     * @return {Boolean} true|false if logSource is a YUI instance
-     * @protected
-     */
-    _setUseBrowserConsole: function (v) {
-        var logSource = this.get('logSource');
-        if (logSource instanceof YUI) {
-            v = !!v;
-            logSource.config.useBrowserConsole = v;
-            return v;
-        } else {
-            return Y.Attribute.INVALID_VALUE;
-        }
-    },
-
-    /**
      * Set the height of the Console container.  Set the body height to the
      * difference between the configured height and the calculated heights of
      * the header and footer.
@@ -1488,13 +1451,7 @@ Y.Console = Y.extend(Console, Y.Widget,
          */
          useBrowserConsole : {
             lazyAdd: false,
-            value: false,
-            getter : function () {
-                return this._getUseBrowserConsole();
-            },
-            setter : function (v) {
-                return this._setUseBrowserConsole(v);
-            }
+            value: true,
          },
 
          /**

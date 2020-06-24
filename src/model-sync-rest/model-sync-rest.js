@@ -77,7 +77,7 @@ will have a `X-CSRF-Token` header added with the token value.
 @static
 @since 3.6.0
 **/
-RESTSync.CSRF_TOKEN = YUI.Env.CSRF_TOKEN;
+RESTSync.CSRF_TOKEN = '<UNSPECIFIED>';
 
 /**
 Static flag to use the HTTP POST method instead of PUT or DELETE.

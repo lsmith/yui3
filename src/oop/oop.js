@@ -313,7 +313,7 @@ Y.clone = function(o, safe, f, c, owner, cloned) {
     // Instad, the passed-in `o` will be return as-is when it matches one of the
     // above criteria.
     if (!L.isObject(o) ||
-            Y.instanceOf(o, YUI) ||
+            (o === Y) ||
             (o.addEventListener || o.attachEvent)) {
 
         return o;

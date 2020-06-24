@@ -60,7 +60,7 @@ transparently for performance reasons).
 **/
 
 var AttrProto = Y.Attribute.prototype,
-    GlobalEnv = YUI.namespace('Env.Model'),
+    GlobalEnv = Y.namespace('Env.Model'),
     Lang      = Y.Lang,
     YArray    = Y.Array,
 

@@ -774,7 +774,7 @@ Queue.prototype = {
 
 Y.Queue = Queue;
 
-YUI.Env._loaderQueue = YUI.Env._loaderQueue || new Queue();
+Y.Env._loaderQueue = Y.Env._loaderQueue || new Queue();
 
 /**
 The YUI module contains the components required for building the YUI seed file.
@@ -1449,7 +1449,7 @@ O.isEmpty = function (obj) {
 * @param {String} [subUA=navigator.userAgent] UA string to parse
 * @return {Object} The Y.UA object
 */
-YUI.Env.parseUA = function(subUA) {
+Y.Env.parseUA = function(subUA) {
 
     var numberify = function(s) {
             var c = 0;
@@ -1901,7 +1901,7 @@ YUI.Env.parseUA = function(subUA) {
             }
         }
 
-        YUI.Env.UA = o;
+        Y.Env.UA = o;
 
     }
 
@@ -1909,7 +1909,7 @@ YUI.Env.parseUA = function(subUA) {
 };
 
 
-Y.UA = YUI.Env.UA || YUI.Env.parseUA();
+Y.UA = Y.Env.UA || Y.Env.parseUA();
 
 /**
 Performs a simple comparison between two version numbers, accounting for
@@ -1960,7 +1960,7 @@ Y.UA.compareVersions = function (a, b) {
 
     return 0;
 };
-YUI.Env.aliases = {
+Y.Env.aliases = {
     "anim": ["anim-base","anim-color","anim-curve","anim-easing","anim-node-plugin","anim-scroll","anim-xy"],
     "anim-shape-transform": ["anim-shape"],
     "app": ["app-base","app-content","app-transitions","lazy-model-list","model","model-list","model-sync-rest","model-sync-local","router","view","view-node-map"],

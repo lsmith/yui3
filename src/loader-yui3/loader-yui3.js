@@ -11,8 +11,8 @@ import 'loader-base';
  * @module loader
  * @submodule loader-yui3
  */
-YUI.Env[Y.version].modules = YUI.Env[Y.version].modules || {};
-Y.mix(YUI.Env[Y.version].modules, {
+Y.Env[Y.version].modules = Y.Env[Y.version].modules || {};
+Y.mix(Y.Env[Y.version].modules, {
     "align-plugin": {
         "requires": [
             "node-screen",
@@ -2991,6 +2991,6 @@ Y.mix(YUI.Env[Y.version].modules, {
         ]
     }
 });
-YUI.Env[Y.version].md5 = '2fd2be6b12ee9f999b4367499ae61aae';
+Y.Env[Y.version].md5 = '2fd2be6b12ee9f999b4367499ae61aae';
 
 

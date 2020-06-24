@@ -28,7 +28,7 @@ to override the `parse()` method to parse non-generic server responses.
 @since 3.4.0
 **/
 
-var GlobalEnv = YUI.namespace('Env.Model'),
+var GlobalEnv = Y.namespace('Env.Model'),
     Lang      = Y.Lang,
     YArray    = Y.Array,
     YObject   = Y.Object,
