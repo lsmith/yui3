@@ -1,4 +1,6 @@
 export default const Y = {
+    version: '3.smugmug',
+
     config: {
         bootstrap: true,
         cacheUse: true,
@@ -32,6 +34,12 @@ export default const Y = {
         _uidx: 0,
         _guidp: 'y',
         _loaded: {},
+        add: (el, type, fn, capture) => {
+            el.addEventListener(type, fn, capture);
+        },
+        remove: (el, type, fn, capture) => {
+            el.removeEventListener(type, fn, capture);
+        },
     },
 
     // PUBLIC METHODS (mostly stubbed)
