@@ -1,0 +1,21 @@
+{
+  "name": "anim-base",
+  "version": "1.0.0",
+  "description": "",
+  "main": "anim-base.js",
+  "dependencies": {
+    "y": "file:../y/y.js",
+    "base-base": "file:../base-base/base-base.js",
+    "node-style": "file:../node-style/node-style.js",
+    "color-base": "file:../color-base/color-base.js"
+  },
+  "yuiMeta": {
+    "requires": [
+      "base-base",
+      "node-style",
+      "color-base"
+    ]
+  },
+  "author": "",
+  "license": "ISC"
+}

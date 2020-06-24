@@ -1,0 +1,19 @@
+{
+  "name": "io-queue",
+  "version": "1.0.0",
+  "description": "",
+  "main": "io-queue.js",
+  "dependencies": {
+    "y": "file:../y/y.js",
+    "io-base": "file:../io-base/io-base.js",
+    "queue-promote": "file:../queue-promote/queue-promote.js"
+  },
+  "yuiMeta": {
+    "requires": [
+      "io-base",
+      "queue-promote"
+    ]
+  },
+  "author": "",
+  "license": "ISC"
+}

@@ -1,0 +1,23 @@
+{
+  "name": "app-base",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app-base.js",
+  "dependencies": {
+    "y": "file:../y/y.js",
+    "classnamemanager": "file:../classnamemanager/classnamemanager.js",
+    "pjax-base": "file:../pjax-base/pjax-base.js",
+    "router": "file:../router/router.js",
+    "view": "file:../view/view.js"
+  },
+  "yuiMeta": {
+    "requires": [
+      "classnamemanager",
+      "pjax-base",
+      "router",
+      "view"
+    ]
+  },
+  "author": "",
+  "license": "ISC"
+}

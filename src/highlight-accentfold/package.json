@@ -1,0 +1,19 @@
+{
+  "name": "highlight-accentfold",
+  "version": "1.0.0",
+  "description": "",
+  "main": "highlight-accentfold.js",
+  "dependencies": {
+    "y": "file:../y/y.js",
+    "highlight-base": "file:../highlight-base/highlight-base.js",
+    "text-accentfold": "file:../text-accentfold/text-accentfold.js"
+  },
+  "yuiMeta": {
+    "requires": [
+      "highlight-base",
+      "text-accentfold"
+    ]
+  },
+  "author": "",
+  "license": "ISC"
+}

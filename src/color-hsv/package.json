@@ -1,0 +1,17 @@
+{
+  "name": "color-hsv",
+  "version": "1.0.0",
+  "description": "",
+  "main": "color-hsv.js",
+  "dependencies": {
+    "y": "file:../y/y.js",
+    "color-base": "file:../color-base/color-base.js"
+  },
+  "yuiMeta": {
+    "requires": [
+      "color-base"
+    ]
+  },
+  "author": "",
+  "license": "ISC"
+}

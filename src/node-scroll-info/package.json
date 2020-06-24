@@ -1,0 +1,27 @@
+{
+  "name": "node-scroll-info",
+  "version": "1.0.0",
+  "description": "",
+  "main": "node-scroll-info.js",
+  "dependencies": {
+    "y": "file:../y/y.js",
+    "array-extras": "file:../array-extras/array-extras.js",
+    "base-build": "file:../base-build/base-build.js",
+    "event-resize": "file:../event-resize/event-resize.js",
+    "node-pluginhost": "file:../node-pluginhost/node-pluginhost.js",
+    "plugin": "file:../plugin/plugin.js",
+    "selector": "file:../selector/selector.js"
+  },
+  "yuiMeta": {
+    "requires": [
+      "array-extras",
+      "base-build",
+      "event-resize",
+      "node-pluginhost",
+      "plugin",
+      "selector"
+    ]
+  },
+  "author": "",
+  "license": "ISC"
+}

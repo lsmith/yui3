@@ -1,0 +1,17 @@
+{
+  "name": "attribute-observable",
+  "version": "1.0.0",
+  "description": "",
+  "main": "attribute-observable.js",
+  "dependencies": {
+    "y": "file:../y/y.js",
+    "event-custom": "file:../event-custom/event-custom.js"
+  },
+  "yuiMeta": {
+    "requires": [
+      "event-custom"
+    ]
+  },
+  "author": "",
+  "license": "ISC"
+}

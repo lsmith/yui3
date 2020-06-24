@@ -1,0 +1,19 @@
+{
+  "name": "app-content",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app-content.js",
+  "dependencies": {
+    "y": "file:../y/y.js",
+    "app-base": "file:../app-base/app-base.js",
+    "pjax-content": "file:../pjax-content/pjax-content.js"
+  },
+  "yuiMeta": {
+    "requires": [
+      "app-base",
+      "pjax-content"
+    ]
+  },
+  "author": "",
+  "license": "ISC"
+}

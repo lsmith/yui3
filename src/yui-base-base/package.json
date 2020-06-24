@@ -1,0 +1,12 @@
+{
+  "name": "yui-base-base",
+  "version": "1.0.0",
+  "description": "",
+  "main": "yui-base-base.js",
+  "dependencies": {
+    "y": "file:../y/y.js"
+  },
+  "yuiMeta": {},
+  "author": "",
+  "license": "ISC"
+}

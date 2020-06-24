@@ -1,0 +1,19 @@
+{
+  "name": "node-pluginhost",
+  "version": "1.0.0",
+  "description": "",
+  "main": "node-pluginhost.js",
+  "dependencies": {
+    "y": "file:../y/y.js",
+    "node-base": "file:../node-base/node-base.js",
+    "pluginhost": "file:../pluginhost/pluginhost.js"
+  },
+  "yuiMeta": {
+    "requires": [
+      "node-base",
+      "pluginhost"
+    ]
+  },
+  "author": "",
+  "license": "ISC"
+}

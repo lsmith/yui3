@@ -1,0 +1,17 @@
+{
+  "name": "base-core",
+  "version": "1.0.0",
+  "description": "",
+  "main": "base-core.js",
+  "dependencies": {
+    "y": "file:../y/y.js",
+    "attribute-core": "file:../attribute-core/attribute-core.js"
+  },
+  "yuiMeta": {
+    "requires": [
+      "attribute-core"
+    ]
+  },
+  "author": "",
+  "license": "ISC"
+}

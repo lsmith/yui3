@@ -1,0 +1,17 @@
+{
+  "name": "template-micro",
+  "version": "1.0.0",
+  "description": "",
+  "main": "template-micro.js",
+  "dependencies": {
+    "y": "file:../y/y.js",
+    "escape": "file:../escape/escape.js"
+  },
+  "yuiMeta": {
+    "requires": [
+      "escape"
+    ]
+  },
+  "author": "",
+  "license": "ISC"
+}

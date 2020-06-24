@@ -1,0 +1,23 @@
+{
+  "name": "button-core",
+  "version": "1.0.0",
+  "description": "",
+  "main": "button-core.js",
+  "dependencies": {
+    "y": "file:../y/y.js",
+    "attribute-core": "file:../attribute-core/attribute-core.js",
+    "classnamemanager": "file:../classnamemanager/classnamemanager.js",
+    "node-base": "file:../node-base/node-base.js",
+    "escape": "file:../escape/escape.js"
+  },
+  "yuiMeta": {
+    "requires": [
+      "attribute-core",
+      "classnamemanager",
+      "node-base",
+      "escape"
+    ]
+  },
+  "author": "",
+  "license": "ISC"
+}

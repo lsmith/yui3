@@ -1,0 +1,17 @@
+{
+  "name": "attribute-extras",
+  "version": "1.0.0",
+  "description": "",
+  "main": "attribute-extras.js",
+  "dependencies": {
+    "y": "file:../y/y.js",
+    "oop": "file:../oop/oop.js"
+  },
+  "yuiMeta": {
+    "requires": [
+      "oop"
+    ]
+  },
+  "author": "",
+  "license": "ISC"
+}

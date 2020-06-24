@@ -1,0 +1,24 @@
+{
+  "name": "router",
+  "version": "1.0.0",
+  "description": "",
+  "main": "router.js",
+  "dependencies": {
+    "y": "file:../y/y.js",
+    "array-extras": "file:../array-extras/array-extras.js",
+    "base-build": "file:../base-build/base-build.js",
+    "history": "file:../history/history.js"
+  },
+  "yuiMeta": {
+    "optional": [
+      "querystring-parse"
+    ],
+    "requires": [
+      "array-extras",
+      "base-build",
+      "history"
+    ]
+  },
+  "author": "",
+  "license": "ISC"
+}

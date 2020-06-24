@@ -1,0 +1,17 @@
+{
+  "name": "widget-base-ie",
+  "version": "1.0.0",
+  "description": "",
+  "main": "widget-base-ie.js",
+  "dependencies": {
+    "y": "file:../y/y.js",
+    "widget-base": "file:../widget-base/widget-base.js"
+  },
+  "yuiMeta": {
+    "requires": [
+      "widget-base"
+    ]
+  },
+  "author": "",
+  "license": "ISC"
+}

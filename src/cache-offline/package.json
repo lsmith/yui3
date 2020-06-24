@@ -1,0 +1,19 @@
+{
+  "name": "cache-offline",
+  "version": "1.0.0",
+  "description": "",
+  "main": "cache-offline.js",
+  "dependencies": {
+    "y": "file:../y/y.js",
+    "cache-base": "file:../cache-base/cache-base.js",
+    "json": "file:../json/json.js"
+  },
+  "yuiMeta": {
+    "requires": [
+      "cache-base",
+      "json"
+    ]
+  },
+  "author": "",
+  "license": "ISC"
+}

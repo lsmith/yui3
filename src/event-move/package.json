@@ -1,0 +1,21 @@
+{
+  "name": "event-move",
+  "version": "1.0.0",
+  "description": "",
+  "main": "event-move.js",
+  "dependencies": {
+    "y": "file:../y/y.js",
+    "node-base": "file:../node-base/node-base.js",
+    "event-touch": "file:../event-touch/event-touch.js",
+    "event-synthetic": "file:../event-synthetic/event-synthetic.js"
+  },
+  "yuiMeta": {
+    "requires": [
+      "node-base",
+      "event-touch",
+      "event-synthetic"
+    ]
+  },
+  "author": "",
+  "license": "ISC"
+}

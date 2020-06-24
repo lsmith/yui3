@@ -1,0 +1,17 @@
+{
+  "name": "text-data-wordbreak",
+  "version": "1.0.0",
+  "description": "",
+  "main": "text-data-wordbreak.js",
+  "dependencies": {
+    "y": "file:../y/y.js",
+    "yui-base": "file:../yui-base/yui-base.js"
+  },
+  "yuiMeta": {
+    "requires": [
+      "yui-base"
+    ]
+  },
+  "author": "",
+  "license": "ISC"
+}

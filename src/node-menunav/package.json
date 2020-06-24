@@ -1,0 +1,24 @@
+{
+  "name": "node-menunav",
+  "version": "1.0.0",
+  "description": "",
+  "main": "node-menunav.js",
+  "dependencies": {
+    "y": "file:../y/y.js",
+    "node": "file:../node/node.js",
+    "classnamemanager": "file:../classnamemanager/classnamemanager.js",
+    "plugin": "file:../plugin/plugin.js",
+    "node-focusmanager": "file:../node-focusmanager/node-focusmanager.js"
+  },
+  "yuiMeta": {
+    "requires": [
+      "node",
+      "classnamemanager",
+      "plugin",
+      "node-focusmanager"
+    ],
+    "skinnable": true
+  },
+  "author": "",
+  "license": "ISC"
+}

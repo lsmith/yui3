@@ -1,0 +1,27 @@
+{
+  "name": "node-focusmanager",
+  "version": "1.0.0",
+  "description": "",
+  "main": "node-focusmanager.js",
+  "dependencies": {
+    "y": "file:../y/y.js",
+    "attribute": "file:../attribute/attribute.js",
+    "node": "file:../node/node.js",
+    "plugin": "file:../plugin/plugin.js",
+    "node-event-simulate": "file:../node-event-simulate/node-event-simulate.js",
+    "event-key": "file:../event-key/event-key.js",
+    "event-focus": "file:../event-focus/event-focus.js"
+  },
+  "yuiMeta": {
+    "requires": [
+      "attribute",
+      "node",
+      "plugin",
+      "node-event-simulate",
+      "event-key",
+      "event-focus"
+    ]
+  },
+  "author": "",
+  "license": "ISC"
+}

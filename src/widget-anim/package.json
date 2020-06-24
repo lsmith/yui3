@@ -1,0 +1,21 @@
+{
+  "name": "widget-anim",
+  "version": "1.0.0",
+  "description": "",
+  "main": "widget-anim.js",
+  "dependencies": {
+    "y": "file:../y/y.js",
+    "anim-base": "file:../anim-base/anim-base.js",
+    "plugin": "file:../plugin/plugin.js",
+    "widget": "file:../widget/widget.js"
+  },
+  "yuiMeta": {
+    "requires": [
+      "anim-base",
+      "plugin",
+      "widget"
+    ]
+  },
+  "author": "",
+  "license": "ISC"
+}

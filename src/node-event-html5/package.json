@@ -1,0 +1,17 @@
+{
+  "name": "node-event-html5",
+  "version": "1.0.0",
+  "description": "",
+  "main": "node-event-html5.js",
+  "dependencies": {
+    "y": "file:../y/y.js",
+    "node-base": "file:../node-base/node-base.js"
+  },
+  "yuiMeta": {
+    "requires": [
+      "node-base"
+    ]
+  },
+  "author": "",
+  "license": "ISC"
+}

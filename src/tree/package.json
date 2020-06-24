@@ -1,0 +1,19 @@
+{
+  "name": "tree",
+  "version": "1.0.0",
+  "description": "",
+  "main": "tree.js",
+  "dependencies": {
+    "y": "file:../y/y.js",
+    "base-build": "file:../base-build/base-build.js",
+    "tree-node": "file:../tree-node/tree-node.js"
+  },
+  "yuiMeta": {
+    "requires": [
+      "base-build",
+      "tree-node"
+    ]
+  },
+  "author": "",
+  "license": "ISC"
+}

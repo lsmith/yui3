@@ -1,0 +1,23 @@
+{
+  "name": "highlight-base",
+  "version": "1.0.0",
+  "description": "",
+  "main": "highlight-base.js",
+  "dependencies": {
+    "y": "file:../y/y.js",
+    "array-extras": "file:../array-extras/array-extras.js",
+    "classnamemanager": "file:../classnamemanager/classnamemanager.js",
+    "escape": "file:../escape/escape.js",
+    "text-wordbreak": "file:../text-wordbreak/text-wordbreak.js"
+  },
+  "yuiMeta": {
+    "requires": [
+      "array-extras",
+      "classnamemanager",
+      "escape",
+      "text-wordbreak"
+    ]
+  },
+  "author": "",
+  "license": "ISC"
+}

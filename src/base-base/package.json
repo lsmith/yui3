@@ -1,0 +1,21 @@
+{
+  "name": "base-base",
+  "version": "1.0.0",
+  "description": "",
+  "main": "base-base.js",
+  "dependencies": {
+    "y": "file:../y/y.js",
+    "attribute-base": "file:../attribute-base/attribute-base.js",
+    "base-core": "file:../base-core/base-core.js",
+    "base-observable": "file:../base-observable/base-observable.js"
+  },
+  "yuiMeta": {
+    "requires": [
+      "attribute-base",
+      "base-core",
+      "base-observable"
+    ]
+  },
+  "author": "",
+  "license": "ISC"
+}

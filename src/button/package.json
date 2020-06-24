@@ -1,0 +1,21 @@
+{
+  "name": "button",
+  "version": "1.0.0",
+  "description": "",
+  "main": "button.js",
+  "dependencies": {
+    "y": "file:../y/y.js",
+    "button-core": "file:../button-core/button-core.js",
+    "cssbutton": "file:../cssbutton/cssbutton.js",
+    "widget": "file:../widget/widget.js"
+  },
+  "yuiMeta": {
+    "requires": [
+      "button-core",
+      "cssbutton",
+      "widget"
+    ]
+  },
+  "author": "",
+  "license": "ISC"
+}

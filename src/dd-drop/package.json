@@ -1,0 +1,19 @@
+{
+  "name": "dd-drop",
+  "version": "1.0.0",
+  "description": "",
+  "main": "dd-drop.js",
+  "dependencies": {
+    "y": "file:../y/y.js",
+    "dd-drag": "file:../dd-drag/dd-drag.js",
+    "dd-ddm-drop": "file:../dd-ddm-drop/dd-ddm-drop.js"
+  },
+  "yuiMeta": {
+    "requires": [
+      "dd-drag",
+      "dd-ddm-drop"
+    ]
+  },
+  "author": "",
+  "license": "ISC"
+}

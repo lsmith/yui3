@@ -1,0 +1,21 @@
+{
+  "name": "model-sync-rest",
+  "version": "1.0.0",
+  "description": "",
+  "main": "model-sync-rest.js",
+  "dependencies": {
+    "y": "file:../y/y.js",
+    "model": "file:../model/model.js",
+    "io-base": "file:../io-base/io-base.js",
+    "json-stringify": "file:../json-stringify/json-stringify.js"
+  },
+  "yuiMeta": {
+    "requires": [
+      "model",
+      "io-base",
+      "json-stringify"
+    ]
+  },
+  "author": "",
+  "license": "ISC"
+}

@@ -1,0 +1,19 @@
+{
+  "name": "event-synthetic",
+  "version": "1.0.0",
+  "description": "",
+  "main": "event-synthetic.js",
+  "dependencies": {
+    "y": "file:../y/y.js",
+    "node-base": "file:../node-base/node-base.js",
+    "event-custom-complex": "file:../event-custom-complex/event-custom-complex.js"
+  },
+  "yuiMeta": {
+    "requires": [
+      "node-base",
+      "event-custom-complex"
+    ]
+  },
+  "author": "",
+  "license": "ISC"
+}

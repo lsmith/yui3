@@ -1,0 +1,17 @@
+{
+  "name": "event-simulate",
+  "version": "1.0.0",
+  "description": "",
+  "main": "event-simulate.js",
+  "dependencies": {
+    "y": "file:../y/y.js",
+    "event-base": "file:../event-base/event-base.js"
+  },
+  "yuiMeta": {
+    "requires": [
+      "event-base"
+    ]
+  },
+  "author": "",
+  "license": "ISC"
+}

@@ -1,0 +1,19 @@
+{
+  "name": "intl",
+  "version": "1.0.0",
+  "description": "",
+  "main": "intl.js",
+  "dependencies": {
+    "y": "file:../y/y.js",
+    "intl-base": "file:../intl-base/intl-base.js",
+    "event-custom": "file:../event-custom/event-custom.js"
+  },
+  "yuiMeta": {
+    "requires": [
+      "intl-base",
+      "event-custom"
+    ]
+  },
+  "author": "",
+  "license": "ISC"
+}

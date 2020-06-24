@@ -1,0 +1,24 @@
+{
+  "name": "yui",
+  "version": "1.0.0",
+  "description": "",
+  "main": "yui.js",
+  "dependencies": {
+    "y": "file:../y/y.js"
+  },
+  "yuiMeta": {
+    "use": [
+      "yui-base-base",
+      "get",
+      "features",
+      "intl-base",
+      "yui-log",
+      "yui-later",
+      "loader-base",
+      "loader-rollup",
+      "loader-yui3"
+    ]
+  },
+  "author": "",
+  "license": "ISC"
+}

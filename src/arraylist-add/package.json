@@ -1,0 +1,17 @@
+{
+  "name": "arraylist-add",
+  "version": "1.0.0",
+  "description": "",
+  "main": "arraylist-add.js",
+  "dependencies": {
+    "y": "file:../y/y.js",
+    "arraylist": "file:../arraylist/arraylist.js"
+  },
+  "yuiMeta": {
+    "requires": [
+      "arraylist"
+    ]
+  },
+  "author": "",
+  "license": "ISC"
+}

@@ -1,0 +1,19 @@
+{
+  "name": "node-style",
+  "version": "1.0.0",
+  "description": "",
+  "main": "node-style.js",
+  "dependencies": {
+    "y": "file:../y/y.js",
+    "dom-style": "file:../dom-style/dom-style.js",
+    "node-base": "file:../node-base/node-base.js"
+  },
+  "yuiMeta": {
+    "requires": [
+      "dom-style",
+      "node-base"
+    ]
+  },
+  "author": "",
+  "license": "ISC"
+}

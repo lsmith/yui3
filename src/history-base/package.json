@@ -1,0 +1,17 @@
+{
+  "name": "history-base",
+  "version": "1.0.0",
+  "description": "",
+  "main": "history-base.js",
+  "dependencies": {
+    "y": "file:../y/y.js",
+    "event-custom-complex": "file:../event-custom-complex/event-custom-complex.js"
+  },
+  "yuiMeta": {
+    "requires": [
+      "event-custom-complex"
+    ]
+  },
+  "author": "",
+  "license": "ISC"
+}

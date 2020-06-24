@@ -1,0 +1,21 @@
+{
+  "name": "attribute-base",
+  "version": "1.0.0",
+  "description": "",
+  "main": "attribute-base.js",
+  "dependencies": {
+    "y": "file:../y/y.js",
+    "attribute-core": "file:../attribute-core/attribute-core.js",
+    "attribute-observable": "file:../attribute-observable/attribute-observable.js",
+    "attribute-extras": "file:../attribute-extras/attribute-extras.js"
+  },
+  "yuiMeta": {
+    "requires": [
+      "attribute-core",
+      "attribute-observable",
+      "attribute-extras"
+    ]
+  },
+  "author": "",
+  "license": "ISC"
+}

@@ -1,0 +1,21 @@
+{
+  "name": "recordset-filter",
+  "version": "1.0.0",
+  "description": "",
+  "main": "recordset-filter.js",
+  "dependencies": {
+    "y": "file:../y/y.js",
+    "recordset-base": "file:../recordset-base/recordset-base.js",
+    "array-extras": "file:../array-extras/array-extras.js",
+    "plugin": "file:../plugin/plugin.js"
+  },
+  "yuiMeta": {
+    "requires": [
+      "recordset-base",
+      "array-extras",
+      "plugin"
+    ]
+  },
+  "author": "",
+  "license": "ISC"
+}

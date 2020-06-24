@@ -1,0 +1,17 @@
+{
+  "name": "arraysort",
+  "version": "1.0.0",
+  "description": "",
+  "main": "arraysort.js",
+  "dependencies": {
+    "y": "file:../y/y.js",
+    "yui-base": "file:../yui-base/yui-base.js"
+  },
+  "yuiMeta": {
+    "requires": [
+      "yui-base"
+    ]
+  },
+  "author": "",
+  "license": "ISC"
+}

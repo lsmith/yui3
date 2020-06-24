@@ -1,0 +1,17 @@
+{
+  "name": "event-key",
+  "version": "1.0.0",
+  "description": "",
+  "main": "event-key.js",
+  "dependencies": {
+    "y": "file:../y/y.js",
+    "event-synthetic": "file:../event-synthetic/event-synthetic.js"
+  },
+  "yuiMeta": {
+    "requires": [
+      "event-synthetic"
+    ]
+  },
+  "author": "",
+  "license": "ISC"
+}

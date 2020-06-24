@@ -1,0 +1,23 @@
+{
+  "name": "node-base",
+  "version": "1.0.0",
+  "description": "",
+  "main": "node-base.js",
+  "dependencies": {
+    "y": "file:../y/y.js",
+    "event-base": "file:../event-base/event-base.js",
+    "node-core": "file:../node-core/node-core.js",
+    "dom-base": "file:../dom-base/dom-base.js",
+    "dom-style": "file:../dom-style/dom-style.js"
+  },
+  "yuiMeta": {
+    "requires": [
+      "event-base",
+      "node-core",
+      "dom-base",
+      "dom-style"
+    ]
+  },
+  "author": "",
+  "license": "ISC"
+}

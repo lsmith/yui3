@@ -1,0 +1,38 @@
+{
+  "name": "autocomplete-list",
+  "version": "1.0.0",
+  "description": "",
+  "main": "autocomplete-list.js",
+  "dependencies": {
+    "y": "file:../y/y.js",
+    "autocomplete-base": "file:../autocomplete-base/autocomplete-base.js",
+    "event-resize": "file:../event-resize/event-resize.js",
+    "node-screen": "file:../node-screen/node-screen.js",
+    "selector-css3": "file:../selector-css3/selector-css3.js",
+    "shim-plugin": "file:../shim-plugin/shim-plugin.js",
+    "widget": "file:../widget/widget.js",
+    "widget-position": "file:../widget-position/widget-position.js",
+    "widget-position-align": "file:../widget-position-align/widget-position-align.js"
+  },
+  "yuiMeta": {
+    "lang": [
+      "en",
+      "es",
+      "hu",
+      "it"
+    ],
+    "requires": [
+      "autocomplete-base",
+      "event-resize",
+      "node-screen",
+      "selector-css3",
+      "shim-plugin",
+      "widget",
+      "widget-position",
+      "widget-position-align"
+    ],
+    "skinnable": true
+  },
+  "author": "",
+  "license": "ISC"
+}

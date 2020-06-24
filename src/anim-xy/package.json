@@ -1,0 +1,19 @@
+{
+  "name": "anim-xy",
+  "version": "1.0.0",
+  "description": "",
+  "main": "anim-xy.js",
+  "dependencies": {
+    "y": "file:../y/y.js",
+    "anim-base": "file:../anim-base/anim-base.js",
+    "node-screen": "file:../node-screen/node-screen.js"
+  },
+  "yuiMeta": {
+    "requires": [
+      "anim-base",
+      "node-screen"
+    ]
+  },
+  "author": "",
+  "license": "ISC"
+}

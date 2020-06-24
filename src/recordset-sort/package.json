@@ -1,0 +1,21 @@
+{
+  "name": "recordset-sort",
+  "version": "1.0.0",
+  "description": "",
+  "main": "recordset-sort.js",
+  "dependencies": {
+    "y": "file:../y/y.js",
+    "arraysort": "file:../arraysort/arraysort.js",
+    "recordset-base": "file:../recordset-base/recordset-base.js",
+    "plugin": "file:../plugin/plugin.js"
+  },
+  "yuiMeta": {
+    "requires": [
+      "arraysort",
+      "recordset-base",
+      "plugin"
+    ]
+  },
+  "author": "",
+  "license": "ISC"
+}

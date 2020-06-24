@@ -1,0 +1,19 @@
+{
+  "name": "widget-uievents",
+  "version": "1.0.0",
+  "description": "",
+  "main": "widget-uievents.js",
+  "dependencies": {
+    "y": "file:../y/y.js",
+    "node-event-delegate": "file:../node-event-delegate/node-event-delegate.js",
+    "widget-base": "file:../widget-base/widget-base.js"
+  },
+  "yuiMeta": {
+    "requires": [
+      "node-event-delegate",
+      "widget-base"
+    ]
+  },
+  "author": "",
+  "license": "ISC"
+}

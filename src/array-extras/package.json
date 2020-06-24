@@ -1,0 +1,17 @@
+{
+  "name": "array-extras",
+  "version": "1.0.0",
+  "description": "",
+  "main": "array-extras.js",
+  "dependencies": {
+    "y": "file:../y/y.js",
+    "yui-base": "file:../yui-base/yui-base.js"
+  },
+  "yuiMeta": {
+    "requires": [
+      "yui-base"
+    ]
+  },
+  "author": "",
+  "license": "ISC"
+}

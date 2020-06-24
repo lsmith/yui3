@@ -1,0 +1,17 @@
+{
+  "name": "anim-color",
+  "version": "1.0.0",
+  "description": "",
+  "main": "anim-color.js",
+  "dependencies": {
+    "y": "file:../y/y.js",
+    "anim-base": "file:../anim-base/anim-base.js"
+  },
+  "yuiMeta": {
+    "requires": [
+      "anim-base"
+    ]
+  },
+  "author": "",
+  "license": "ISC"
+}

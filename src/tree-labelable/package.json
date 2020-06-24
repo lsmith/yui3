@@ -1,0 +1,17 @@
+{
+  "name": "tree-labelable",
+  "version": "1.0.0",
+  "description": "",
+  "main": "tree-labelable.js",
+  "dependencies": {
+    "y": "file:../y/y.js",
+    "tree": "file:../tree/tree.js"
+  },
+  "yuiMeta": {
+    "requires": [
+      "tree"
+    ]
+  },
+  "author": "",
+  "license": "ISC"
+}

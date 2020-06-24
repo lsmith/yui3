@@ -1,0 +1,17 @@
+{
+  "name": "loader-yui3",
+  "version": "1.0.0",
+  "description": "",
+  "main": "loader-yui3.js",
+  "dependencies": {
+    "y": "file:../y/y.js",
+    "loader-base": "file:../loader-base/loader-base.js"
+  },
+  "yuiMeta": {
+    "requires": [
+      "loader-base"
+    ]
+  },
+  "author": "",
+  "license": "ISC"
+}

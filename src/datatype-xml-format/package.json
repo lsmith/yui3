@@ -1,0 +1,12 @@
+{
+  "name": "datatype-xml-format",
+  "version": "1.0.0",
+  "description": "",
+  "main": "datatype-xml-format.js",
+  "dependencies": {
+    "y": "file:../y/y.js"
+  },
+  "yuiMeta": {},
+  "author": "",
+  "license": "ISC"
+}

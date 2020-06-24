@@ -1,0 +1,12 @@
+{
+  "name": "tree-node",
+  "version": "1.0.0",
+  "description": "",
+  "main": "tree-node.js",
+  "dependencies": {
+    "y": "file:../y/y.js"
+  },
+  "yuiMeta": {},
+  "author": "",
+  "license": "ISC"
+}
