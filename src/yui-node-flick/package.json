@@ -1,0 +1,24 @@
+{
+  "name": "yui-node-flick",
+  "version": "1.0.0",
+  "description": "",
+  "main": "node-flick.js",
+  "dependencies": {
+    "yui-classnamemanager": "file:../yui-classnamemanager/classnamemanager.js",
+    "yui-transition": "file:../yui-transition/transition.js",
+    "yui-event-flick": "file:../yui-event-flick/event-flick.js",
+    "yui-plugin": "file:../yui-plugin/plugin.js",
+    "yui-y": "file:../yui-y/y.js"
+  },
+  "yuiMeta": {
+    "requires": [
+      "classnamemanager",
+      "transition",
+      "event-flick",
+      "plugin"
+    ],
+    "skinnable": true
+  },
+  "author": "",
+  "license": "ISC"
+}

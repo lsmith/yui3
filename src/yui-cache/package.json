@@ -1,0 +1,21 @@
+{
+  "name": "yui-cache",
+  "version": "1.0.0",
+  "description": "",
+  "main": "cache.js",
+  "dependencies": {
+    "yui-cache-base": "file:../yui-cache-base/cache-base.js",
+    "yui-cache-offline": "file:../yui-cache-offline/cache-offline.js",
+    "yui-cache-plugin": "file:../yui-cache-plugin/cache-plugin.js",
+    "yui-y": "file:../yui-y/y.js"
+  },
+  "yuiMeta": {
+    "use": [
+      "cache-base",
+      "cache-offline",
+      "cache-plugin"
+    ]
+  },
+  "author": "",
+  "license": "ISC"
+}

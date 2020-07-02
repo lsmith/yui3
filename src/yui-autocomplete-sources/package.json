@@ -1,0 +1,23 @@
+{
+  "name": "yui-autocomplete-sources",
+  "version": "1.0.0",
+  "description": "",
+  "main": "autocomplete-sources.js",
+  "dependencies": {
+    "yui-autocomplete-base": "file:../yui-autocomplete-base/autocomplete-base.js",
+    "yui-y": "file:../yui-y/y.js"
+  },
+  "yuiMeta": {
+    "optional": [
+      "io-base",
+      "json-parse",
+      "jsonp",
+      "yql"
+    ],
+    "requires": [
+      "autocomplete-base"
+    ]
+  },
+  "author": "",
+  "license": "ISC"
+}

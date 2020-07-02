@@ -1,0 +1,17 @@
+{
+  "name": "yui-tree-selectable",
+  "version": "1.0.0",
+  "description": "",
+  "main": "tree-selectable.js",
+  "dependencies": {
+    "yui-tree": "file:../yui-tree/tree.js",
+    "yui-y": "file:../yui-y/y.js"
+  },
+  "yuiMeta": {
+    "requires": [
+      "tree"
+    ]
+  },
+  "author": "",
+  "license": "ISC"
+}

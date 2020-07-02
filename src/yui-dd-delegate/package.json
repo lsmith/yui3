@@ -1,0 +1,21 @@
+{
+  "name": "yui-dd-delegate",
+  "version": "1.0.0",
+  "description": "",
+  "main": "dd-delegate.js",
+  "dependencies": {
+    "yui-dd-drag": "file:../yui-dd-drag/dd-drag.js",
+    "yui-dd-drop-plugin": "file:../yui-dd-drop-plugin/dd-drop-plugin.js",
+    "yui-event-mouseenter": "file:../yui-event-mouseenter/event-mouseenter.js",
+    "yui-y": "file:../yui-y/y.js"
+  },
+  "yuiMeta": {
+    "requires": [
+      "dd-drag",
+      "dd-drop-plugin",
+      "event-mouseenter"
+    ]
+  },
+  "author": "",
+  "license": "ISC"
+}

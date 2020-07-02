@@ -1,0 +1,25 @@
+{
+  "name": "yui-dom",
+  "version": "1.0.0",
+  "description": "",
+  "main": "dom.js",
+  "dependencies": {
+    "yui-dom-base": "file:../yui-dom-base/dom-base.js",
+    "yui-dom-screen": "file:../yui-dom-screen/dom-screen.js",
+    "yui-dom-style": "file:../yui-dom-style/dom-style.js",
+    "yui-selector-native": "file:../yui-selector-native/selector-native.js",
+    "yui-selector": "file:../yui-selector/selector.js",
+    "yui-y": "file:../yui-y/y.js"
+  },
+  "yuiMeta": {
+    "use": [
+      "dom-base",
+      "dom-screen",
+      "dom-style",
+      "selector-native",
+      "selector"
+    ]
+  },
+  "author": "",
+  "license": "ISC"
+}

@@ -1,0 +1,17 @@
+{
+  "name": "yui-get",
+  "version": "1.0.0",
+  "description": "",
+  "main": "get.js",
+  "dependencies": {
+    "yui-yui-base": "file:../yui-yui-base/yui-base.js",
+    "yui-y": "file:../yui-y/y.js"
+  },
+  "yuiMeta": {
+    "requires": [
+      "yui-base"
+    ]
+  },
+  "author": "",
+  "license": "ISC"
+}

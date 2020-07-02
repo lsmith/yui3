@@ -1,0 +1,19 @@
+{
+  "name": "yui-datatype-xml",
+  "version": "1.0.0",
+  "description": "",
+  "main": "datatype-xml.js",
+  "dependencies": {
+    "yui-datatype-xml-parse": "file:../yui-datatype-xml-parse/datatype-xml-parse.js",
+    "yui-datatype-xml-format": "file:../yui-datatype-xml-format/datatype-xml-format.js",
+    "yui-y": "file:../yui-y/y.js"
+  },
+  "yuiMeta": {
+    "use": [
+      "datatype-xml-parse",
+      "datatype-xml-format"
+    ]
+  },
+  "author": "",
+  "license": "ISC"
+}

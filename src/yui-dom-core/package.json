@@ -1,0 +1,19 @@
+{
+  "name": "yui-dom-core",
+  "version": "1.0.0",
+  "description": "",
+  "main": "dom-core.js",
+  "dependencies": {
+    "yui-oop": "file:../yui-oop/oop.js",
+    "yui-features": "file:../yui-features/features.js",
+    "yui-y": "file:../yui-y/y.js"
+  },
+  "yuiMeta": {
+    "requires": [
+      "oop",
+      "features"
+    ]
+  },
+  "author": "",
+  "license": "ISC"
+}

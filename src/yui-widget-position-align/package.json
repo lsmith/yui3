@@ -1,0 +1,17 @@
+{
+  "name": "yui-widget-position-align",
+  "version": "1.0.0",
+  "description": "",
+  "main": "widget-position-align.js",
+  "dependencies": {
+    "yui-widget-position": "file:../yui-widget-position/widget-position.js",
+    "yui-y": "file:../yui-y/y.js"
+  },
+  "yuiMeta": {
+    "requires": [
+      "widget-position"
+    ]
+  },
+  "author": "",
+  "license": "ISC"
+}

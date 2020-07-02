@@ -1,0 +1,19 @@
+{
+  "name": "yui-node-pluginhost",
+  "version": "1.0.0",
+  "description": "",
+  "main": "node-pluginhost.js",
+  "dependencies": {
+    "yui-node-base": "file:../yui-node-base/node-base.js",
+    "yui-pluginhost": "file:../yui-pluginhost/pluginhost.js",
+    "yui-y": "file:../yui-y/y.js"
+  },
+  "yuiMeta": {
+    "requires": [
+      "node-base",
+      "pluginhost"
+    ]
+  },
+  "author": "",
+  "license": "ISC"
+}

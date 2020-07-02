@@ -1,0 +1,24 @@
+{
+  "name": "yui-yui-base",
+  "version": "1.0.0",
+  "description": "",
+  "main": "yui-base.js",
+  "dependencies": {
+    "yui-features": "file:../yui-features/features.js",
+    "yui-intl-base": "file:../yui-intl-base/intl-base.js",
+    "yui-yui-log": "file:../yui-yui-log/yui-log.js",
+    "yui-yui-later": "file:../yui-yui-later/yui-later.js",
+    "yui-y": "file:../yui-y/y.js"
+  },
+  "yuiMeta": {
+    "use": [
+      "get",
+      "features",
+      "intl-base",
+      "yui-log",
+      "yui-later"
+    ]
+  },
+  "author": "",
+  "license": "ISC"
+}

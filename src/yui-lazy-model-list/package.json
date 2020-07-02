@@ -1,0 +1,17 @@
+{
+  "name": "yui-lazy-model-list",
+  "version": "1.0.0",
+  "description": "",
+  "main": "lazy-model-list.js",
+  "dependencies": {
+    "yui-model-list": "file:../yui-model-list/model-list.js",
+    "yui-y": "file:../yui-y/y.js"
+  },
+  "yuiMeta": {
+    "requires": [
+      "model-list"
+    ]
+  },
+  "author": "",
+  "license": "ISC"
+}

@@ -1,0 +1,25 @@
+{
+  "name": "yui-node",
+  "version": "1.0.0",
+  "description": "",
+  "main": "node.js",
+  "dependencies": {
+    "yui-node-base": "file:../yui-node-base/node-base.js",
+    "yui-node-event-delegate": "file:../yui-node-event-delegate/node-event-delegate.js",
+    "yui-node-pluginhost": "file:../yui-node-pluginhost/node-pluginhost.js",
+    "yui-node-screen": "file:../yui-node-screen/node-screen.js",
+    "yui-node-style": "file:../yui-node-style/node-style.js",
+    "yui-y": "file:../yui-y/y.js"
+  },
+  "yuiMeta": {
+    "use": [
+      "node-base",
+      "node-event-delegate",
+      "node-pluginhost",
+      "node-screen",
+      "node-style"
+    ]
+  },
+  "author": "",
+  "license": "ISC"
+}

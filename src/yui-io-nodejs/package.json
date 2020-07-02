@@ -1,0 +1,17 @@
+{
+  "name": "yui-io-nodejs",
+  "version": "1.0.0",
+  "description": "",
+  "main": "io-nodejs.js",
+  "dependencies": {
+    "yui-io-base": "file:../yui-io-base/io-base.js",
+    "yui-y": "file:../yui-y/y.js"
+  },
+  "yuiMeta": {
+    "requires": [
+      "io-base"
+    ]
+  },
+  "author": "",
+  "license": "ISC"
+}

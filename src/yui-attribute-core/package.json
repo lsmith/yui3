@@ -1,0 +1,17 @@
+{
+  "name": "yui-attribute-core",
+  "version": "1.0.0",
+  "description": "",
+  "main": "attribute-core.js",
+  "dependencies": {
+    "yui-oop": "file:../yui-oop/oop.js",
+    "yui-y": "file:../yui-y/y.js"
+  },
+  "yuiMeta": {
+    "requires": [
+      "oop"
+    ]
+  },
+  "author": "",
+  "license": "ISC"
+}

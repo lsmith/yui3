@@ -1,0 +1,17 @@
+{
+  "name": "yui-widget-skin",
+  "version": "1.0.0",
+  "description": "",
+  "main": "widget-skin.js",
+  "dependencies": {
+    "yui-widget-base": "file:../yui-widget-base/widget-base.js",
+    "yui-y": "file:../yui-y/y.js"
+  },
+  "yuiMeta": {
+    "requires": [
+      "widget-base"
+    ]
+  },
+  "author": "",
+  "license": "ISC"
+}

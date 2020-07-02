@@ -1,0 +1,23 @@
+{
+  "name": "yui-recordset",
+  "version": "1.0.0",
+  "description": "",
+  "main": "recordset.js",
+  "dependencies": {
+    "yui-recordset-base": "file:../yui-recordset-base/recordset-base.js",
+    "yui-recordset-sort": "file:../yui-recordset-sort/recordset-sort.js",
+    "yui-recordset-filter": "file:../yui-recordset-filter/recordset-filter.js",
+    "yui-recordset-indexer": "file:../yui-recordset-indexer/recordset-indexer.js",
+    "yui-y": "file:../yui-y/y.js"
+  },
+  "yuiMeta": {
+    "use": [
+      "recordset-base",
+      "recordset-sort",
+      "recordset-filter",
+      "recordset-indexer"
+    ]
+  },
+  "author": "",
+  "license": "ISC"
+}

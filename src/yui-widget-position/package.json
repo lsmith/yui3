@@ -1,0 +1,21 @@
+{
+  "name": "yui-widget-position",
+  "version": "1.0.0",
+  "description": "",
+  "main": "widget-position.js",
+  "dependencies": {
+    "yui-base-build": "file:../yui-base-build/base-build.js",
+    "yui-node-screen": "file:../yui-node-screen/node-screen.js",
+    "yui-widget": "file:../yui-widget/widget.js",
+    "yui-y": "file:../yui-y/y.js"
+  },
+  "yuiMeta": {
+    "requires": [
+      "base-build",
+      "node-screen",
+      "widget"
+    ]
+  },
+  "author": "",
+  "license": "ISC"
+}

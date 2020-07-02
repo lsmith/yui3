@@ -1,0 +1,19 @@
+{
+  "name": "yui-view",
+  "version": "1.0.0",
+  "description": "",
+  "main": "view.js",
+  "dependencies": {
+    "yui-base-build": "file:../yui-base-build/base-build.js",
+    "yui-node-event-delegate": "file:../yui-node-event-delegate/node-event-delegate.js",
+    "yui-y": "file:../yui-y/y.js"
+  },
+  "yuiMeta": {
+    "requires": [
+      "base-build",
+      "node-event-delegate"
+    ]
+  },
+  "author": "",
+  "license": "ISC"
+}

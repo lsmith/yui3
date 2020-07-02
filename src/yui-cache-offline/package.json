@@ -1,0 +1,19 @@
+{
+  "name": "yui-cache-offline",
+  "version": "1.0.0",
+  "description": "",
+  "main": "cache-offline.js",
+  "dependencies": {
+    "yui-cache-base": "file:../yui-cache-base/cache-base.js",
+    "yui-json": "file:../yui-json/json.js",
+    "yui-y": "file:../yui-y/y.js"
+  },
+  "yuiMeta": {
+    "requires": [
+      "cache-base",
+      "json"
+    ]
+  },
+  "author": "",
+  "license": "ISC"
+}

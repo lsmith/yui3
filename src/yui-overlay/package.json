@@ -1,0 +1,28 @@
+{
+  "name": "yui-overlay",
+  "version": "1.0.0",
+  "description": "",
+  "main": "overlay.js",
+  "dependencies": {
+    "yui-widget": "file:../yui-widget/widget.js",
+    "yui-widget-stdmod": "file:../yui-widget-stdmod/widget-stdmod.js",
+    "yui-widget-position": "file:../yui-widget-position/widget-position.js",
+    "yui-widget-position-align": "file:../yui-widget-position-align/widget-position-align.js",
+    "yui-widget-stack": "file:../yui-widget-stack/widget-stack.js",
+    "yui-widget-position-constrain": "file:../yui-widget-position-constrain/widget-position-constrain.js",
+    "yui-y": "file:../yui-y/y.js"
+  },
+  "yuiMeta": {
+    "requires": [
+      "widget",
+      "widget-stdmod",
+      "widget-position",
+      "widget-position-align",
+      "widget-stack",
+      "widget-position-constrain"
+    ],
+    "skinnable": true
+  },
+  "author": "",
+  "license": "ISC"
+}

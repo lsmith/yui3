@@ -1,0 +1,17 @@
+{
+  "name": "yui-color-base",
+  "version": "1.0.0",
+  "description": "",
+  "main": "color-base.js",
+  "dependencies": {
+    "yui-yui-base": "file:../yui-yui-base/yui-base.js",
+    "yui-y": "file:../yui-y/y.js"
+  },
+  "yuiMeta": {
+    "requires": [
+      "yui-base"
+    ]
+  },
+  "author": "",
+  "license": "ISC"
+}

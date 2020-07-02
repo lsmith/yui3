@@ -2,11 +2,20 @@
   "name": "yui-base-base",
   "version": "1.0.0",
   "description": "",
-  "main": "yui-base-base.js",
+  "main": "base-base.js",
   "dependencies": {
-    "y": "file:../y/y.js"
+    "yui-attribute-base": "file:../yui-attribute-base/attribute-base.js",
+    "yui-base-core": "file:../yui-base-core/base-core.js",
+    "yui-base-observable": "file:../yui-base-observable/base-observable.js",
+    "yui-y": "file:../yui-y/y.js"
   },
-  "yuiMeta": {},
+  "yuiMeta": {
+    "requires": [
+      "attribute-base",
+      "base-core",
+      "base-observable"
+    ]
+  },
   "author": "",
   "license": "ISC"
 }

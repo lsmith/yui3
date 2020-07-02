@@ -1,0 +1,17 @@
+{
+  "name": "yui-dd-constrain",
+  "version": "1.0.0",
+  "description": "",
+  "main": "dd-constrain.js",
+  "dependencies": {
+    "yui-dd-drag": "file:../yui-dd-drag/dd-drag.js",
+    "yui-y": "file:../yui-y/y.js"
+  },
+  "yuiMeta": {
+    "requires": [
+      "dd-drag"
+    ]
+  },
+  "author": "",
+  "license": "ISC"
+}

@@ -1,0 +1,19 @@
+{
+  "name": "yui-datatype-number",
+  "version": "1.0.0",
+  "description": "",
+  "main": "datatype-number.js",
+  "dependencies": {
+    "yui-datatype-number-parse": "file:../yui-datatype-number-parse/datatype-number-parse.js",
+    "yui-datatype-number-format": "file:../yui-datatype-number-format/datatype-number-format.js",
+    "yui-y": "file:../yui-y/y.js"
+  },
+  "yuiMeta": {
+    "use": [
+      "datatype-number-parse",
+      "datatype-number-format"
+    ]
+  },
+  "author": "",
+  "license": "ISC"
+}

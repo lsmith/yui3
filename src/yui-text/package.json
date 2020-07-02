@@ -1,0 +1,19 @@
+{
+  "name": "yui-text",
+  "version": "1.0.0",
+  "description": "",
+  "main": "text.js",
+  "dependencies": {
+    "yui-text-accentfold": "file:../yui-text-accentfold/text-accentfold.js",
+    "yui-text-wordbreak": "file:../yui-text-wordbreak/text-wordbreak.js",
+    "yui-y": "file:../yui-y/y.js"
+  },
+  "yuiMeta": {
+    "use": [
+      "text-accentfold",
+      "text-wordbreak"
+    ]
+  },
+  "author": "",
+  "license": "ISC"
+}

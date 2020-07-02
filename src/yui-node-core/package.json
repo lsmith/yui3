@@ -1,0 +1,19 @@
+{
+  "name": "yui-node-core",
+  "version": "1.0.0",
+  "description": "",
+  "main": "node-core.js",
+  "dependencies": {
+    "yui-dom-core": "file:../yui-dom-core/dom-core.js",
+    "yui-selector": "file:../yui-selector/selector.js",
+    "yui-y": "file:../yui-y/y.js"
+  },
+  "yuiMeta": {
+    "requires": [
+      "dom-core",
+      "selector"
+    ]
+  },
+  "author": "",
+  "license": "ISC"
+}

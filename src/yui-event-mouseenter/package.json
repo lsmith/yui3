@@ -1,0 +1,17 @@
+{
+  "name": "yui-event-mouseenter",
+  "version": "1.0.0",
+  "description": "",
+  "main": "event-mouseenter.js",
+  "dependencies": {
+    "yui-event-synthetic": "file:../yui-event-synthetic/event-synthetic.js",
+    "yui-y": "file:../yui-y/y.js"
+  },
+  "yuiMeta": {
+    "requires": [
+      "event-synthetic"
+    ]
+  },
+  "author": "",
+  "license": "ISC"
+}

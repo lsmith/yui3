@@ -1,0 +1,17 @@
+{
+  "name": "yui-color-harmony",
+  "version": "1.0.0",
+  "description": "",
+  "main": "color-harmony.js",
+  "dependencies": {
+    "yui-color-hsl": "file:../yui-color-hsl/color-hsl.js",
+    "yui-y": "file:../yui-y/y.js"
+  },
+  "yuiMeta": {
+    "requires": [
+      "color-hsl"
+    ]
+  },
+  "author": "",
+  "license": "ISC"
+}

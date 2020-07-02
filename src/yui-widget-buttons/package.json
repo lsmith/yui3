@@ -1,0 +1,20 @@
+{
+  "name": "yui-widget-buttons",
+  "version": "1.0.0",
+  "description": "",
+  "main": "widget-buttons.js",
+  "dependencies": {
+    "yui-button-plugin": "file:../yui-button-plugin/button-plugin.js",
+    "yui-widget-stdmod": "file:../yui-widget-stdmod/widget-stdmod.js",
+    "yui-y": "file:../yui-y/y.js"
+  },
+  "yuiMeta": {
+    "requires": [
+      "button-plugin",
+      "cssbutton",
+      "widget-stdmod"
+    ]
+  },
+  "author": "",
+  "license": "ISC"
+}

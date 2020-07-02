@@ -1,0 +1,17 @@
+{
+  "name": "yui-base-build",
+  "version": "1.0.0",
+  "description": "",
+  "main": "base-build.js",
+  "dependencies": {
+    "yui-base-base": "file:../yui-base-base/base-base.js",
+    "yui-y": "file:../yui-y/y.js"
+  },
+  "yuiMeta": {
+    "requires": [
+      "base-base"
+    ]
+  },
+  "author": "",
+  "license": "ISC"
+}

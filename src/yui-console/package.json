@@ -1,0 +1,27 @@
+{
+  "name": "yui-console",
+  "version": "1.0.0",
+  "description": "",
+  "main": "console.js",
+  "dependencies": {
+    "yui-yui-log": "file:../yui-yui-log/yui-log.js",
+    "yui-widget": "file:../yui-widget/widget.js",
+    "yui-y": "file:../yui-y/y.js"
+  },
+  "yuiMeta": {
+    "requires": [
+      "yui-log",
+      "widget"
+    ],
+    "skinnable": true,
+    "lang": [
+      "en",
+      "es",
+      "hu",
+      "it",
+      "ja"
+    ]
+  },
+  "author": "",
+  "license": "ISC"
+}

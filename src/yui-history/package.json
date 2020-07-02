@@ -1,0 +1,21 @@
+{
+  "name": "yui-history",
+  "version": "1.0.0",
+  "description": "",
+  "main": "history.js",
+  "dependencies": {
+    "yui-history-base": "file:../yui-history-base/history-base.js",
+    "yui-history-hash": "file:../yui-history-hash/history-hash.js",
+    "yui-history-html5": "file:../yui-history-html5/history-html5.js",
+    "yui-y": "file:../yui-y/y.js"
+  },
+  "yuiMeta": {
+    "use": [
+      "history-base",
+      "history-hash",
+      "history-html5"
+    ]
+  },
+  "author": "",
+  "license": "ISC"
+}

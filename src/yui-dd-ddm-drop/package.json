@@ -1,0 +1,17 @@
+{
+  "name": "yui-dd-ddm-drop",
+  "version": "1.0.0",
+  "description": "",
+  "main": "dd-ddm-drop.js",
+  "dependencies": {
+    "yui-dd-ddm": "file:../yui-dd-ddm/dd-ddm.js",
+    "yui-y": "file:../yui-y/y.js"
+  },
+  "yuiMeta": {
+    "requires": [
+      "dd-ddm"
+    ]
+  },
+  "author": "",
+  "license": "ISC"
+}

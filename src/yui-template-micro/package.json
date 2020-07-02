@@ -1,0 +1,17 @@
+{
+  "name": "yui-template-micro",
+  "version": "1.0.0",
+  "description": "",
+  "main": "template-micro.js",
+  "dependencies": {
+    "yui-escape": "file:../yui-escape/escape.js",
+    "yui-y": "file:../yui-y/y.js"
+  },
+  "yuiMeta": {
+    "requires": [
+      "escape"
+    ]
+  },
+  "author": "",
+  "license": "ISC"
+}

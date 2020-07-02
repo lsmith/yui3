@@ -1,0 +1,20 @@
+{
+  "name": "yui-button-plugin",
+  "version": "1.0.0",
+  "description": "",
+  "main": "button-plugin.js",
+  "dependencies": {
+    "yui-button-core": "file:../yui-button-core/button-core.js",
+    "yui-node-pluginhost": "file:../yui-node-pluginhost/node-pluginhost.js",
+    "yui-y": "file:../yui-y/y.js"
+  },
+  "yuiMeta": {
+    "requires": [
+      "button-core",
+      "cssbutton",
+      "node-pluginhost"
+    ]
+  },
+  "author": "",
+  "license": "ISC"
+}

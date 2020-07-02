@@ -1,0 +1,21 @@
+{
+  "name": "yui-datatype-date",
+  "version": "1.0.0",
+  "description": "",
+  "main": "datatype-date.js",
+  "dependencies": {
+    "yui-datatype-date-parse": "file:../yui-datatype-date-parse/datatype-date-parse.js",
+    "yui-datatype-date-format": "file:../yui-datatype-date-format/datatype-date-format.js",
+    "yui-datatype-date-math": "file:../yui-datatype-date-math/datatype-date-math.js",
+    "yui-y": "file:../yui-y/y.js"
+  },
+  "yuiMeta": {
+    "use": [
+      "datatype-date-parse",
+      "datatype-date-format",
+      "datatype-date-math"
+    ]
+  },
+  "author": "",
+  "license": "ISC"
+}

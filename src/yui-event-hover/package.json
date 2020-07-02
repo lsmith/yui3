@@ -1,0 +1,17 @@
+{
+  "name": "yui-event-hover",
+  "version": "1.0.0",
+  "description": "",
+  "main": "event-hover.js",
+  "dependencies": {
+    "yui-event-mouseenter": "file:../yui-event-mouseenter/event-mouseenter.js",
+    "yui-y": "file:../yui-y/y.js"
+  },
+  "yuiMeta": {
+    "requires": [
+      "event-mouseenter"
+    ]
+  },
+  "author": "",
+  "license": "ISC"
+}

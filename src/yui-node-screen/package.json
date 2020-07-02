@@ -1,0 +1,19 @@
+{
+  "name": "yui-node-screen",
+  "version": "1.0.0",
+  "description": "",
+  "main": "node-screen.js",
+  "dependencies": {
+    "yui-dom-screen": "file:../yui-dom-screen/dom-screen.js",
+    "yui-node-base": "file:../yui-node-base/node-base.js",
+    "yui-y": "file:../yui-y/y.js"
+  },
+  "yuiMeta": {
+    "requires": [
+      "dom-screen",
+      "node-base"
+    ]
+  },
+  "author": "",
+  "license": "ISC"
+}

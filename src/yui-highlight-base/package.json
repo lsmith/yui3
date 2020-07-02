@@ -1,0 +1,23 @@
+{
+  "name": "yui-highlight-base",
+  "version": "1.0.0",
+  "description": "",
+  "main": "highlight-base.js",
+  "dependencies": {
+    "yui-array-extras": "file:../yui-array-extras/array-extras.js",
+    "yui-classnamemanager": "file:../yui-classnamemanager/classnamemanager.js",
+    "yui-escape": "file:../yui-escape/escape.js",
+    "yui-text-wordbreak": "file:../yui-text-wordbreak/text-wordbreak.js",
+    "yui-y": "file:../yui-y/y.js"
+  },
+  "yuiMeta": {
+    "requires": [
+      "array-extras",
+      "classnamemanager",
+      "escape",
+      "text-wordbreak"
+    ]
+  },
+  "author": "",
+  "license": "ISC"
+}

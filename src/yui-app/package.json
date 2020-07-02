@@ -1,0 +1,37 @@
+{
+  "name": "yui-app",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "dependencies": {
+    "yui-app-base": "file:../yui-app-base/app-base.js",
+    "yui-app-content": "file:../yui-app-content/app-content.js",
+    "yui-app-transitions": "file:../yui-app-transitions/app-transitions.js",
+    "yui-lazy-model-list": "file:../yui-lazy-model-list/lazy-model-list.js",
+    "yui-model": "file:../yui-model/model.js",
+    "yui-model-list": "file:../yui-model-list/model-list.js",
+    "yui-model-sync-rest": "file:../yui-model-sync-rest/model-sync-rest.js",
+    "yui-model-sync-local": "file:../yui-model-sync-local/model-sync-local.js",
+    "yui-router": "file:../yui-router/router.js",
+    "yui-view": "file:../yui-view/view.js",
+    "yui-view-node-map": "file:../yui-view-node-map/view-node-map.js",
+    "yui-y": "file:../yui-y/y.js"
+  },
+  "yuiMeta": {
+    "use": [
+      "app-base",
+      "app-content",
+      "app-transitions",
+      "lazy-model-list",
+      "model",
+      "model-list",
+      "model-sync-rest",
+      "model-sync-local",
+      "router",
+      "view",
+      "view-node-map"
+    ]
+  },
+  "author": "",
+  "license": "ISC"
+}

@@ -1,0 +1,20 @@
+{
+  "name": "yui-widget-stack",
+  "version": "1.0.0",
+  "description": "",
+  "main": "widget-stack.js",
+  "dependencies": {
+    "yui-base-build": "file:../yui-base-build/base-build.js",
+    "yui-widget": "file:../yui-widget/widget.js",
+    "yui-y": "file:../yui-y/y.js"
+  },
+  "yuiMeta": {
+    "requires": [
+      "base-build",
+      "widget"
+    ],
+    "skinnable": true
+  },
+  "author": "",
+  "license": "ISC"
+}

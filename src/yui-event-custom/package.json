@@ -1,0 +1,19 @@
+{
+  "name": "yui-event-custom",
+  "version": "1.0.0",
+  "description": "",
+  "main": "event-custom.js",
+  "dependencies": {
+    "yui-event-custom-base": "file:../yui-event-custom-base/event-custom-base.js",
+    "yui-event-custom-complex": "file:../yui-event-custom-complex/event-custom-complex.js",
+    "yui-y": "file:../yui-y/y.js"
+  },
+  "yuiMeta": {
+    "use": [
+      "event-custom-base",
+      "event-custom-complex"
+    ]
+  },
+  "author": "",
+  "license": "ISC"
+}

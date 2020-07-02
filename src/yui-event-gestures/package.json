@@ -1,0 +1,19 @@
+{
+  "name": "yui-event-gestures",
+  "version": "1.0.0",
+  "description": "",
+  "main": "event-gestures.js",
+  "dependencies": {
+    "yui-event-flick": "file:../yui-event-flick/event-flick.js",
+    "yui-event-move": "file:../yui-event-move/event-move.js",
+    "yui-y": "file:../yui-y/y.js"
+  },
+  "yuiMeta": {
+    "use": [
+      "event-flick",
+      "event-move"
+    ]
+  },
+  "author": "",
+  "license": "ISC"
+}

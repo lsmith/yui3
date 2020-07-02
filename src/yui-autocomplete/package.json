@@ -1,0 +1,23 @@
+{
+  "name": "yui-autocomplete",
+  "version": "1.0.0",
+  "description": "",
+  "main": "autocomplete.js",
+  "dependencies": {
+    "yui-autocomplete-base": "file:../yui-autocomplete-base/autocomplete-base.js",
+    "yui-autocomplete-sources": "file:../yui-autocomplete-sources/autocomplete-sources.js",
+    "yui-autocomplete-list": "file:../yui-autocomplete-list/autocomplete-list.js",
+    "yui-autocomplete-plugin": "file:../yui-autocomplete-plugin/autocomplete-plugin.js",
+    "yui-y": "file:../yui-y/y.js"
+  },
+  "yuiMeta": {
+    "use": [
+      "autocomplete-base",
+      "autocomplete-sources",
+      "autocomplete-list",
+      "autocomplete-plugin"
+    ]
+  },
+  "author": "",
+  "license": "ISC"
+}

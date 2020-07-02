@@ -1,0 +1,21 @@
+{
+  "name": "yui-history-hash",
+  "version": "1.0.0",
+  "description": "",
+  "main": "history-hash.js",
+  "dependencies": {
+    "yui-event-synthetic": "file:../yui-event-synthetic/event-synthetic.js",
+    "yui-history-base": "file:../yui-history-base/history-base.js",
+    "yui-yui-later": "file:../yui-yui-later/yui-later.js",
+    "yui-y": "file:../yui-y/y.js"
+  },
+  "yuiMeta": {
+    "requires": [
+      "event-synthetic",
+      "history-base",
+      "yui-later"
+    ]
+  },
+  "author": "",
+  "license": "ISC"
+}

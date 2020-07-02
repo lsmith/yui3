@@ -1,0 +1,33 @@
+{
+  "name": "yui-dd",
+  "version": "1.0.0",
+  "description": "",
+  "main": "dd.js",
+  "dependencies": {
+    "yui-dd-ddm-base": "file:../yui-dd-ddm-base/dd-ddm-base.js",
+    "yui-dd-ddm": "file:../yui-dd-ddm/dd-ddm.js",
+    "yui-dd-ddm-drop": "file:../yui-dd-ddm-drop/dd-ddm-drop.js",
+    "yui-dd-drag": "file:../yui-dd-drag/dd-drag.js",
+    "yui-dd-proxy": "file:../yui-dd-proxy/dd-proxy.js",
+    "yui-dd-constrain": "file:../yui-dd-constrain/dd-constrain.js",
+    "yui-dd-drop": "file:../yui-dd-drop/dd-drop.js",
+    "yui-dd-scroll": "file:../yui-dd-scroll/dd-scroll.js",
+    "yui-dd-delegate": "file:../yui-dd-delegate/dd-delegate.js",
+    "yui-y": "file:../yui-y/y.js"
+  },
+  "yuiMeta": {
+    "use": [
+      "dd-ddm-base",
+      "dd-ddm",
+      "dd-ddm-drop",
+      "dd-drag",
+      "dd-proxy",
+      "dd-constrain",
+      "dd-drop",
+      "dd-scroll",
+      "dd-delegate"
+    ]
+  },
+  "author": "",
+  "license": "ISC"
+}

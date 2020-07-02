@@ -1,0 +1,17 @@
+{
+  "name": "yui-anim-curve",
+  "version": "1.0.0",
+  "description": "",
+  "main": "anim-curve.js",
+  "dependencies": {
+    "yui-anim-xy": "file:../yui-anim-xy/anim-xy.js",
+    "yui-y": "file:../yui-y/y.js"
+  },
+  "yuiMeta": {
+    "requires": [
+      "anim-xy"
+    ]
+  },
+  "author": "",
+  "license": "ISC"
+}

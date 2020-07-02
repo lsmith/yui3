@@ -1,0 +1,17 @@
+{
+  "name": "yui-arraylist-filter",
+  "version": "1.0.0",
+  "description": "",
+  "main": "arraylist-filter.js",
+  "dependencies": {
+    "yui-arraylist": "file:../yui-arraylist/arraylist.js",
+    "yui-y": "file:../yui-y/y.js"
+  },
+  "yuiMeta": {
+    "requires": [
+      "arraylist"
+    ]
+  },
+  "author": "",
+  "license": "ISC"
+}

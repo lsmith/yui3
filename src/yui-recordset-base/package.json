@@ -1,0 +1,19 @@
+{
+  "name": "yui-recordset-base",
+  "version": "1.0.0",
+  "description": "",
+  "main": "recordset-base.js",
+  "dependencies": {
+    "yui-base": "file:../yui-base/base.js",
+    "yui-arraylist": "file:../yui-arraylist/arraylist.js",
+    "yui-y": "file:../yui-y/y.js"
+  },
+  "yuiMeta": {
+    "requires": [
+      "base",
+      "arraylist"
+    ]
+  },
+  "author": "",
+  "license": "ISC"
+}

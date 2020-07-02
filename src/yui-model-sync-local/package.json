@@ -1,0 +1,19 @@
+{
+  "name": "yui-model-sync-local",
+  "version": "1.0.0",
+  "description": "",
+  "main": "model-sync-local.js",
+  "dependencies": {
+    "yui-model": "file:../yui-model/model.js",
+    "yui-json-stringify": "file:../yui-json-stringify/json-stringify.js",
+    "yui-y": "file:../yui-y/y.js"
+  },
+  "yuiMeta": {
+    "requires": [
+      "model",
+      "json-stringify"
+    ]
+  },
+  "author": "",
+  "license": "ISC"
+}

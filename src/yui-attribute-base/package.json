@@ -1,0 +1,21 @@
+{
+  "name": "yui-attribute-base",
+  "version": "1.0.0",
+  "description": "",
+  "main": "attribute-base.js",
+  "dependencies": {
+    "yui-attribute-core": "file:../yui-attribute-core/attribute-core.js",
+    "yui-attribute-observable": "file:../yui-attribute-observable/attribute-observable.js",
+    "yui-attribute-extras": "file:../yui-attribute-extras/attribute-extras.js",
+    "yui-y": "file:../yui-y/y.js"
+  },
+  "yuiMeta": {
+    "requires": [
+      "attribute-core",
+      "attribute-observable",
+      "attribute-extras"
+    ]
+  },
+  "author": "",
+  "license": "ISC"
+}

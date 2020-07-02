@@ -1,0 +1,17 @@
+{
+  "name": "yui-anim-shape-transform",
+  "version": "1.0.0",
+  "description": "",
+  "main": "anim-shape-transform.js",
+  "dependencies": {
+    "yui-anim-shape": "file:../yui-anim-shape/anim-shape.js",
+    "yui-y": "file:../yui-y/y.js"
+  },
+  "yuiMeta": {
+    "use": [
+      "anim-shape"
+    ]
+  },
+  "author": "",
+  "license": "ISC"
+}

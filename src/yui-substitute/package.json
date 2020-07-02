@@ -1,0 +1,20 @@
+{
+  "name": "yui-substitute",
+  "version": "1.0.0",
+  "description": "",
+  "main": "substitute.js",
+  "dependencies": {
+    "yui-yui-base": "file:../yui-yui-base/yui-base.js",
+    "yui-y": "file:../yui-y/y.js"
+  },
+  "yuiMeta": {
+    "requires": [
+      "yui-base"
+    ],
+    "optional": [
+      "dump"
+    ]
+  },
+  "author": "",
+  "license": "ISC"
+}

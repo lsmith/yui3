@@ -1,0 +1,25 @@
+{
+  "name": "yui-dataschema",
+  "version": "1.0.0",
+  "description": "",
+  "main": "dataschema.js",
+  "dependencies": {
+    "yui-dataschema-base": "file:../yui-dataschema-base/dataschema-base.js",
+    "yui-dataschema-json": "file:../yui-dataschema-json/dataschema-json.js",
+    "yui-dataschema-xml": "file:../yui-dataschema-xml/dataschema-xml.js",
+    "yui-dataschema-array": "file:../yui-dataschema-array/dataschema-array.js",
+    "yui-dataschema-text": "file:../yui-dataschema-text/dataschema-text.js",
+    "yui-y": "file:../yui-y/y.js"
+  },
+  "yuiMeta": {
+    "use": [
+      "dataschema-base",
+      "dataschema-json",
+      "dataschema-xml",
+      "dataschema-array",
+      "dataschema-text"
+    ]
+  },
+  "author": "",
+  "license": "ISC"
+}

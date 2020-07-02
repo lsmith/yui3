@@ -1,0 +1,23 @@
+{
+  "name": "yui-widget-autohide",
+  "version": "1.0.0",
+  "description": "",
+  "main": "widget-autohide.js",
+  "dependencies": {
+    "yui-base-build": "file:../yui-base-build/base-build.js",
+    "yui-event-key": "file:../yui-event-key/event-key.js",
+    "yui-event-outside": "file:../yui-event-outside/event-outside.js",
+    "yui-widget": "file:../yui-widget/widget.js",
+    "yui-y": "file:../yui-y/y.js"
+  },
+  "yuiMeta": {
+    "requires": [
+      "base-build",
+      "event-key",
+      "event-outside",
+      "widget"
+    ]
+  },
+  "author": "",
+  "license": "ISC"
+}

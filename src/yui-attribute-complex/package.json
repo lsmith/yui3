@@ -1,0 +1,17 @@
+{
+  "name": "yui-attribute-complex",
+  "version": "1.0.0",
+  "description": "",
+  "main": "attribute-complex.js",
+  "dependencies": {
+    "yui-attribute-base": "file:../yui-attribute-base/attribute-base.js",
+    "yui-y": "file:../yui-y/y.js"
+  },
+  "yuiMeta": {
+    "requires": [
+      "attribute-base"
+    ]
+  },
+  "author": "",
+  "license": "ISC"
+}

@@ -1,0 +1,19 @@
+{
+  "name": "yui-io-xdr",
+  "version": "1.0.0",
+  "description": "",
+  "main": "io-xdr.js",
+  "dependencies": {
+    "yui-io-base": "file:../yui-io-base/io-base.js",
+    "yui-datatype-xml-parse": "file:../yui-datatype-xml-parse/datatype-xml-parse.js",
+    "yui-y": "file:../yui-y/y.js"
+  },
+  "yuiMeta": {
+    "requires": [
+      "io-base",
+      "datatype-xml-parse"
+    ]
+  },
+  "author": "",
+  "license": "ISC"
+}

@@ -1,0 +1,17 @@
+{
+  "name": "yui-event-outside",
+  "version": "1.0.0",
+  "description": "",
+  "main": "event-outside.js",
+  "dependencies": {
+    "yui-event-synthetic": "file:../yui-event-synthetic/event-synthetic.js",
+    "yui-y": "file:../yui-y/y.js"
+  },
+  "yuiMeta": {
+    "requires": [
+      "event-synthetic"
+    ]
+  },
+  "author": "",
+  "license": "ISC"
+}

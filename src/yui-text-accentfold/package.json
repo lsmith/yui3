@@ -1,0 +1,19 @@
+{
+  "name": "yui-text-accentfold",
+  "version": "1.0.0",
+  "description": "",
+  "main": "text-accentfold.js",
+  "dependencies": {
+    "yui-array-extras": "file:../yui-array-extras/array-extras.js",
+    "yui-text-data-accentfold": "file:../yui-text-data-accentfold/text-data-accentfold.js",
+    "yui-y": "file:../yui-y/y.js"
+  },
+  "yuiMeta": {
+    "requires": [
+      "array-extras",
+      "text-data-accentfold"
+    ]
+  },
+  "author": "",
+  "license": "ISC"
+}

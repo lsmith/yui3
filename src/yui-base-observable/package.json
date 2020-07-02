@@ -1,0 +1,19 @@
+{
+  "name": "yui-base-observable",
+  "version": "1.0.0",
+  "description": "",
+  "main": "base-observable.js",
+  "dependencies": {
+    "yui-attribute-observable": "file:../yui-attribute-observable/attribute-observable.js",
+    "yui-base-core": "file:../yui-base-core/base-core.js",
+    "yui-y": "file:../yui-y/y.js"
+  },
+  "yuiMeta": {
+    "requires": [
+      "attribute-observable",
+      "base-core"
+    ]
+  },
+  "author": "",
+  "license": "ISC"
+}

@@ -1,0 +1,17 @@
+{
+  "name": "yui-transition",
+  "version": "1.0.0",
+  "description": "",
+  "main": "transition.js",
+  "dependencies": {
+    "yui-node-style": "file:../yui-node-style/node-style.js",
+    "yui-y": "file:../yui-y/y.js"
+  },
+  "yuiMeta": {
+    "requires": [
+      "node-style"
+    ]
+  },
+  "author": "",
+  "license": "ISC"
+}

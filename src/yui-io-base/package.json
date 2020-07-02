@@ -1,0 +1,19 @@
+{
+  "name": "yui-io-base",
+  "version": "1.0.0",
+  "description": "",
+  "main": "io-base.js",
+  "dependencies": {
+    "yui-event-custom-base": "file:../yui-event-custom-base/event-custom-base.js",
+    "yui-querystring-stringify-simple": "file:../yui-querystring-stringify-simple/querystring-stringify-simple.js",
+    "yui-y": "file:../yui-y/y.js"
+  },
+  "yuiMeta": {
+    "requires": [
+      "event-custom-base",
+      "querystring-stringify-simple"
+    ]
+  },
+  "author": "",
+  "license": "ISC"
+}

@@ -1,0 +1,21 @@
+{
+  "name": "yui-anim-base",
+  "version": "1.0.0",
+  "description": "",
+  "main": "anim-base.js",
+  "dependencies": {
+    "yui-base-base": "file:../yui-base-base/base-base.js",
+    "yui-node-style": "file:../yui-node-style/node-style.js",
+    "yui-color-base": "file:../yui-color-base/color-base.js",
+    "yui-y": "file:../yui-y/y.js"
+  },
+  "yuiMeta": {
+    "requires": [
+      "base-base",
+      "node-style",
+      "color-base"
+    ]
+  },
+  "author": "",
+  "license": "ISC"
+}

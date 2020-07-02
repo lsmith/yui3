@@ -1,0 +1,21 @@
+{
+  "name": "yui-widget-parent",
+  "version": "1.0.0",
+  "description": "",
+  "main": "widget-parent.js",
+  "dependencies": {
+    "yui-arraylist": "file:../yui-arraylist/arraylist.js",
+    "yui-base-build": "file:../yui-base-build/base-build.js",
+    "yui-widget": "file:../yui-widget/widget.js",
+    "yui-y": "file:../yui-y/y.js"
+  },
+  "yuiMeta": {
+    "requires": [
+      "arraylist",
+      "base-build",
+      "widget"
+    ]
+  },
+  "author": "",
+  "license": "ISC"
+}

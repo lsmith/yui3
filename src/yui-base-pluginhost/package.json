@@ -1,0 +1,19 @@
+{
+  "name": "yui-base-pluginhost",
+  "version": "1.0.0",
+  "description": "",
+  "main": "base-pluginhost.js",
+  "dependencies": {
+    "yui-base-base": "file:../yui-base-base/base-base.js",
+    "yui-pluginhost": "file:../yui-pluginhost/pluginhost.js",
+    "yui-y": "file:../yui-y/y.js"
+  },
+  "yuiMeta": {
+    "requires": [
+      "base-base",
+      "pluginhost"
+    ]
+  },
+  "author": "",
+  "license": "ISC"
+}

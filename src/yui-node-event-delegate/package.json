@@ -1,0 +1,19 @@
+{
+  "name": "yui-node-event-delegate",
+  "version": "1.0.0",
+  "description": "",
+  "main": "node-event-delegate.js",
+  "dependencies": {
+    "yui-node-base": "file:../yui-node-base/node-base.js",
+    "yui-event-delegate": "file:../yui-event-delegate/event-delegate.js",
+    "yui-y": "file:../yui-y/y.js"
+  },
+  "yuiMeta": {
+    "requires": [
+      "node-base",
+      "event-delegate"
+    ]
+  },
+  "author": "",
+  "license": "ISC"
+}

@@ -1,0 +1,12 @@
+{
+  "name": "yui-datatype-xml-parse",
+  "version": "1.0.0",
+  "description": "",
+  "main": "datatype-xml-parse.js",
+  "dependencies": {
+    "yui-y": "file:../yui-y/y.js"
+  },
+  "yuiMeta": {},
+  "author": "",
+  "license": "ISC"
+}

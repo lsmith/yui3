@@ -1,0 +1,25 @@
+{
+  "name": "yui-collection",
+  "version": "1.0.0",
+  "description": "",
+  "main": "collection.js",
+  "dependencies": {
+    "yui-array-extras": "file:../yui-array-extras/array-extras.js",
+    "yui-arraylist": "file:../yui-arraylist/arraylist.js",
+    "yui-arraylist-add": "file:../yui-arraylist-add/arraylist-add.js",
+    "yui-arraylist-filter": "file:../yui-arraylist-filter/arraylist-filter.js",
+    "yui-array-invoke": "file:../yui-array-invoke/array-invoke.js",
+    "yui-y": "file:../yui-y/y.js"
+  },
+  "yuiMeta": {
+    "use": [
+      "array-extras",
+      "arraylist",
+      "arraylist-add",
+      "arraylist-filter",
+      "array-invoke"
+    ]
+  },
+  "author": "",
+  "license": "ISC"
+}

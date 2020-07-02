@@ -1,0 +1,23 @@
+{
+  "name": "yui-dd-ddm-base",
+  "version": "1.0.0",
+  "description": "",
+  "main": "dd-ddm-base.js",
+  "dependencies": {
+    "yui-node": "file:../yui-node/node.js",
+    "yui-base": "file:../yui-base/base.js",
+    "yui-yui-throttle": "file:../yui-yui-throttle/yui-throttle.js",
+    "yui-classnamemanager": "file:../yui-classnamemanager/classnamemanager.js",
+    "yui-y": "file:../yui-y/y.js"
+  },
+  "yuiMeta": {
+    "requires": [
+      "node",
+      "base",
+      "yui-throttle",
+      "classnamemanager"
+    ]
+  },
+  "author": "",
+  "license": "ISC"
+}

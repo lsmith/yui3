@@ -1,0 +1,17 @@
+{
+  "name": "yui-view-node-map",
+  "version": "1.0.0",
+  "description": "",
+  "main": "view-node-map.js",
+  "dependencies": {
+    "yui-view": "file:../yui-view/view.js",
+    "yui-y": "file:../yui-y/y.js"
+  },
+  "yuiMeta": {
+    "requires": [
+      "view"
+    ]
+  },
+  "author": "",
+  "license": "ISC"
+}

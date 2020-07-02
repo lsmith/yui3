@@ -1,0 +1,21 @@
+{
+  "name": "yui-tree-lazy",
+  "version": "1.0.0",
+  "description": "",
+  "main": "tree-lazy.js",
+  "dependencies": {
+    "yui-base-pluginhost": "file:../yui-base-pluginhost/base-pluginhost.js",
+    "yui-plugin": "file:../yui-plugin/plugin.js",
+    "yui-tree": "file:../yui-tree/tree.js",
+    "yui-y": "file:../yui-y/y.js"
+  },
+  "yuiMeta": {
+    "requires": [
+      "base-pluginhost",
+      "plugin",
+      "tree"
+    ]
+  },
+  "author": "",
+  "license": "ISC"
+}

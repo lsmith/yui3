@@ -1,0 +1,24 @@
+{
+  "name": "yui-history-html5",
+  "version": "1.0.0",
+  "description": "",
+  "main": "history-html5.js",
+  "dependencies": {
+    "yui-event-base": "file:../yui-event-base/event-base.js",
+    "yui-history-base": "file:../yui-history-base/history-base.js",
+    "yui-node-base": "file:../yui-node-base/node-base.js",
+    "yui-y": "file:../yui-y/y.js"
+  },
+  "yuiMeta": {
+    "optional": [
+      "json"
+    ],
+    "requires": [
+      "event-base",
+      "history-base",
+      "node-base"
+    ]
+  },
+  "author": "",
+  "license": "ISC"
+}

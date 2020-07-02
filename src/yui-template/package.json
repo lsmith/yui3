@@ -1,0 +1,19 @@
+{
+  "name": "yui-template",
+  "version": "1.0.0",
+  "description": "",
+  "main": "template.js",
+  "dependencies": {
+    "yui-template-base": "file:../yui-template-base/template-base.js",
+    "yui-template-micro": "file:../yui-template-micro/template-micro.js",
+    "yui-y": "file:../yui-y/y.js"
+  },
+  "yuiMeta": {
+    "use": [
+      "template-base",
+      "template-micro"
+    ]
+  },
+  "author": "",
+  "license": "ISC"
+}

@@ -1,0 +1,24 @@
+{
+  "name": "yui-node-menunav",
+  "version": "1.0.0",
+  "description": "",
+  "main": "node-menunav.js",
+  "dependencies": {
+    "yui-node": "file:../yui-node/node.js",
+    "yui-classnamemanager": "file:../yui-classnamemanager/classnamemanager.js",
+    "yui-plugin": "file:../yui-plugin/plugin.js",
+    "yui-node-focusmanager": "file:../yui-node-focusmanager/node-focusmanager.js",
+    "yui-y": "file:../yui-y/y.js"
+  },
+  "yuiMeta": {
+    "requires": [
+      "node",
+      "classnamemanager",
+      "plugin",
+      "node-focusmanager"
+    ],
+    "skinnable": true
+  },
+  "author": "",
+  "license": "ISC"
+}

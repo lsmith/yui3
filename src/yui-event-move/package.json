@@ -1,0 +1,21 @@
+{
+  "name": "yui-event-move",
+  "version": "1.0.0",
+  "description": "",
+  "main": "event-move.js",
+  "dependencies": {
+    "yui-node-base": "file:../yui-node-base/node-base.js",
+    "yui-event-touch": "file:../yui-event-touch/event-touch.js",
+    "yui-event-synthetic": "file:../yui-event-synthetic/event-synthetic.js",
+    "yui-y": "file:../yui-y/y.js"
+  },
+  "yuiMeta": {
+    "requires": [
+      "node-base",
+      "event-touch",
+      "event-synthetic"
+    ]
+  },
+  "author": "",
+  "license": "ISC"
+}

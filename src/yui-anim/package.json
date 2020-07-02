@@ -1,0 +1,29 @@
+{
+  "name": "yui-anim",
+  "version": "1.0.0",
+  "description": "",
+  "main": "anim.js",
+  "dependencies": {
+    "yui-anim-base": "file:../yui-anim-base/anim-base.js",
+    "yui-anim-color": "file:../yui-anim-color/anim-color.js",
+    "yui-anim-curve": "file:../yui-anim-curve/anim-curve.js",
+    "yui-anim-easing": "file:../yui-anim-easing/anim-easing.js",
+    "yui-anim-node-plugin": "file:../yui-anim-node-plugin/anim-node-plugin.js",
+    "yui-anim-scroll": "file:../yui-anim-scroll/anim-scroll.js",
+    "yui-anim-xy": "file:../yui-anim-xy/anim-xy.js",
+    "yui-y": "file:../yui-y/y.js"
+  },
+  "yuiMeta": {
+    "use": [
+      "anim-base",
+      "anim-color",
+      "anim-curve",
+      "anim-easing",
+      "anim-node-plugin",
+      "anim-scroll",
+      "anim-xy"
+    ]
+  },
+  "author": "",
+  "license": "ISC"
+}

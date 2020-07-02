@@ -1,0 +1,19 @@
+{
+  "name": "yui-io-upload-iframe",
+  "version": "1.0.0",
+  "description": "",
+  "main": "io-upload-iframe.js",
+  "dependencies": {
+    "yui-io-base": "file:../yui-io-base/io-base.js",
+    "yui-node-base": "file:../yui-node-base/node-base.js",
+    "yui-y": "file:../yui-y/y.js"
+  },
+  "yuiMeta": {
+    "requires": [
+      "io-base",
+      "node-base"
+    ]
+  },
+  "author": "",
+  "license": "ISC"
+}

@@ -1,0 +1,17 @@
+{
+  "name": "yui-controller",
+  "version": "1.0.0",
+  "description": "",
+  "main": "controller.js",
+  "dependencies": {
+    "yui-router": "file:../yui-router/router.js",
+    "yui-y": "file:../yui-y/y.js"
+  },
+  "yuiMeta": {
+    "use": [
+      "router"
+    ]
+  },
+  "author": "",
+  "license": "ISC"
+}

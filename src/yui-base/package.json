@@ -2,18 +2,18 @@
   "name": "yui-base",
   "version": "1.0.0",
   "description": "",
-  "main": "yui-base.js",
+  "main": "base.js",
   "dependencies": {
-    "y": "file:../y/y.js"
+    "yui-base-base": "file:../yui-base-base/base-base.js",
+    "yui-base-pluginhost": "file:../yui-base-pluginhost/base-pluginhost.js",
+    "yui-base-build": "file:../yui-base-build/base-build.js",
+    "yui-y": "file:../yui-y/y.js"
   },
   "yuiMeta": {
     "use": [
-      "yui-base-base",
-      "get",
-      "features",
-      "intl-base",
-      "yui-log",
-      "yui-later"
+      "base-base",
+      "base-pluginhost",
+      "base-build"
     ]
   },
   "author": "",

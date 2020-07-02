@@ -1,0 +1,19 @@
+{
+  "name": "yui-scrollview",
+  "version": "1.0.0",
+  "description": "",
+  "main": "scrollview.js",
+  "dependencies": {
+    "yui-scrollview-base": "file:../yui-scrollview-base/scrollview-base.js",
+    "yui-scrollview-scrollbars": "file:../yui-scrollview-scrollbars/scrollview-scrollbars.js",
+    "yui-y": "file:../yui-y/y.js"
+  },
+  "yuiMeta": {
+    "requires": [
+      "scrollview-base",
+      "scrollview-scrollbars"
+    ]
+  },
+  "author": "",
+  "license": "ISC"
+}

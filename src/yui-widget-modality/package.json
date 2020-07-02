@@ -1,0 +1,22 @@
+{
+  "name": "yui-widget-modality",
+  "version": "1.0.0",
+  "description": "",
+  "main": "widget-modality.js",
+  "dependencies": {
+    "yui-base-build": "file:../yui-base-build/base-build.js",
+    "yui-event-outside": "file:../yui-event-outside/event-outside.js",
+    "yui-widget": "file:../yui-widget/widget.js",
+    "yui-y": "file:../yui-y/y.js"
+  },
+  "yuiMeta": {
+    "requires": [
+      "base-build",
+      "event-outside",
+      "widget"
+    ],
+    "skinnable": true
+  },
+  "author": "",
+  "license": "ISC"
+}

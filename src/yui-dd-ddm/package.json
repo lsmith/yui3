@@ -1,0 +1,19 @@
+{
+  "name": "yui-dd-ddm",
+  "version": "1.0.0",
+  "description": "",
+  "main": "dd-ddm.js",
+  "dependencies": {
+    "yui-dd-ddm-base": "file:../yui-dd-ddm-base/dd-ddm-base.js",
+    "yui-event-resize": "file:../yui-event-resize/event-resize.js",
+    "yui-y": "file:../yui-y/y.js"
+  },
+  "yuiMeta": {
+    "requires": [
+      "dd-ddm-base",
+      "event-resize"
+    ]
+  },
+  "author": "",
+  "license": "ISC"
+}

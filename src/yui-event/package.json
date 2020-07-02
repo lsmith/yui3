@@ -1,0 +1,48 @@
+{
+  "name": "yui-event",
+  "version": "1.0.0",
+  "description": "",
+  "main": "event.js",
+  "dependencies": {
+    "yui-event-base": "file:../yui-event-base/event-base.js",
+    "yui-event-delegate": "file:../yui-event-delegate/event-delegate.js",
+    "yui-event-synthetic": "file:../yui-event-synthetic/event-synthetic.js",
+    "yui-event-mousewheel": "file:../yui-event-mousewheel/event-mousewheel.js",
+    "yui-event-mouseenter": "file:../yui-event-mouseenter/event-mouseenter.js",
+    "yui-event-key": "file:../yui-event-key/event-key.js",
+    "yui-event-focus": "file:../yui-event-focus/event-focus.js",
+    "yui-event-resize": "file:../yui-event-resize/event-resize.js",
+    "yui-event-hover": "file:../yui-event-hover/event-hover.js",
+    "yui-event-outside": "file:../yui-event-outside/event-outside.js",
+    "yui-event-touch": "file:../yui-event-touch/event-touch.js",
+    "yui-event-move": "file:../yui-event-move/event-move.js",
+    "yui-event-flick": "file:../yui-event-flick/event-flick.js",
+    "yui-event-valuechange": "file:../yui-event-valuechange/event-valuechange.js",
+    "yui-event-tap": "file:../yui-event-tap/event-tap.js",
+    "yui-y": "file:../yui-y/y.js"
+  },
+  "yuiMeta": {
+    "after": [
+      "node-base"
+    ],
+    "use": [
+      "event-base",
+      "event-delegate",
+      "event-synthetic",
+      "event-mousewheel",
+      "event-mouseenter",
+      "event-key",
+      "event-focus",
+      "event-resize",
+      "event-hover",
+      "event-outside",
+      "event-touch",
+      "event-move",
+      "event-flick",
+      "event-valuechange",
+      "event-tap"
+    ]
+  },
+  "author": "",
+  "license": "ISC"
+}

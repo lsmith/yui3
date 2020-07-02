@@ -1,0 +1,18 @@
+{
+  "name": "yui-dd-drag",
+  "version": "1.0.0",
+  "description": "",
+  "main": "dd-drag.js",
+  "dependencies": {
+    "yui-dd-ddm-base": "file:../yui-dd-ddm-base/dd-ddm-base.js",
+    "yui-y": "file:../yui-y/y.js"
+  },
+  "yuiMeta": {
+    "requires": [
+      "dd-ddm-base",
+      "selector-css2"
+    ]
+  },
+  "author": "",
+  "license": "ISC"
+}

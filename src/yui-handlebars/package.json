@@ -1,0 +1,17 @@
+{
+  "name": "yui-handlebars",
+  "version": "1.0.0",
+  "description": "",
+  "main": "handlebars.js",
+  "dependencies": {
+    "yui-handlebars-compiler": "file:../yui-handlebars-compiler/handlebars-compiler.js",
+    "yui-y": "file:../yui-y/y.js"
+  },
+  "yuiMeta": {
+    "use": [
+      "handlebars-compiler"
+    ]
+  },
+  "author": "",
+  "license": "ISC"
+}

@@ -1,0 +1,17 @@
+{
+  "name": "yui-pluginhost-config",
+  "version": "1.0.0",
+  "description": "",
+  "main": "pluginhost-config.js",
+  "dependencies": {
+    "yui-pluginhost-base": "file:../yui-pluginhost-base/pluginhost-base.js",
+    "yui-y": "file:../yui-y/y.js"
+  },
+  "yuiMeta": {
+    "requires": [
+      "pluginhost-base"
+    ]
+  },
+  "author": "",
+  "license": "ISC"
+}

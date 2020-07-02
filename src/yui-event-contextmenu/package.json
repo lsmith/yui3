@@ -1,0 +1,19 @@
+{
+  "name": "yui-event-contextmenu",
+  "version": "1.0.0",
+  "description": "",
+  "main": "event-contextmenu.js",
+  "dependencies": {
+    "yui-event-synthetic": "file:../yui-event-synthetic/event-synthetic.js",
+    "yui-dom-screen": "file:../yui-dom-screen/dom-screen.js",
+    "yui-y": "file:../yui-y/y.js"
+  },
+  "yuiMeta": {
+    "requires": [
+      "event-synthetic",
+      "dom-screen"
+    ]
+  },
+  "author": "",
+  "license": "ISC"
+}

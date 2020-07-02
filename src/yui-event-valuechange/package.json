@@ -1,0 +1,19 @@
+{
+  "name": "yui-event-valuechange",
+  "version": "1.0.0",
+  "description": "",
+  "main": "event-valuechange.js",
+  "dependencies": {
+    "yui-event-focus": "file:../yui-event-focus/event-focus.js",
+    "yui-event-synthetic": "file:../yui-event-synthetic/event-synthetic.js",
+    "yui-y": "file:../yui-y/y.js"
+  },
+  "yuiMeta": {
+    "requires": [
+      "event-focus",
+      "event-synthetic"
+    ]
+  },
+  "author": "",
+  "license": "ISC"
+}

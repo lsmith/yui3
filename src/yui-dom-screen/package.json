@@ -1,0 +1,19 @@
+{
+  "name": "yui-dom-screen",
+  "version": "1.0.0",
+  "description": "",
+  "main": "dom-screen.js",
+  "dependencies": {
+    "yui-dom-base": "file:../yui-dom-base/dom-base.js",
+    "yui-dom-style": "file:../yui-dom-style/dom-style.js",
+    "yui-y": "file:../yui-y/y.js"
+  },
+  "yuiMeta": {
+    "requires": [
+      "dom-base",
+      "dom-style"
+    ]
+  },
+  "author": "",
+  "license": "ISC"
+}

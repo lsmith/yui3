@@ -1,0 +1,17 @@
+{
+  "name": "yui-event-mousewheel",
+  "version": "1.0.0",
+  "description": "",
+  "main": "event-mousewheel.js",
+  "dependencies": {
+    "yui-node-base": "file:../yui-node-base/node-base.js",
+    "yui-y": "file:../yui-y/y.js"
+  },
+  "yuiMeta": {
+    "requires": [
+      "node-base"
+    ]
+  },
+  "author": "",
+  "license": "ISC"
+}

@@ -1,0 +1,17 @@
+{
+  "name": "yui-anim-easing",
+  "version": "1.0.0",
+  "description": "",
+  "main": "anim-easing.js",
+  "dependencies": {
+    "yui-anim-base": "file:../yui-anim-base/anim-base.js",
+    "yui-y": "file:../yui-y/y.js"
+  },
+  "yuiMeta": {
+    "requires": [
+      "anim-base"
+    ]
+  },
+  "author": "",
+  "license": "ISC"
+}

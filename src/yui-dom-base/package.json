@@ -1,0 +1,17 @@
+{
+  "name": "yui-dom-base",
+  "version": "1.0.0",
+  "description": "",
+  "main": "dom-base.js",
+  "dependencies": {
+    "yui-dom-core": "file:../yui-dom-core/dom-core.js",
+    "yui-y": "file:../yui-y/y.js"
+  },
+  "yuiMeta": {
+    "requires": [
+      "dom-core"
+    ]
+  },
+  "author": "",
+  "license": "ISC"
+}

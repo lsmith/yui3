@@ -1,0 +1,17 @@
+{
+  "name": "yui-selector",
+  "version": "1.0.0",
+  "description": "",
+  "main": "selector.js",
+  "dependencies": {
+    "yui-selector-native": "file:../yui-selector-native/selector-native.js",
+    "yui-y": "file:../yui-y/y.js"
+  },
+  "yuiMeta": {
+    "requires": [
+      "selector-native"
+    ]
+  },
+  "author": "",
+  "license": "ISC"
+}

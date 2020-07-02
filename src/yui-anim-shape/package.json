@@ -1,0 +1,23 @@
+{
+  "name": "yui-anim-shape",
+  "version": "1.0.0",
+  "description": "",
+  "main": "anim-shape.js",
+  "dependencies": {
+    "yui-anim-base": "file:../yui-anim-base/anim-base.js",
+    "yui-anim-easing": "file:../yui-anim-easing/anim-easing.js",
+    "yui-anim-color": "file:../yui-anim-color/anim-color.js",
+    "yui-matrix": "file:../yui-matrix/matrix.js",
+    "yui-y": "file:../yui-y/y.js"
+  },
+  "yuiMeta": {
+    "requires": [
+      "anim-base",
+      "anim-easing",
+      "anim-color",
+      "matrix"
+    ]
+  },
+  "author": "",
+  "license": "ISC"
+}

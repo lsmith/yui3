@@ -1,0 +1,19 @@
+{
+  "name": "yui-recordset-indexer",
+  "version": "1.0.0",
+  "description": "",
+  "main": "recordset-indexer.js",
+  "dependencies": {
+    "yui-recordset-base": "file:../yui-recordset-base/recordset-base.js",
+    "yui-plugin": "file:../yui-plugin/plugin.js",
+    "yui-y": "file:../yui-y/y.js"
+  },
+  "yuiMeta": {
+    "requires": [
+      "recordset-base",
+      "plugin"
+    ]
+  },
+  "author": "",
+  "license": "ISC"
+}

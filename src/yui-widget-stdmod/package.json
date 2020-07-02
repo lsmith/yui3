@@ -1,0 +1,19 @@
+{
+  "name": "yui-widget-stdmod",
+  "version": "1.0.0",
+  "description": "",
+  "main": "widget-stdmod.js",
+  "dependencies": {
+    "yui-base-build": "file:../yui-base-build/base-build.js",
+    "yui-widget": "file:../yui-widget/widget.js",
+    "yui-y": "file:../yui-y/y.js"
+  },
+  "yuiMeta": {
+    "requires": [
+      "base-build",
+      "widget"
+    ]
+  },
+  "author": "",
+  "license": "ISC"
+}

@@ -1,0 +1,19 @@
+{
+  "name": "yui-anim-node-plugin",
+  "version": "1.0.0",
+  "description": "",
+  "main": "anim-node-plugin.js",
+  "dependencies": {
+    "yui-node-pluginhost": "file:../yui-node-pluginhost/node-pluginhost.js",
+    "yui-anim-base": "file:../yui-anim-base/anim-base.js",
+    "yui-y": "file:../yui-y/y.js"
+  },
+  "yuiMeta": {
+    "requires": [
+      "node-pluginhost",
+      "anim-base"
+    ]
+  },
+  "author": "",
+  "license": "ISC"
+}

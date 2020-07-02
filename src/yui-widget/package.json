@@ -1,0 +1,23 @@
+{
+  "name": "yui-widget",
+  "version": "1.0.0",
+  "description": "",
+  "main": "widget.js",
+  "dependencies": {
+    "yui-widget-base": "file:../yui-widget-base/widget-base.js",
+    "yui-widget-htmlparser": "file:../yui-widget-htmlparser/widget-htmlparser.js",
+    "yui-widget-skin": "file:../yui-widget-skin/widget-skin.js",
+    "yui-widget-uievents": "file:../yui-widget-uievents/widget-uievents.js",
+    "yui-y": "file:../yui-y/y.js"
+  },
+  "yuiMeta": {
+    "use": [
+      "widget-base",
+      "widget-htmlparser",
+      "widget-skin",
+      "widget-uievents"
+    ]
+  },
+  "author": "",
+  "license": "ISC"
+}

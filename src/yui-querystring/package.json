@@ -1,0 +1,19 @@
+{
+  "name": "yui-querystring",
+  "version": "1.0.0",
+  "description": "",
+  "main": "querystring.js",
+  "dependencies": {
+    "yui-querystring-parse": "file:../yui-querystring-parse/querystring-parse.js",
+    "yui-querystring-stringify": "file:../yui-querystring-stringify/querystring-stringify.js",
+    "yui-y": "file:../yui-y/y.js"
+  },
+  "yuiMeta": {
+    "use": [
+      "querystring-parse",
+      "querystring-stringify"
+    ]
+  },
+  "author": "",
+  "license": "ISC"
+}

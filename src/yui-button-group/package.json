@@ -1,0 +1,20 @@
+{
+  "name": "yui-button-group",
+  "version": "1.0.0",
+  "description": "",
+  "main": "button-group.js",
+  "dependencies": {
+    "yui-button-plugin": "file:../yui-button-plugin/button-plugin.js",
+    "yui-widget": "file:../yui-widget/widget.js",
+    "yui-y": "file:../yui-y/y.js"
+  },
+  "yuiMeta": {
+    "requires": [
+      "button-plugin",
+      "cssbutton",
+      "widget"
+    ]
+  },
+  "author": "",
+  "license": "ISC"
+}

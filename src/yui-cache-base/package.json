@@ -1,0 +1,17 @@
+{
+  "name": "yui-cache-base",
+  "version": "1.0.0",
+  "description": "",
+  "main": "cache-base.js",
+  "dependencies": {
+    "yui-base": "file:../yui-base/base.js",
+    "yui-y": "file:../yui-y/y.js"
+  },
+  "yuiMeta": {
+    "requires": [
+      "base"
+    ]
+  },
+  "author": "",
+  "license": "ISC"
+}

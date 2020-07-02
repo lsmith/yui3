@@ -1,0 +1,19 @@
+{
+  "name": "yui-text-wordbreak",
+  "version": "1.0.0",
+  "description": "",
+  "main": "text-wordbreak.js",
+  "dependencies": {
+    "yui-array-extras": "file:../yui-array-extras/array-extras.js",
+    "yui-text-data-wordbreak": "file:../yui-text-data-wordbreak/text-data-wordbreak.js",
+    "yui-y": "file:../yui-y/y.js"
+  },
+  "yuiMeta": {
+    "requires": [
+      "array-extras",
+      "text-data-wordbreak"
+    ]
+  },
+  "author": "",
+  "license": "ISC"
+}

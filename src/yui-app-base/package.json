@@ -1,0 +1,23 @@
+{
+  "name": "yui-app-base",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app-base.js",
+  "dependencies": {
+    "yui-classnamemanager": "file:../yui-classnamemanager/classnamemanager.js",
+    "yui-pjax-base": "file:../yui-pjax-base/pjax-base.js",
+    "yui-router": "file:../yui-router/router.js",
+    "yui-view": "file:../yui-view/view.js",
+    "yui-y": "file:../yui-y/y.js"
+  },
+  "yuiMeta": {
+    "requires": [
+      "classnamemanager",
+      "pjax-base",
+      "router",
+      "view"
+    ]
+  },
+  "author": "",
+  "license": "ISC"
+}
