@@ -1,0 +1,28 @@
+{
+  "name": "yui-tabview",
+  "version": "1.0.0",
+  "description": "",
+  "main": "tabview.js",
+  "dependencies": {
+    "yui-widget": "file:../yui-widget/widget.js",
+    "yui-widget-parent": "file:../yui-widget-parent/widget-parent.js",
+    "yui-widget-child": "file:../yui-widget-child/widget-child.js",
+    "yui-tabview-base": "file:../yui-tabview-base/tabview-base.js",
+    "yui-node-pluginhost": "file:../yui-node-pluginhost/node-pluginhost.js",
+    "yui-node-focusmanager": "file:../yui-node-focusmanager/node-focusmanager.js",
+    "yui-y": "file:../yui-y/y.js"
+  },
+  "yuiMeta": {
+    "requires": [
+      "widget",
+      "widget-parent",
+      "widget-child",
+      "tabview-base",
+      "node-pluginhost",
+      "node-focusmanager"
+    ],
+    "skinnable": true
+  },
+  "author": "",
+  "license": "ISC"
+}

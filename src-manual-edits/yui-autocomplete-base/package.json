@@ -1,0 +1,28 @@
+{
+  "name": "yui-autocomplete-base",
+  "version": "1.0.0",
+  "description": "",
+  "main": "autocomplete-base.js",
+  "dependencies": {
+    "yui-array-extras": "file:../yui-array-extras/array-extras.js",
+    "yui-base-build": "file:../yui-base-build/base-build.js",
+    "yui-escape": "file:../yui-escape/escape.js",
+    "yui-event-valuechange": "file:../yui-event-valuechange/event-valuechange.js",
+    "yui-node-base": "file:../yui-node-base/node-base.js",
+    "yui-y": "file:../yui-y/y.js"
+  },
+  "yuiMeta": {
+    "optional": [
+      "autocomplete-sources"
+    ],
+    "requires": [
+      "array-extras",
+      "base-build",
+      "escape",
+      "event-valuechange",
+      "node-base"
+    ]
+  },
+  "author": "",
+  "license": "ISC"
+}

@@ -1,0 +1,21 @@
+{
+  "name": "yui-model",
+  "version": "1.0.0",
+  "description": "",
+  "main": "model.js",
+  "dependencies": {
+    "yui-base-build": "file:../yui-base-build/base-build.js",
+    "yui-escape": "file:../yui-escape/escape.js",
+    "yui-json-parse": "file:../yui-json-parse/json-parse.js",
+    "yui-y": "file:../yui-y/y.js"
+  },
+  "yuiMeta": {
+    "requires": [
+      "base-build",
+      "escape",
+      "json-parse"
+    ]
+  },
+  "author": "",
+  "license": "ISC"
+}

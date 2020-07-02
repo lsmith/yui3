@@ -1,0 +1,30 @@
+{
+  "name": "yui-widget-base",
+  "version": "1.0.0",
+  "description": "",
+  "main": "widget-base.js",
+  "dependencies": {
+    "yui-attribute": "file:../yui-attribute/attribute.js",
+    "yui-base-base": "file:../yui-base-base/base-base.js",
+    "yui-base-pluginhost": "file:../yui-base-pluginhost/base-pluginhost.js",
+    "yui-classnamemanager": "file:../yui-classnamemanager/classnamemanager.js",
+    "yui-event-focus": "file:../yui-event-focus/event-focus.js",
+    "yui-node-base": "file:../yui-node-base/node-base.js",
+    "yui-node-style": "file:../yui-node-style/node-style.js",
+    "yui-y": "file:../yui-y/y.js"
+  },
+  "yuiMeta": {
+    "requires": [
+      "attribute",
+      "base-base",
+      "base-pluginhost",
+      "classnamemanager",
+      "event-focus",
+      "node-base",
+      "node-style"
+    ],
+    "skinnable": true
+  },
+  "author": "",
+  "license": "ISC"
+}

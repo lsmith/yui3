@@ -1,0 +1,24 @@
+{
+  "name": "yui-router",
+  "version": "1.0.0",
+  "description": "",
+  "main": "router.js",
+  "dependencies": {
+    "yui-array-extras": "file:../yui-array-extras/array-extras.js",
+    "yui-base-build": "file:../yui-base-build/base-build.js",
+    "yui-history": "file:../yui-history/history.js",
+    "yui-y": "file:../yui-y/y.js"
+  },
+  "yuiMeta": {
+    "optional": [
+      "querystring-parse"
+    ],
+    "requires": [
+      "array-extras",
+      "base-build",
+      "history"
+    ]
+  },
+  "author": "",
+  "license": "ISC"
+}

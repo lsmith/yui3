@@ -1,0 +1,34 @@
+{
+  "name": "yui-panel",
+  "version": "1.0.0",
+  "description": "",
+  "main": "panel.js",
+  "dependencies": {
+    "yui-widget": "file:../yui-widget/widget.js",
+    "yui-widget-autohide": "file:../yui-widget-autohide/widget-autohide.js",
+    "yui-widget-buttons": "file:../yui-widget-buttons/widget-buttons.js",
+    "yui-widget-modality": "file:../yui-widget-modality/widget-modality.js",
+    "yui-widget-position": "file:../yui-widget-position/widget-position.js",
+    "yui-widget-position-align": "file:../yui-widget-position-align/widget-position-align.js",
+    "yui-widget-position-constrain": "file:../yui-widget-position-constrain/widget-position-constrain.js",
+    "yui-widget-stack": "file:../yui-widget-stack/widget-stack.js",
+    "yui-widget-stdmod": "file:../yui-widget-stdmod/widget-stdmod.js",
+    "yui-y": "file:../yui-y/y.js"
+  },
+  "yuiMeta": {
+    "requires": [
+      "widget",
+      "widget-autohide",
+      "widget-buttons",
+      "widget-modality",
+      "widget-position",
+      "widget-position-align",
+      "widget-position-constrain",
+      "widget-stack",
+      "widget-stdmod"
+    ],
+    "skinnable": true
+  },
+  "author": "",
+  "license": "ISC"
+}
